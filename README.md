@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚚 SwiftRun
 
-## Getting Started
+**Your packages deserve speed, care, and reliability at every step.**
 
-First, run the development server:
+SwiftRun is a modern logistics platform built to make sending and receiving packages effortless.
+With **real-time tracking**, **trusted drivers**, and **seamless delivery options**, we bring speed, care, and reliability to every delivery experience.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏢 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+SwiftRun combines logistics intelligence with a user-friendly interface to deliver a next-generation delivery experience.
+We’re building trust between senders, receivers, and drivers, powered by technology and designed for ease.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Core Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🚀 **Fast & Reliable Delivery** — Deliveries handled with speed and precision.
+- 📍 **Real-Time Tracking** — Know exactly where your package is at every moment.
+- 👨‍✈️ **Trusted Drivers** — Verified and professional delivery partners.
+- 📦 **Flexible Delivery Options** — Same-day, express, or scheduled deliveries.
+- 🔔 **Notifications & Alerts** — Stay updated via email, SMS, or app notifications.
+- 🧭 **Customer Dashboard** — Manage all shipments and track history in one place.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🖥️ Tech Stack
 
-## Deploy on Vercel
+| Technology | Purpose |
+|-------------|----------|
+| **Next.js (React)** | Frontend framework for building fast, scalable web applications |
+| **Tailwind CSS** | Rapid, modern UI styling |
+| **Figma** | UI/UX design and prototyping |
+| **Git / GitHub** | Version control and collaboration |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design
+
+The UI/UX for SwiftRun was carefully designed using **Figma** to ensure simplicity, accessibility, and elegance.
+Our design system focuses on clarity and speed, reflecting our brand values — **swift**, **secure**, and **seamless**.
+
+🔗 [View Figma Design](https://www.figma.com/proto/jA9zDkArRPMfvADBZguLEg/BlueDucks-Social-Design?page-id=340%3A2&node-id=340-3&viewport=360%2C319%2C0.49&t=UvWLj8A2ET5fMQKZ-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=382%3A6870)
