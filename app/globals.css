@@ -10,7 +10,27 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-primary: var(--font-primary);
+  --font-heading: var(--font-heading);
+  --color-blue: #066AC0;
+  --color-yellow: #FFF100;
+  --color-black: #000000;
+  --color-babyblue: #AADEFF;
+  --color-mintmist: #E6F4F1;
+  --color-white: #FFFFFF;
+  --color-green: #00D4AC;
+  --color-cloudmist: #DFEAF0;
+  --color-calmblue: #CADEEB;
+  --color-powdersky: #B7D3E7;
+  --color-softcream: #FDFAF3;
+  --color-goldencream: #FAF1DE;
+  --color-gray: #4D4D4D;
+  --color-whitetwo: #E6E6E6;
+  --color-primary: #066AC0;
+ --color-headerColor: #E6F4F1;
+ --color-footer: #FDFAF3;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {

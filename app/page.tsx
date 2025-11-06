@@ -1,65 +1,157 @@
+"use client";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import { useState } from "react";
+
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import video from "@/public/video.gif";
+import Link from "next/link";
+import sliderBG from "@/public/sliderBg.jpg";
+
+import type { StaticImageData } from "next/image";
+import Footer from "@/components/Footer";
 
 export default function Home() {
+  const headerItems: { text: string; image: StaticImageData }[] = [
+    {
+      text: "Why Choose Us",
+      image: sliderBG,
+    },
+    {
+      text: "How it works",
+      image: sliderBG,
+    },
+    {
+      text: "Become a rider",
+      image: sliderBG,
+    },
+    {
+      text: "Contact us",
+      image: sliderBG,
+    },
+    {
+      text: "FAQs",
+      image: sliderBG,
+    },
+  ];
+  const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
+  const [swiperPosition, setSwiperPosition] = useState({
+    isBeginning: true,
+    isEnd: false,
+  });
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="bg-white min-h-screen font-primary">
+      <Navbar />
+      <div className="relative  w-full ">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 p-6 md:p-20 inset-0  bg-[linear-gradient(to_right,white_30%,transparent_100%)]">
+          <div className="grid gap-5">
+            <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-blue">
+              Don&rsquo;t worry about the location
+            </h1>
+            <p className="text-lg text-black">
+              Be assured it will get to your destination
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              <div className="grid  grid-cols-2 items-center gap-5 md:col-span-2">
+                <Link
+                  href={""}
+                  className="bg-cloudmist text-blue p-3 rounded-full text-center"
+                >
+                  Order ride
+                </Link>
+                <Link
+                  href={""}
+                  className="outline outline-cloudmist p-3 rounded-full text-blue text-center"
+                >
+                  Become a rider
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <Image alt="video" src={video} fill className="object-cover " />
+      </div>
+      <div className="bg-headerColor  grid grid-cols-1 md:grid-cols-6 items-center px-6 py-3">
+        <div className=" md:col-span-5 relative">
+          <Swiper
+            onSwiper={setSwiperRef}
+            breakpoints={{
+              320: {
+                // mobile
+                slidesPerView: 1.1,
+              },
+              480: {
+                // slightly larger mobile
+                slidesPerView: 1.5,
+              },
+              640: {
+                // tablets
+                slidesPerView: 2.2,
+              },
+              1024: {
+                // laptops
+                slidesPerView: 3,
+              },
+              1280: {
+                // desktops
+                slidesPerView: 3.5, // shows the 4th slide peeking
+              },
+            }}
+            className=""
+            onSlideChange={(swiper) => {
+              setSwiperPosition((prev) => ({
+                ...prev,
+                isBeginning: swiper.isBeginning,
+                isEnd: swiper.isEnd,
+              }));
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {headerItems.map((item, index) => (
+              <SwiperSlide key={index} className={`text-black  `}>
+                <div className="p-3">
+                  <div className="bg-white grid grid-cols-5  md:grid-cols-3 p-4 md:text-lg font-heading rounded-2xl items-center outline outline-primary gap-3">
+                    <p className="col-span-4 md:col-span-2">{item.text}</p>
+                    <div>
+                      <div className="h-8  md:h-10 relative">
+                        <Image
+                          alt="sliderBg"
+                          src={item.image}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="absolute inset-0 bg-linear-to-r from-transparent from-85% via-transparent  to-headerColor  w-full h-full z-30"></div>
         </div>
-      </main>
+        <div className="flex gap-5 justify-center md:justify-end">
+          <div
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${
+              swiperPosition?.isBeginning ? "opacity-30" : "opacity-100"
+            }`}
+            onClick={() => swiperRef?.slidePrev()}
+          >
+            <FaChevronLeft size={14} />
+          </div>
+          <div
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue  duration-300 ${
+              swiperPosition?.isEnd ? "opacity-30" : "opacity-100"
+            }`}
+            onClick={() => swiperRef?.slideNext()}
+          >
+            <FaChevronRight size={14} />
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
