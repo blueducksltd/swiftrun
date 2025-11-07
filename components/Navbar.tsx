@@ -1,15 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "@/public/logo.png";
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const links: { text: string; href: string }[] = [
     {
+      text: "Home",
+      href: "/",
+    },
+    {
       text: "Why Choose Us",
-      href: "",
+      href: "/why-choose-us",
     },
     {
       text: "How it works",
@@ -30,6 +35,13 @@ export default function Navbar() {
   ];
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setShowDropdown(false);
+    setShowMobileNav(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <div className="md:h-[12vh]">
@@ -40,29 +52,32 @@ export default function Navbar() {
 
         <div className="relative ">
           <span
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer font-semibold  justify-center w-[150px]"
             onClick={() => setShowDropdown(true)}
           >
-            <p>Home</p>
+            <p>{links.find((item) => item.href == pathname)?.text}</p>
             <FaChevronDown size={12} />
           </span>
           <div
-            className={`absolute bg-white px-5  w-[250px]  overflow-hidden -left-[50%] -translate-x-[45px]  outline-black/20  rounded-xl grid gap-5 top-[0%] ${
+            className={`absolute bg-white px-5  w-[250px]  overflow-hidden -left-[50%]   outline-black/20  rounded-xl grid gap-5 top-[0%] ${
               showDropdown
-                ? " h-[300px] py-5 outline -translate-y-2 duration-200 "
+                ? " h-[350px] py-5 outline -translate-y-2 duration-200 "
                 : "h-0 translate-y-[100px] duration-100"
             }`}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            {links.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className="outline outline-black/10 flex items-center  pl-3 text-sm rounded-lg"
-              >
-                {item.text}
-              </Link>
-            ))}
+            {links.map(
+              (item, index) =>
+                pathname != item.href && (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="outline outline-black/10 flex items-center  pl-3 text-sm rounded-lg"
+                  >
+                    {item.text}
+                  </Link>
+                )
+            )}
           </div>
         </div>
 
