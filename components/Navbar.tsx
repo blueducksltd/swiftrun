@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="relative ">
           <span
             className="flex items-center gap-2 cursor-pointer"
-            onMouseEnter={() => setShowDropdown(true)}
+            onClick={() => setShowDropdown(true)}
           >
             <p>Home</p>
             <FaChevronDown size={12} />
