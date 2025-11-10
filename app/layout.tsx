@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} ${fontHeading.variable} antialiased`}>
+      <body className={` ${fontHeading.className} antialiased`}>
         <div className="min-h-screen bg-white">
           <Navbar />
           {children}
