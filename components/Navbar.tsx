@@ -18,19 +18,19 @@ export default function Navbar() {
     },
     {
       text: "How it works",
-      href: "",
+      href: "/how-it-works",
     },
     {
       text: "Become a rider",
-      href: "",
+      href: "/become-a-rider",
     },
     {
       text: "Contact us",
-      href: "",
+      href: "/contact-us",
     },
     {
       text: "FAQs",
-      href: "",
+      href: "/faqs",
     },
   ];
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -38,9 +38,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    setShowDropdown(false);
-    setShowMobileNav(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    (() => {
+      setShowDropdown(false);
+      setShowMobileNav(false);
+    })();
   }, [pathname]);
 
   return (
