@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Onest, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -24,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${onest.variable} ${fontHeading.variable} antialiased`}>
-        {children}
+        <div className="min-h-screen bg-white">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
