@@ -143,7 +143,7 @@ export default function Navbar() {
           <section className="flex flex-col justify-center items-center">
             <div className={`relative w-full flex justify-center items-center`}>
             <Image src={logosvg} height={190} width={190} alt="Swiftrun Logo" />
-            <span className="absolute right-2 border-1 w-6 h-6 flex justify-center items-center text-sm text-red-900 rounded-full cursor-pointer" onClick={() => setShowModal(false)}>
+            <span className="absolute right-2 border w-6 h-6 flex justify-center items-center text-sm text-red-900 rounded-full cursor-pointer" onClick={() => setShowModal(false)}>
               <FiX size={15} />
             </span>
             </div>
