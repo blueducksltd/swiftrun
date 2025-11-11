@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import playstoreLogo from "@/public/Playstore.png";
-import Appstore from "@/public/Appstore.png";
+import Appstore from "@/public/appstore.png";
 import downloadAppUserBg from "@/public/downloadAppUserBg.svg";
 
 export default function Driver() {
@@ -17,7 +17,7 @@ export default function Driver() {
             terms.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:gap-10">
+        <div className="grid grid-cols-2">
           <Link className="" href="">
             <Image height={50} src={playstoreLogo} alt="Google Store Icon" />
           </Link>

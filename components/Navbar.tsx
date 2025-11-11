@@ -6,7 +6,7 @@ import logosvg from "@/public/logosvg.svg";
 import qrcode from "@/public/qr-code.svg"
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa6";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Modal from "./modal";
 import { FiX } from "react-icons/fi";
 
@@ -41,6 +41,7 @@ export default function Navbar() {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false)
   const [appUser, setAppUser] = useState<string>("users")
+  const router = useRouter()
   const pathname = usePathname();
 
   useEffect(() => {
@@ -161,7 +162,10 @@ export default function Navbar() {
 
           <div className="flex flex-col items-center">
             <p className="text-center leading-5 text-sm font-medium">Use your phone or browser camera to scan the QR code and download the SwiftRun {appUser == 'users' ? "User's App" : "Driver's App"}.</p>
-            <p className="text-xs my-1">Having problems scanning? <Link href={''} className="text-[#066AC0] underline">Download from here</Link></p>
+            <p className="text-xs my-1">Having problems scanning? <button onClick={() => {
+              setShowModal(false)
+              appUser == "users" ? router.replace("/download-the-app/user") : router.replace("/download-the-app/driver")
+            }} className="text-[#066AC0] underline cursor-pointer">Download from here</button></p>
             {/* <div className="divider font-bold">OR</div>
             <button className="btn btn-accent">Download directly</button> */}
           </div>
