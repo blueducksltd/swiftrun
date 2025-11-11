@@ -46,9 +46,9 @@ export default function Navbar() {
 
   return (
     <div className="md:h-[12vh]">
-      <nav className="hidden md:flex justify-between  px-20 py-5 bg-headerColor items-center fixed w-full text-black z-50">
+      <nav className="hidden md:flex justify-between  px-20 py-5 bg-headerColor items-center fixed w-full text-black z-50"> 
         <Link href={"/"}>
-          <Image src={logo} height={100} width={100} alt="Swiftrun Logo" />
+          <Image src={logo} height={120} width={120} alt="Swiftrun Logo" />
         </Link>
 
         <div className="relative ">
@@ -60,9 +60,9 @@ export default function Navbar() {
             <FaChevronDown size={12} />
           </span>
           <div
-            className={`absolute bg-white px-5  w-[250px]  overflow-hidden -left-[50%]   outline-black/20  rounded-xl grid gap-5 top-[0%] ${
+            className={`absolute bg-white px-5  w-[250px]  overflow-hidden -left-[50%]  rounded-2xl grid gap-3 top-[0%] ${
               showDropdown
-                ? " h-[350px] py-5 outline -translate-y-2 duration-200 "
+                ? "  py-5 shadow-lg  -translate-y-2 duration-200 "
                 : "h-0 translate-y-[100px] duration-100"
             }`}
             onMouseLeave={() => setShowDropdown(false)}
@@ -73,7 +73,7 @@ export default function Navbar() {
                   <Link
                     key={index}
                     href={item.href}
-                    className="outline outline-black/10 flex items-center  pl-3 text-sm rounded-lg"
+                    className="outline outline-black/10 flex items-center  p-2 text-sm rounded-lg"
                   >
                     {item.text}
                   </Link>
@@ -84,7 +84,7 @@ export default function Navbar() {
 
         <Link
           className="bg-babyblue py-2 px-5 text-blue text-sm rounded-lg"
-          href={""}
+          href={"/download-the-app"}
         >
           Download the App
         </Link>

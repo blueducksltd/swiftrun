@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
@@ -88,6 +88,7 @@ export default function Footer() {
       },
     ],
   };
+
   return (
     <>
       <div className="bg-headerColor  grid grid-cols-1 md:grid-cols-6 items-center px-6 py-3">
@@ -128,7 +129,7 @@ export default function Footer() {
             {headerItems.map((item, index) => (
               <SwiperSlide key={index} className={`text-black  `}>
                 <div className="p-3">
-                  <div className="bg-white grid grid-cols-5  md:grid-cols-3 p-4 md:text-lg font-heading rounded-2xl items-center outline outline-primary gap-3">
+                  <div className="bg-white grid grid-cols-5  md:grid-cols-3 p-4 md:text-lg font-heading rounded-2xl items-center  gap-3">
                     <p className="col-span-4 md:col-span-2">{item.text}</p>
                     <div>
                       <div className="h-8  md:h-10 relative">
