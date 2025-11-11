@@ -1,10 +1,7 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import whyChooseUsBg1 from "@/public/whychooseusbg1.jpg";
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper as SwiperType } from "swiper";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 type Slides = {
   heading: string;
@@ -12,12 +9,12 @@ type Slides = {
   image: StaticImageData;
 }[];
 export default function HowItWorks() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end']
+    offset: ["start start", "end end"],
   });
 
   const sliders: Slides = [
@@ -48,15 +45,24 @@ export default function HowItWorks() {
     },
   ];
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', `-${(sliders.length - 1) * 60}%`]);
-
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", `-${(sliders.length - 1) * 60}%`]
+  );
 
   return (
-    <div className="relative w-full " style={{ height: `${sliders.length * 100}vh` }} ref={containerRef}>
+    <div
+      className="relative w-full "
+      style={{ height: `${sliders.length * 100}vh` }}
+      ref={containerRef}
+    >
       <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.div ref={scrollRef}
+        <motion.div
+          ref={scrollRef}
           style={{ x }}
-          className="flex h-full items-center gap-8 px-8">
+          className="flex h-full items-center gap-8 px-8"
+        >
           {sliders.map((item, key) => (
             <div key={key} className="w-screen">
               <div className="w-max shadow-2xl shadow-black/20 border rounded-2xl h-max">
@@ -86,7 +92,6 @@ export default function HowItWorks() {
           ))}
         </motion.div>
       </div>
-
     </div>
   );
 }
