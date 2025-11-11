@@ -52,7 +52,7 @@ export default function HowItWorks() {
 
 
   return (
-    <div className="relative w-full -mt-7" style={{ height: `${sliders.length * 100}vh` }} ref={containerRef}>
+    <div className="relative w-full " style={{ height: `${sliders.length * 100}vh` }} ref={containerRef}>
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div ref={scrollRef}
           style={{ x }}
