@@ -17,16 +17,16 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3">
               <div className="grid  grid-cols-2 items-center gap-5 md:col-span-2">
                 <Link
-                  href={""}
+                  href={"/download-the-app/user"}
                   className="bg-cloudmist text-blue p-3 rounded-full text-center"
                 >
                   Order ride
                 </Link>
                 <Link
-                  href={""}
+                  href={"/download-the-app/rider"}
                   className="outline outline-cloudmist p-3 rounded-full text-blue text-center"
                 >
-                  Become a rider
+                  Become a Rider
                 </Link>
               </div>
             </div>
