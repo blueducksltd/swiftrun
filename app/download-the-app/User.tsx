@@ -1,9 +1,12 @@
-import Link from 'next/link'
-
+import Image from "next/image";
+import Link from "next/link";
+import playstoreLogo from "@/public/Playstore.png";
+import Appstore from "@/public/Appstore.png";
+import downloadAppUserBg from "@/public/downloadAppUserBg.svg";
 export default function User() {
   return (
     <>
-     <div className="flex flex-col gap-5 ">
+      <div className="flex flex-col gap-5 ">
         <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
           Speed, Safety, Comfort.
         </h1>
@@ -13,16 +16,19 @@ export default function User() {
             can get help faster.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <Link
-            className="bg-cloudmist text-blue p-3 rounded-full text-center h-fit"
-            href=""
-          >
-            
+        <div className="grid grid-cols-2 md:gap-10">
+          <Link className="" href="">
+            <Image height={50} src={playstoreLogo} alt="Google Store Icon" />
+          </Link>
+
+          <Link className="" href="">
+            <Image height={50} src={Appstore} alt="Google Store Icon" />
           </Link>
         </div>
       </div>
-      <div className="grid gap-6"></div>
+      <div className="md:col-span-2  flex justify-end relative ">
+        <Image alt="downloadAppUserBg" src={downloadAppUserBg} height={450} />
+      </div>
     </>
-  )
+  );
 }
