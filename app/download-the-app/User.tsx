@@ -14,13 +14,23 @@ export default function User() {
             can get help faster.
           </p>
         </div>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-2">
           <Link className="" href="">
-            <Image height={20} src={"/Playstore.png"} alt="Google Store Icon" />
+            <Image
+              width={400}
+              height={400}
+              src={"/Playstore.png"}
+              alt="Google Store Icon"
+            />
           </Link>
 
           <Link className="" href="">
-            <Image height={50} src={Appstore} alt="Google Store Icon" />
+            <Image
+              width={400}
+              height={400}
+              src={Appstore}
+              alt="Google Store Icon"
+            />
           </Link>
         </div>
       </div>
@@ -28,7 +38,8 @@ export default function User() {
         <Image
           alt="downloadAppUserBg"
           src={"/downloadAppUserBg.svg"}
-          height={450}
+          width={650}
+          height={650}
         />
       </div>
     </>
