@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
         {sliders.map((item, key) => (
           <SwiperSlide key={key}>
             <HeaderElem>
-              <div className="grid gap-3">
+              <div className="grid gap-3 order-1 md:order-0">
                 {key == 0 ? (
                   <>
                     <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-blue pr-20">
@@ -102,15 +102,15 @@ export default function WhyChooseUs() {
                 )}
               </div>
 
-              <div className="md:pl-20">
-                <div className="w-full md:w-[90%]  h-[200px] md:h-[250px] relative ">
+              <div className="md:pl-20 pt-5">
+                <div className="w-full md:w-[90%]  h-[300px] md:h-[250px] relative ">
                   <Image
                     alt="Why Choose Us"
                     src={whyChooseUsBg1}
                     fill
                     className=" rounded-2xl object-cover"
                   />
-                  <div className="absolute w-40 h-20 md:w-[150px] md:h-[150px] bottom-[-20%]  -left-2.5 md:-left-[10%]  ">
+                  <div className="absolute w-40 h-30 md:w-[150px] md:h-[150px] bottom-[-10%]  -left-2.5 md:-left-[10%]  ">
                     <Image
                       alt="Why Choose Us"
                       src={whyChooseUsBg2}
@@ -119,7 +119,7 @@ export default function WhyChooseUs() {
                     />
                   </div>
 
-                  <div className="absolute md:w-[150px] md:h-[150px] md:top-[-20%]  md:-right-[10%]  w-40 h-20 top-[-20%]  -right-2.5 ">
+                  <div className="absolute md:w-[150px] md:h-[150px] md:top-[-20%]  md:-right-[10%]  w-40 h-30 top-[-3%]  -right-2.5 ">
                     <Image
                       alt="Why Choose Us"
                       src={whyChooseUsBg2}

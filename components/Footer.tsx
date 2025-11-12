@@ -20,28 +20,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 
 export default function Footer() {
-  const headerItems: { text: string; image: StaticImageData }[] = [
-    {
-      text: "Why Choose Us",
-      image: sliderBG,
-    },
-    {
-      text: "How it works",
-      image: sliderBG,
-    },
-    {
-      text: "Become a rider",
-      image: sliderBG,
-    },
-    {
-      text: "Contact us",
-      image: sliderBG,
-    },
-    {
-      text: "FAQs",
-      image: sliderBG,
-    },
-  ];
+  const headerItems: { text: string; image: StaticImageData; href: string }[] =
+    [
+      {
+        text: "Why Choose Us",
+        image: sliderBG,
+        href: "/why-choose-us",
+      },
+      {
+        text: "How it works",
+        image: sliderBG,
+        href: "/how-it-works",
+      },
+      {
+        text: "Become a rider",
+        image: sliderBG,
+        href: "/download-the-app/rider",
+      },
+      {
+        text: "Contact us",
+        image: sliderBG,
+        href: "/contact-us",
+      },
+      {
+        text: "FAQs",
+        image: sliderBG,
+        href: "/faqs",
+      },
+    ];
   const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
   const [swiperPosition, setSwiperPosition] = useState({
     isBeginning: true,
@@ -127,27 +133,31 @@ export default function Footer() {
             }}
           >
             {headerItems.map((item, index) => (
-              <SwiperSlide key={index} className={`text-black  `}>
+              <SwiperSlide key={index} className={`text-black  py-2`}>
                 <div className="p-3">
-                  <div className="bg-white grid grid-cols-5  md:grid-cols-3 p-4 md:text-lg font-heading rounded-2xl items-center  gap-3">
-                    <p className="col-span-4 md:col-span-2">{item.text}</p>
-                    <div>
-                      <div className="h-8  md:h-10 relative">
-                        <Image
-                          alt="sliderBg"
-                          src={item.image}
-                          fill
-                          className="object-cover rounded-lg"
-                        />
+                  <Link href={item.href}>
+                    <div className="bg-white grid grid-cols-5  md:grid-cols-3 p-4 md:text-lg font-heading relative z-20 rounded-2xl items-center  gap-3 hover:shadow-2xl shadow-black/5  ">
+                      <p className="col-span-4 md:col-span-2">{item.text}</p>
+                      <div>
+                        <div className="h-8  md:h-10 relative">
+                          <Image
+                            alt="sliderBg"
+                            src={item.image}
+                            fill
+                            className="object-cover rounded-lg"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="absolute inset-0 bg-linear-to-r from-transparent from-85% via-transparent  to-headerColor  w-full h-full z-30"></div>
+          <div className="absolute w-[8%] h-full z-10 right-0 top-0 bg-linear-to-l from-headerColor via-headerColor/40 to-transparent"></div>
+
         </div>
+        <div className="absolute inset-0 bg-linear-to-r from-transparent from-85% via-transparent  to-headerColor  w-full h-full z-10"></div>
         <div className="flex gap-5 justify-center md:justify-end">
           <div
             className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${
