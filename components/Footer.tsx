@@ -154,10 +154,10 @@ export default function Footer() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="absolute w-[8%] h-full z-10 right-0 top-0 bg-linear-to-l from-headerColor via-headerColor/40 to-transparent"></div>
+          <div className="absolute w-[10%] h-full z-10 right-0 top-0 bg-linear-to-l from-headerColor via-headerColor/60 to-headerColor/20"></div>
 
         </div>
-        <div className="absolute inset-0 bg-linear-to-r from-transparent from-85% via-transparent  to-headerColor  w-full h-full z-10"></div>
+
         <div className="flex gap-5 justify-center md:justify-end">
           <div
             className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${
