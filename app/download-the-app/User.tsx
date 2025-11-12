@@ -27,7 +27,7 @@ export default function User() {
       <div className="md:col-span-2  flex justify-end relative ">
         <Image
           alt="downloadAppUserBg"
-          src={"/downloadAppUserBg.png"}
+          src={"/downloadAppUserBg.svg"}
           height={450}
         />
       </div>
