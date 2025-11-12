@@ -16,7 +16,7 @@ export default function User() {
         </div>
         <div className="grid grid-cols-2">
           <Link className="" href="">
-            <Image height={50} src={"/Playstore.png"} alt="Google Store Icon" />
+            <Image height={20} src={"/Playstore.png"} alt="Google Store Icon" />
           </Link>
 
           <Link className="" href="">
