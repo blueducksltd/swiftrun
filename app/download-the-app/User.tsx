@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import playstoreLogo from "@/public/playstore.png";
 import Appstore from "@/public/appstore.png";
-import downloadAppUserBg from "@/public/downloadAppUserBg.svg";
 export default function User() {
   return (
     <>
@@ -18,7 +16,7 @@ export default function User() {
         </div>
         <div className="grid grid-cols-2">
           <Link className="" href="">
-            <Image height={50} src={playstoreLogo} alt="Google Store Icon" />
+            <Image height={50} src={"/Playstore.png"} alt="Google Store Icon" />
           </Link>
 
           <Link className="" href="">
@@ -27,7 +25,11 @@ export default function User() {
         </div>
       </div>
       <div className="md:col-span-2  flex justify-end relative ">
-        <Image alt="downloadAppUserBg" src={downloadAppUserBg} height={450} />
+        <Image
+          alt="downloadAppUserBg"
+          src={"/downloadAppUserBg.png"}
+          height={450}
+        />
       </div>
     </>
   );
