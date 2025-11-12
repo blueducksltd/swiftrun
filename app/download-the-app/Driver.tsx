@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import playstoreLogo from "@/public/Playstore.png";
+import playstoreLogo from "@/public/playstore.png";
 import Appstore from "@/public/appstore.png";
 import downloadAppUserBg from "@/public/downloadAppUserBg.svg";
 
 export default function Driver() {
   return (
     <>
-      <div className="flex flex-col gap-5 ">
+      <div className="flex flex-col gap-5 order-1 md:order-0">
         <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
           Join, Serve, Earn.
         </h1>
