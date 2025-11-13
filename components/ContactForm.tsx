@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
-import {  toast } from "react-toastify";
-
+import { toast } from "react-toastify";
 
 export default function ContactForm() {
-     const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({
     name: "",
     phone: "",
     email: "",
@@ -24,6 +23,12 @@ export default function ContactForm() {
       });
       if (req.status == 200) {
         toast("Email sent successfully.", { type: "success" });
+        setInputs({
+          name: "",
+          phone: "",
+          email: "",
+          message: ""
+        });
       }
     } catch (err) {
       console.log(err);
@@ -32,7 +37,7 @@ export default function ContactForm() {
     }
     // console.log(inputs)
   };
-    const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <form
       onSubmit={handleFormSubmit}
