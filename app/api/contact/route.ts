@@ -55,3 +55,7 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET(){
+  return NextResponse.json("This works dog")
+}
