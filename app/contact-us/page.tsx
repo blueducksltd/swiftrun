@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import HeaderElem from "@/components/HeaderElem";
-import { FaFacebook, FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
-import { PiInstagramLogoFill } from "react-icons/pi";
+
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
 import { IconType } from "react-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { CgSpinner } from "react-icons/cg";
 type contactLinks = {
   Icon: IconType;
   href: string;
@@ -33,18 +34,38 @@ export default function ContactUs() {
       text: "Call",
     },
   ];
+  const [loading, setLoading] = useState<boolean>(false);
   const [inputs, setInputs] = useState({
     name: "",
     phone: "",
     email: "",
     message: "",
   });
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(inputs)
+    setLoading(true);
+    try {
+      const req = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(inputs),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (req.status == 200) {
+        toast("Email sent successfully.", { type: "success" });
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+    // console.log(inputs)
   };
+
   return (
     <div>
+      <ToastContainer />
       <HeaderElem>
         <div className="flex flex-col gap-5 ">
           <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
@@ -124,12 +145,11 @@ export default function ContactUs() {
                   setInputs((prev) => ({ ...prev, message: e.target.value }))
                 }
                 required
-
               ></textarea>
             </div>
 
-            <button className="bg-green py-2 px-5 text-black text-sm rounded-lg cursor-pointer">
-              Message
+            <button className="bg-green py-2 px-5 text-black text-sm rounded-lg cursor-pointer flex items-center justify-center">
+              {loading ? <CgSpinner className="animate-spin" /> : "Message"}
             </button>
           </div>
         </form>
