@@ -9,7 +9,7 @@ import { MdEmail } from "react-icons/md";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { IconType } from "react-icons";
-import footerLogo from "@/public/footerLogo.png";
+import footerLogo from "@/public/footerLogo.svg";
 import blueDucksLogo from "@/public/designedByBlueducks.png";
 import sliderBG from "@/public/sliderBg.jpg";
 
