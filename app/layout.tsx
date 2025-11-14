@@ -94,13 +94,13 @@ export const metadata: Metadata = {
     title: "SwiftRun – Fast & Reliable Package Delivery",
     description:
       "Experience effortless shipping with SwiftRun. Track packages in real-time, rely on trusted drivers, and enjoy seamless delivery options.",
-    url: "/open-graph.png", // replace with your actual URL
+    url: "/open-graph.png",
     type: "website",
 
     siteName: "swiftrunapp.com",
     images: [
       {
-        url: "/open-graph.png", // your OG image
+        url: "/open-graph.png",
         width: 1200,
         height: 630,
         alt: "SwiftRun – Logistics Platform Open Graph Image",
