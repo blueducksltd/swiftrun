@@ -55,7 +55,7 @@ export default function Navbar() {
       setShowMobileNav(false);
     })();
   }, [pathname]);
-
+ 
   return (
     <>
       <div className="md:h-[12vh]">

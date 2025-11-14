@@ -1,6 +1,9 @@
 import User from "../User";
 import Driver from "../Driver";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Download App",
+};
 export default async function downloadTheApp({
   params,
 }: {

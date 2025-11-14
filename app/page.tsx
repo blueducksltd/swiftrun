@@ -2,6 +2,10 @@ import Image from "next/image";
 import video from "@/public/video.gif";
 import Link from "next/link";
 import HeaderElem from "@/components/HeaderElem";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Home | SwiftRun"
+};
 export default function Home() {
   return (
     <>
