@@ -35,7 +35,7 @@ export default function User() {
         </div>
       </div>
       <div className="md:col-span-2  flex justify-end relative ">
-        <video src="/videos/downloadApp_user.mp4" className="rounded-4xl" autoPlay muted loop></video>
+        <video src="/videos/downloadApp_user.mp4" className="rounded-2xl object-cover h-[300px] md:h-auto" autoPlay muted loop></video>
       </div>
     </>
   );
