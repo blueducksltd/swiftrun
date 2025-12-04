@@ -44,7 +44,7 @@ export default function HowItWorksDesktop({ sliders }: { sliders: Slides }) {
                     </p>
                   </div>
                   <div>
-                    <div className="w-96 h-[200px] md:h-[450px] relative">
+                    <div className="w-96 h-[200px] md:h-[450px] relative ">
                       <Image
                         alt="Why Choose Us"
                         src={item.image}
