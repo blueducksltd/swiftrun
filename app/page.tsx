@@ -1,10 +1,11 @@
 import Image from "next/image";
 import video from "@/public/video.gif";
+
 import Link from "next/link";
 import HeaderElem from "@/components/HeaderElem";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Home | SwiftRun"
+  title: "Home | SwiftRun",
 };
 export default function Home() {
   return (
@@ -38,9 +39,16 @@ export default function Home() {
             </div>
           </HeaderElem>
         </div>
-        <div className="relative md:static w-full md:h-fit h-[200px]">
-          <Image alt="video" src={video} fill className="object-cover " />
-          <div className="inset-0  bg-[linear-gradient(to_right,white_30%,transparent_100%)]  absolute w-full h-full hidden md:block"></div>
+        <div className="relative md:static  md:h-fit h-[200px]">
+          {/* <Image alt="video" src={video} fill className="object-cover " /> */}
+          <video
+            src="/videos/homepage.mp4"
+            className="object-cover w-full h-full  absolute left-0 top-0"
+            muted
+            autoPlay
+            loop
+          ></video>
+          <div className="bg-[linear-gradient(to_right,white_40%,transparent_100%)]  absolute w-[60%]  h-full left-0 hidden md:block"></div>
         </div>
       </div>
     </>

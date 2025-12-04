@@ -11,7 +11,7 @@ export const metadata:Metadata = {
 export type Slides = {
   heading: string;
   paragraph: string;
-  image: StaticImageData;
+  image: string;
 }[];
 export default function HowItWorks() {
   const sliders: Slides = [
@@ -19,26 +19,26 @@ export default function HowItWorks() {
       heading: "Book your delivery",
       paragraph:
         "Open the app, enter your pickup and drop-off details, and choose the delivery type that fits your needs.",
-      image: whyChooseUsBg1,
+      image: "/bookdelivery.svg",
     },
 
     {
       heading: "Get Matched Instantly",
       paragraph:
         "Our system connects you with the nearest available driver ready to pick up your package fast.",
-      image: whyChooseUsBg1,
+      image: "/matchedinstantly.svg",
     },
     {
       heading: "Track in Real Time",
       paragraph:
         "Watch your delivery move from pickup to destination right from your phone. No guesswork, no stress.",
-      image: whyChooseUsBg1,
+      image: "/track_in_real_time.svg",
     },
     {
       heading: "Track in Real Time",
       paragraph:
         "Once your package is delivered safely, confirm the drop-off and rate your experience to help us keep improving.",
-      image: whyChooseUsBg1,
+      image: "/confirm_and_rate.svg",
     },
   ];
 
@@ -70,7 +70,7 @@ export default function HowItWorks() {
 
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-blue-100 flex items-center justify-center text-blue-600 rounded-full font-semibold flex-shrink-0">
+                    <div className="w-10 h-10 bg-blue-100 flex items-center justify-center text-blue-600 rounded-full font-semibold ">
                       {key + 1}
                     </div>
                     <h3 className="text-xl font-heading font-bold text-black">
