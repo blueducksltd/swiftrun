@@ -155,7 +155,6 @@ export default function Footer() {
             ))}
           </Swiper>
           <div className="absolute w-[10%] h-full z-10 right-0 top-0 bg-linear-to-l from-headerColor via-headerColor/60 to-headerColor/20"></div>
-
         </div>
 
         <div className="flex gap-5 justify-center md:justify-end">
@@ -218,8 +217,8 @@ export default function Footer() {
           </Link>
 
           <div className="flex items-center gap-5 text-gray underline">
-            <Link href={""}>Privacy</Link>
-            <Link href={""}>Terms and Conditions</Link>
+            <Link href={"/privacy-policy"}>Privacy</Link>
+            <Link href={"/terms-and-conditions"}>Terms and Conditions</Link>
           </div>
 
           <Image
