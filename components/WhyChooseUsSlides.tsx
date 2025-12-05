@@ -14,31 +14,31 @@ export default function WhyChooseUsSlides() {
     {
       heading: "Why Users Love Swiftrun",
       paragraph: "It’s convenience, speed, and peace of mind, all in one app.",
-      image: "/whychooseus1.svg",
+      image: "/whychooseus1.webp",
     },
     {
       heading: "Reliable Deliveries",
       paragraph:
         "We pick up and drop off on time, every time. Your packages move quickly without delays or excuses.",
-      image: "/whychooseus2.svg",
+      image: "/whychooseus2.webp",
     },
     {
       heading: "Real-Time Tracking",
       paragraph:
         "Stay updated at every step. From pickup to delivery, you can follow your package's journey live.",
-      image: "/whychooseus3.svg",
+      image: "/whychooseus3.webp",
     },
     {
       heading: "Trusted, Trained Drivers",
       paragraph:
         "Every driver is verified, professional, and trained to handle deliveries with care and respect.",
-      image: "/whychooseus4.svg",
+      image: "/whychooseus4.webp",
     },
     {
       heading: "Affordable rider",
       paragraph:
         "Every tap feels smooth. We designed the app to make sending and receiving as easy as possible.",
-      image: "whychooseus5.svg",
+      image: "/whychooseus5.webp",
     },
   ];
 

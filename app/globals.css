@@ -57,6 +57,7 @@ border-radius: 0px !important;
 .swiper-wrapper{
   transition-timing-function: ease-in;
 }
+
 #whyChooseUs .swiper-pagination-bullet{
   border-radius: 100px !important;
 }
