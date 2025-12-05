@@ -155,7 +155,6 @@ export default function Footer() {
             ))}
           </Swiper>
           <div className="absolute w-[10%] h-full z-10 right-0 top-0 bg-linear-to-l from-headerColor via-headerColor/60 to-headerColor/20"></div>
-
         </div>
 
         <div className="flex gap-5 justify-center md:justify-end">
@@ -221,14 +220,15 @@ export default function Footer() {
             <Link href={""}>Privacy</Link>
             <Link href={""}>Terms and Conditions</Link>
           </div>
-
-          <Image
-            src={blueDucksLogo}
-            height={100}
-            width={100}
-            alt="Blue Ducks Logo"
-            className="object-cover"
-          />
+          <Link href={"https://blueducksltd.com/"}>
+            <Image
+              src={"/designedByBlueducks.svg"}
+              height={100}
+              width={100}
+              alt="Blue Ducks Logo"
+              className="object-cover"
+            />
+          </Link>
         </div>
       </footer>
     </>
