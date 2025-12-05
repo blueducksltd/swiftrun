@@ -220,14 +220,15 @@ export default function Footer() {
             <Link href={"/privacy-policy"}>Privacy</Link>
             <Link href={"/terms-and-conditions"}>Terms and Conditions</Link>
           </div>
-
-          <Image
-            src={blueDucksLogo}
-            height={100}
-            width={100}
-            alt="Blue Ducks Logo"
-            className="object-cover"
-          />
+          <Link href={"https://blueducksltd.com/"}>
+            <Image
+              src={"/designedByBlueducks.svg"}
+              height={100}
+              width={100}
+              alt="Blue Ducks Logo"
+              className="object-cover"
+            />
+          </Link>
         </div>
       </footer>
     </>

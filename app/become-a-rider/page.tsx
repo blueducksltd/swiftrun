@@ -35,14 +35,7 @@ export default function becomeARider() {
               className=" rounded-2xl object-cover"
             />
 
-            <div className="absolute md:w-[102%] md:h-[200px]  bottom-0 -translate-x-2 translate-y-[70%]  w-full h-40   ">
-              <Image
-                alt="Why Choose Us"
-                src={whyChooseUsBg1}
-                fill
-                className=" rounded-2xl object-cover"
-              />
-            </div>
+      
           </div>
         </div>
       </HeaderElem>

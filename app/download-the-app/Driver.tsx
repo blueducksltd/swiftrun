@@ -38,7 +38,7 @@ export default function Driver() {
       <div className="md:col-span-2  flex justify-end relative ">
         <Image
           alt="downloadAppUserBg"
-          src={"/join_serve.svg"}
+          src={"/join_serve.webp"}
           width={550}
           height={550}
         />

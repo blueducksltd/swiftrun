@@ -61,7 +61,7 @@ export default function Navbar() {
       <div className="md:h-[12vh] h-[70px]">
         <nav className="flex justify-between px-6  md:px-20 py-5 bg-headerColor items-center fixed w-full text-black z-50">
           <Link href={"/"}>
-            <Image src={logo} height={100} width={100} alt="Swiftrun Logo" />
+            <Image src={"/logo.svg"} height={100} width={100} alt="Swiftrun Logo" />
           </Link>
 
           <div className="relative">

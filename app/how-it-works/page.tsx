@@ -1,6 +1,6 @@
 
 import Image, { StaticImageData } from "next/image";
-import whyChooseUsBg1 from "@/public/whychooseusbg1.jpg";
+
 import HowItWorksDesktop from "@/components/HowItWorksDesktop";
 
 import { Metadata } from "next";
@@ -19,14 +19,14 @@ export default function HowItWorks() {
       heading: "Book your delivery",
       paragraph:
         "Open the app, enter your pickup and drop-off details, and choose the delivery type that fits your needs.",
-      image: "/bookdelivery.svg",
+      image: "/bookdelivery.webp",
     },
 
     {
       heading: "Get Matched Instantly",
       paragraph:
         "Our system connects you with the nearest available driver ready to pick up your package fast.",
-      image: "/matchedinstantly.svg",
+      image: "/matchedinstantly.webp",
     },
     {
       heading: "Track in Real Time",
@@ -38,7 +38,7 @@ export default function HowItWorks() {
       heading: "Track in Real Time",
       paragraph:
         "Once your package is delivered safely, confirm the drop-off and rate your experience to help us keep improving.",
-      image: "/confirm_and_rate.svg",
+      image: "/confirm_and_rate.webp",
     },
   ];
 
