@@ -40,16 +40,29 @@ export default function PrivacyPolicy() {
                 (card details handled by third-party processors).
               </li>
               <li>
-                <strong>Device Data:</strong> IP address, device model, OS,
-                cookies, logs.
+                <strong>Device Data:</strong> Information collected
+                automatically by third-party services (Firebase, Google Maps,
+                Paystack) to provide app functionality.
               </li>
               <li>
                 <strong>Location/GPS Data:</strong> Real-time driver and
                 shipment tracking (requires permission).
               </li>
               <li>
-                <strong>Communication Records:</strong> Calls, chats,
-                complaints, feedback.
+                <strong>Camera Access:</strong> o capture profile pictures,
+                package photos, and proof of delivery images.
+              </li>
+              <li>
+                <strong>Photo Library Access:</strong> To upload existing images
+                from your device gallery.
+              </li>
+              <li>
+                <strong>Location Services:</strong> To provide real-time
+                delivery tracking and accurate pickup/delivery services.
+              </li>
+              <li>
+                <strong>Push Notifications:</strong> To send delivery updates,
+                status changes, and important alerts.
               </li>
             </ul>
           </section>
@@ -106,6 +119,18 @@ export default function PrivacyPolicy() {
               <li>Drivers must keep GPS active during delivery.</li>
               <li>
                 Tracking supports safety, proof of delivery, and dispute
+                resolution.
+              </li>
+              <li>
+                We request camera access to capture package photos and proof of
+                delivery.
+              </li>
+              <li>
+                We request photo library access to allow you to upload images
+                from your gallery.
+              </li>
+              <li>
+                Photos are used solely for delivery verification and dispute
                 resolution.
               </li>
             </ul>
