@@ -10,7 +10,7 @@ export default function FAQs() {
   return (
     <div>
       <HeaderElem>
-        <div className="flex flex-col gap-5 md:w-[95%]">
+        <div className="flex flex-col gap-5  max-w-[600px]">
           <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue pr-20">
             Some of your FAQs
           </h1>

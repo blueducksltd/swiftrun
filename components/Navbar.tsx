@@ -38,7 +38,7 @@ export default function Navbar() {
       href: "/contact-us",
     },
     {
-      text: "FAQs", 
+      text: "FAQs",
       href: "/faqs",
     },
   ];
@@ -55,13 +55,22 @@ export default function Navbar() {
       setShowMobileNav(false);
     })();
   }, [pathname]);
- 
+
   return (
     <>
-      <div className="md:h-[12vh] h-[70px]">
+      {/* <div className="fixed h-screen w-full left-0 top-0  bg-black/5 z-10"></div> */}
+      <div
+        className="md:h-[12vh] h-[70px]"
+        onMouseLeave={() => setShowDropdown(false)}
+      >
         <nav className="flex justify-between px-6  md:px-20 py-5 bg-headerColor items-center fixed w-full text-black z-50">
           <Link href={"/"}>
-            <Image src={"/logo.svg"} height={100} width={100} alt="Swiftrun Logo" />
+            <Image
+              src={"/logo.svg"}
+              height={100}
+              width={100}
+              alt="Swiftrun Logo"
+            />
           </Link>
 
           <div className="relative">
@@ -78,7 +87,7 @@ export default function Navbar() {
                   ? "  py-5 shadow-lg  md:-translate-y-2 duration-200 "
                   : "h-0 translate-y-[100px] duration-100"
               }`}
-              onMouseLeave={() => setShowDropdown(false)}
+              // onMouseLeave={() => setShowDropdown(false)}
             >
               {links.map(
                 (item, index) =>

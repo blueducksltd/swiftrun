@@ -13,7 +13,7 @@ export default function Home() {
       <div className="relative  w-full grid">
         <div className="order-1 relative z-20">
           <HeaderElem>
-            <div className="grid gap-5 ">
+            <div className="grid gap-5  max-w-[600px] ">
               <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-blue">
                 Don&rsquo;t worry about the location
               </h1>
