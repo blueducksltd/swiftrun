@@ -42,7 +42,7 @@ export default function ContactUs() {
     <div>
       <ToastContainer />
       <HeaderElem>
-        <div className="flex flex-col gap-5 ">
+        <div className="flex flex-col gap-5  max-w-[600px]">
           <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
             We&rsquo;d Love to Hear from You!
           </h1>

@@ -5,7 +5,7 @@ import Appstore from "@/public/appstore.png";
 export default function Driver() {
   return (
     <>
-      <div className="flex flex-col gap-5 order-1 md:order-0">
+      <div className="flex flex-col gap-5 order-1 md:order-0 max-w-[600px] ">
         <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
           Join, Serve, Earn.
         </h1>

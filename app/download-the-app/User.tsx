@@ -4,7 +4,7 @@ import Appstore from "@/public/appstore.png";
 export default function User() {
   return (
     <>
-      <div className="flex flex-col gap-5 order-1 md:order-0">
+      <div className="flex flex-col gap-5 order-1 md:order-0 max-w-[600px]">
         <h1 className="h-fit font-heading text-5xl md:text-7xl font-extrabold text-blue ">
           Speed, Safety, Comfort.
         </h1>
@@ -35,7 +35,7 @@ export default function User() {
         </div>
       </div>
       <div className="md:col-span-2  flex justify-end relative ">
-        <video src="/videos/downloadApp_user.mp4" className="rounded-2xl object-cover h-[300px] md:h-auto" autoPlay muted loop></video>
+        <video src="/videos/downloadApp_user.mp4" className="rounded-2xl object-cover max-h-[400px]" autoPlay muted loop></video>
       </div>
     </>
   );
