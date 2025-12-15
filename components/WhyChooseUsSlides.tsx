@@ -53,7 +53,7 @@ export default function WhyChooseUsSlides() {
       {sliders.map((item, key) => (
         <SwiperSlide key={key}>
           <HeaderElem>
-            <div className="grid gap-3 order-1 md:order-0">
+            <div className="grid gap-3 order-1 md:order-0 max-w-[600px] ">
               {key == 0 ? (
                 <>
                   <h1 className="font-heading text-5xl md:text-7xl font-extrabold text-blue pr-20">
