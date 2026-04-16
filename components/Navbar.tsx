@@ -46,8 +46,13 @@ export default function Navbar() {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [appUser, setAppUser] = useState<string>("users");
+  const [origin, setOrigin] = useState<string>("");
   const router = useRouter();
   const pathname = usePathname();
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   useEffect(() => {
     (() => {
@@ -55,6 +60,13 @@ export default function Navbar() {
       setShowMobileNav(false);
     })();
   }, [pathname]);
+
+  const qrCodeLink = `${origin}/download-the-app/${
+    appUser === "users" ? "user" : "driver"
+  }`;
+  const qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
+    qrCodeLink
+  )}`;
 
   return (
     <>
@@ -182,20 +194,16 @@ export default function Navbar() {
           </p>
 
           <section className="flex flex-col justify-center items-center">
-            {appUser == "users" ? (
-              <Image
-                src={qrcode}
+            {origin ? (
+              <img
+                src={qrCodeImageUrl}
                 height={150}
                 width={150}
-                alt="Swiftrun Logo"
+                alt="SwiftRun QR Code"
+                className="bg-white p-2 rounded-lg"
               />
             ) : (
-              <Image
-                src={qrcode}
-                height={150}
-                width={150}
-                alt="Swiftrun Logo"
-              />
+              <div className="w-[150px] h-[150px] bg-gray-100 animate-pulse rounded-lg" />
             )}
           </section>
 

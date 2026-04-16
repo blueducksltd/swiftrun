@@ -1,7 +1,17 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import Appstore from "@/public/appstore.png";
+import { useOSRedirect } from "@/hooks/useOSRedirect";
+
+const STORE_LINKS = {
+  ios: "https://apps.apple.com/ng/app/swiftrun-delivery-app/id6758913445",
+  android: "https://play.google.com/store/apps/details?id=com.swiftrun.customer",
+};
+
 export default function User() {
+  useOSRedirect(STORE_LINKS);
+
   return (
     <>
       <div className="flex flex-col gap-5 order-1 md:order-0 max-w-[600px]">
@@ -15,7 +25,7 @@ export default function User() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-2">
-          <Link className="" href="">
+          <Link className="" href={STORE_LINKS.android}>
             <Image
               width={400}
               height={400}
@@ -24,19 +34,26 @@ export default function User() {
             />
           </Link>
 
-          <Link className="" href="">
+          <Link className="" href={STORE_LINKS.ios}>
             <Image
               width={400}
               height={400}
               src={Appstore}
-              alt="Google Store Icon"
+              alt="Apple App Store Icon"
             />
           </Link>
         </div>
       </div>
       <div className="md:col-span-2  flex justify-end relative ">
-        <video src="/videos/downloadApp_user.mp4" className="rounded-2xl object-cover max-h-[400px]" autoPlay muted loop></video>
+        <video
+          src="/videos/downloadApp_user.mp4"
+          className="rounded-2xl object-cover max-h-[400px]"
+          autoPlay
+          muted
+          loop
+        ></video>
       </div>
     </>
   );
 }
+
