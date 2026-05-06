@@ -37,7 +37,7 @@ export default function WhyChooseUsSlides() {
     {
       heading: "Affordable rider",
       paragraph:
-        "Every tap feels smooth. We designed the app to make sending and receiving as easy as possible.",
+        "Save more on ever ride, our pricing is designed to be fair, transparent and pocket friendly",
       image: "/whychooseus5.webp",
     },
   ];
