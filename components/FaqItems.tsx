@@ -10,10 +10,17 @@ export default function FaqItems() {
 
   const [FAQs, setFAQs] = useState<FAQ[]>([
     {
+      question: "How do I know my package is safe during delivery?",
+      answer:
+        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
+      isOpened: true,
+    },
+
+    {
       question: "Where can I get the app?",
       answer:
         "You can download the Swiftrun app from the Google Play Store and the Apple App Store.",
-      isOpened: true,
+      isOpened: false,
     },
     {
       question: "How can I register?",
@@ -38,38 +45,7 @@ export default function FaqItems() {
       answer:
         "You can reach us through the “Contact Us”  on our website or +23491670665 or email us at support@swiftrunapp.com",
       isOpened: false,
-    },
-    {
-      question: "How do I know my package is safe during delivery?",
-      answer:
-        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
-      isOpened: false,
-    },
-
-    {
-      question: "How do I know my package is safe during delivery?",
-      answer:
-        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
-      isOpened: false,
-    },
-    {
-      question: "How do I know my package is safe during delivery?",
-      answer:
-        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
-      isOpened: false,
-    },
-    {
-      question: "How do I know my package is safe during delivery?",
-      answer:
-        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
-      isOpened: false,
-    },
-    {
-      question: "How do I know my package is safe during delivery?",
-      answer:
-        "Every driver on our platform is verified and trained to handle deliveries with care. You can track your package in real time, contact your driver anytime, and receive instant updates until it's safely delivered.",
-      isOpened: false,
-    },
+    }
   ]);
   return (
     <div className="grid gap-6">

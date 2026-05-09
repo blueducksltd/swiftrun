@@ -59,37 +59,37 @@ export default function Footer() {
   } = {
     contactUs: [
       {
-        href: "",
+        href: "support@swiftrunapp.com",
         Icon: MdEmail,
       },
 
       {
-        href: "",
+        href: "https://wa.me/+2349167066539",
         Icon: TbBrandWhatsappFilled,
       },
 
       {
-        href: "",
+        href: "tel:+2349167066539",
         Icon: BiSolidPhoneCall,
       },
     ],
     followUs: [
       {
-        href: "",
+        href: "https://www.linkedin.com/company/blueducksltd",
         Icon: FaLinkedin,
       },
 
       {
-        href: "",
+        href: "https://www.facebook.com/blueducksltd",
         Icon: FaFacebook,
       },
 
       {
-        href: "",
+        href: " https://www.instagram.com/blueducksltd?igsh=MW05anMwcXVpcXI4Zg==",
         Icon: PiInstagramLogoFill,
       },
       {
-        href: "",
+        href: "https://x.com/blueducks12",
         Icon: FaSquareXTwitter,
       },
     ],
@@ -159,17 +159,15 @@ export default function Footer() {
 
         <div className="flex gap-5 justify-center md:justify-end">
           <div
-            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${
-              swiperPosition?.isBeginning ? "opacity-30" : "opacity-100"
-            }`}
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${swiperPosition?.isBeginning ? "opacity-30" : "opacity-100"
+              }`}
             onClick={() => swiperRef?.slidePrev()}
           >
             <FaChevronLeft size={14} />
           </div>
           <div
-            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue  duration-300 ${
-              swiperPosition?.isEnd ? "opacity-30" : "opacity-100"
-            }`}
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue  duration-300 ${swiperPosition?.isEnd ? "opacity-30" : "opacity-100"
+              }`}
             onClick={() => swiperRef?.slideNext()}
           >
             <FaChevronRight size={14} />
