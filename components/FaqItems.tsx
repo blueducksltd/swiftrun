@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 type FAQ = {
@@ -18,8 +19,11 @@ export default function FaqItems() {
 
     {
       question: "Where can I get the app?",
-      answer:
-        "You can download the Swiftrun app from the Google Play Store and the Apple App Store.",
+      answer: (
+        <span>
+          You can download the Swiftrun app from the <Link href="/download-the-app/user" className="underline text-blue-600">Google Play Store</Link> and the <Link href="/download-the-app/user" className="underline text-blue-600">Apple App Store</Link>.
+        </span>
+      ) as any,
       isOpened: false,
     },
     {
