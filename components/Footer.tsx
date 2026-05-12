@@ -193,7 +193,7 @@ export default function Footer() {
             <p className="text-gray md:mr-5">Follow Us</p>
             <div className="flex gap-5 col-span-2">
               {footerContacts.followUs.map((item, index) => (
-                <Link key={index} href={item.href}>
+                <Link key={index} href={item.href} target="_blank">
                   <div className="w-8 h-8 flex justify-center items-center text-black bg-goldencream rounded-lg">
                     <item.Icon />
                   </div>
