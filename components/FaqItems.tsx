@@ -43,7 +43,7 @@ export default function FaqItems() {
     {
       question: "How can I contact customer support?",
       answer:
-        "You can reach us through the “Contact Us”  on our website or +23491670665 or email us at support@swiftrunapp.com",
+        "You can reach us through the “Contact Us”  on our website or +2349167066539 or email us at support@swiftrunapp.com",
       isOpened: false,
     }
   ]);

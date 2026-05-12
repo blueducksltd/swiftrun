@@ -59,7 +59,7 @@ export default function Footer() {
   } = {
     contactUs: [
       {
-        href: "support@swiftrunapp.com",
+        href: "mailto:support@swiftrunapp.com",
         Icon: MdEmail,
       },
 
