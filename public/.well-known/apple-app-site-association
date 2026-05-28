@@ -3,7 +3,7 @@
         "apps": [],
         "details": [
             {
-                "appID": "24HFVJ73K5.com.swiftrun.customer",
+                "appID": "4CLLM3QUD8.com.swiftrun.customer",
                 "paths": [
                     "/app/*"
                 ]
