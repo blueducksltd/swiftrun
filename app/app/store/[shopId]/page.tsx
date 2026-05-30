@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import OpenInAppButton from "./OpenInAppButton";
 
 const STORE_LINKS = {
   ios: "https://apps.apple.com/ng/app/swiftrun-delivery-app/id6758913445",
@@ -42,7 +43,7 @@ export default async function StoreDeepLinkPage({
   params: Promise<{ shopId: string }>;
 }) {
   const { shopId } = await params;
-  const storeUrl = `https://swiftrunapp.com/app/store/${shopId}`;
+  const appUrl = `swiftrun://open/app/store/${shopId}`;
 
   return (
     <main className="min-h-[70vh] px-6 py-16 md:px-20">
@@ -64,12 +65,7 @@ export default async function StoreDeepLinkPage({
         </p>
 
         <div className="mt-8 flex w-full flex-col justify-center gap-4 sm:flex-row">
-          <Link
-            href={storeUrl}
-            className="rounded-lg bg-[#066AC0] px-6 py-3 font-semibold text-white"
-          >
-            Open in SwiftRun
-          </Link>
+          <OpenInAppButton appUrl={appUrl} />
 
           <Link
             href="/download-the-app/user"
