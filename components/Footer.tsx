@@ -1,16 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { PiInstagramLogoFill } from "react-icons/pi";
+
+import { PiInstagramLogoFill, PiTiktokLogo } from "react-icons/pi";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { IconType } from "react-icons";
 import footerLogo from "@/public/footerLogo.svg";
-import blueDucksLogo from "@/public/designedByBlueducks.png";
 import sliderBG from "@/public/sliderBg.jpg";
 
 import type { StaticImageData } from "next/image";
@@ -59,39 +57,43 @@ export default function Footer() {
   } = {
     contactUs: [
       {
-        href: "",
+        href: "mailto:support@swiftrunapp.com",
         Icon: MdEmail,
       },
 
       {
-        href: "",
+        href: "https://wa.me/+2349167066539",
         Icon: TbBrandWhatsappFilled,
       },
 
       {
-        href: "",
+        href: "tel:+2349167066539",
         Icon: BiSolidPhoneCall,
       },
     ],
     followUs: [
-      {
-        href: "",
-        Icon: FaLinkedin,
-      },
+      // {
+      //   href: "https://www.linkedin.com/company/blueducksltd",
+      //   Icon: FaLinkedin,
+      // },
+
+      // {
+      //   href: "https://www.facebook.com/blueducksltd",
+      //   Icon: FaFacebook,
+      // },
 
       {
-        href: "",
-        Icon: FaFacebook,
-      },
-
-      {
-        href: "",
+        href: "https://www.instagram.com/swiftrunlogistics?igsh=aXM5d2FqcXN1NzZ0",
         Icon: PiInstagramLogoFill,
       },
-      {
-        href: "",
-        Icon: FaSquareXTwitter,
+       {
+        href: "https://www.tiktok.com/@swiftrunlogistics?_r=1&_t=ZS-98ZfzWOZhDR",
+        Icon: PiTiktokLogo,
       },
+      // {
+      //   href: "https://x.com/blueducks12",
+      //   Icon: FaSquareXTwitter,
+      // },
     ],
   };
 
@@ -159,17 +161,15 @@ export default function Footer() {
 
         <div className="flex gap-5 justify-center md:justify-end">
           <div
-            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${
-              swiperPosition?.isBeginning ? "opacity-30" : "opacity-100"
-            }`}
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue duration-500  ${swiperPosition?.isBeginning ? "opacity-30" : "opacity-100"
+              }`}
             onClick={() => swiperRef?.slidePrev()}
           >
             <FaChevronLeft size={14} />
           </div>
           <div
-            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue  duration-300 ${
-              swiperPosition?.isEnd ? "opacity-30" : "opacity-100"
-            }`}
+            className={`cursor-pointer w-10 h-10 bg-calmblue rounded-full flex items-center justify-center text-blue  duration-300 ${swiperPosition?.isEnd ? "opacity-30" : "opacity-100"
+              }`}
             onClick={() => swiperRef?.slideNext()}
           >
             <FaChevronRight size={14} />
@@ -195,7 +195,7 @@ export default function Footer() {
             <p className="text-gray md:mr-5">Follow Us</p>
             <div className="flex gap-5 col-span-2">
               {footerContacts.followUs.map((item, index) => (
-                <Link key={index} href={item.href}>
+                <Link key={index} href={item.href} target="_blank">
                   <div className="w-8 h-8 flex justify-center items-center text-black bg-goldencream rounded-lg">
                     <item.Icon />
                   </div>
@@ -217,8 +217,8 @@ export default function Footer() {
           </Link>
 
           <div className="flex items-center gap-5 text-gray underline">
-            <Link href={""}>Privacy</Link>
-            <Link href={""}>Terms and Conditions</Link>
+            <Link href={"/privacy-policy"}>Privacy</Link>
+            <Link href={"/terms-and-conditions"}>Terms and Conditions</Link>
           </div>
           <Link href={"https://blueducksltd.com/"}>
             <Image
