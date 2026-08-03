@@ -1,16 +1,14 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { PiInstagramLogoFill } from "react-icons/pi";
+
+import { PiInstagramLogoFill, PiTiktokLogo } from "react-icons/pi";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { TbBrandWhatsappFilled } from "react-icons/tb";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { IconType } from "react-icons";
 import footerLogo from "@/public/footerLogo.svg";
-import blueDucksLogo from "@/public/designedByBlueducks.png";
 import sliderBG from "@/public/sliderBg.jpg";
 
 import type { StaticImageData } from "next/image";
@@ -92,6 +90,10 @@ export default function Footer() {
         href: "https://x.com/blueducks12",
         Icon: FaSquareXTwitter,
       },
+      // {
+      //   href: "https://x.com/blueducks12",
+      //   Icon: FaSquareXTwitter,
+      // },
     ],
   };
 
