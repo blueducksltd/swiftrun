@@ -1,0 +1,13 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "4CLLM3QUD8.com.swiftrun.customer",
+                "paths": [
+                    "/app/*"
+                ]
+            }
+        ]
+    }
+}
