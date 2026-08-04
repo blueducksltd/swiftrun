@@ -72,15 +72,15 @@ export default function Footer() {
       },
     ],
     followUs: [
-      {
-        href: "https://www.linkedin.com/company/blueducksltd",
-        Icon: FaLinkedin,
-      },
+    //   {
+    //     href: "https://www.linkedin.com/company/blueducksltd",
+    //     Icon: FaLinkedin,
+    //   },
 
-      {
-        href: "https://www.facebook.com/blueducksltd",
-        Icon: FaFacebook,
-      },
+    //   {
+    //     href: "https://www.facebook.com/blueducksltd",
+    //     Icon: FaFacebook,
+    //   },
 
       {
         href: " https://www.instagram.com/blueducksltd?igsh=MW05anMwcXVpcXI4Zg==",
