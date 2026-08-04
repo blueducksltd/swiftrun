@@ -72,23 +72,23 @@ export default function Footer() {
       },
     ],
     followUs: [
-      // {
-      //   href: "https://www.linkedin.com/company/blueducksltd",
-      //   Icon: FaLinkedin,
-      // },
-
-      // {
-      //   href: "https://www.facebook.com/blueducksltd",
-      //   Icon: FaFacebook,
-      // },
+      {
+        href: "https://www.linkedin.com/company/blueducksltd",
+        Icon: FaLinkedin,
+      },
 
       {
-        href: "https://www.instagram.com/swiftrunlogistics?igsh=aXM5d2FqcXN1NzZ0",
+        href: "https://www.facebook.com/blueducksltd",
+        Icon: FaFacebook,
+      },
+
+      {
+        href: " https://www.instagram.com/blueducksltd?igsh=MW05anMwcXVpcXI4Zg==",
         Icon: PiInstagramLogoFill,
       },
-       {
-        href: "https://www.tiktok.com/@swiftrunlogistics?_r=1&_t=ZS-98ZfzWOZhDR",
-        Icon: PiTiktokLogo,
+      {
+        href: "https://x.com/blueducks12",
+        Icon: FaSquareXTwitter,
       },
       // {
       //   href: "https://x.com/blueducks12",

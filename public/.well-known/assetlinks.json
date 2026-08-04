@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.swiftrun.customer",
+            "sha256_cert_fingerprints": [
+                "1F:FB:AA:BE:8A:17:1F:39:D2:7C:63:F4:D0:2D:32:7D:EC:37:58:91:05:4F:C2:7C:1D:BE:7A:38:64:9B:99:85"
+            ]
+        }
+    }
+]
