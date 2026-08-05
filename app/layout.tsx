@@ -4,10 +4,12 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "swiper/css";
 import "swiper/css/pagination";
+import Footer from "@/components/Footer";
 
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-primary",
+
 });
 const fontHeading = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -137,12 +139,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` ${fontHeading.className} ${sora.className} antialiased`}>
-        <div className="min-h-screen bg-white">
+    <html lang="en" className={`${sora.variable} ${fontHeading.variable}`}>
+      <body className={`  ${sora.className} antialiased`}>
+        <div className="min-h-screen bg-white ">
           <Navbar />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </body>
     </html>

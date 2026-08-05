@@ -12,7 +12,7 @@ export default function ScrollScrubSlider({ categories }: { categories: any[] })
         offset: ["start end", "end start"],
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
     return (
         <div ref={containerRef} className="overflow-hidden "> {/* tall scroll track */}

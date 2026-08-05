@@ -1,54 +1,15 @@
-"use client";
 import Image from "next/image";
-import { useState } from "react";
-import { Autoplay } from "swiper/modules";
-import { SwiperSlide, Swiper } from "swiper/react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import ScrollScrubSlider from "@/components/ScrollScrubSlider";
 import { BsArrowRight } from "react-icons/bs";
+import HomePageHeader from "@/components/HomePageHeader";
+import HomepageSlider from "@/components/HomepageSlider";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 export default function HomePage() {
-    const slides: {
-        text: string, image: string; color: {
-            text: string;
-            background: string;
-            modal: {
-                background: string;
-                border: string;
-            }
-        }
-    }[] = [
-            {
-                text: "Send Parcels", image: "/slider1.svg",
-                color: { text: "text-[#FF94AF]", background: "from-[#FFE4EB]", modal: { background: "bg-[#FF94AF26]", border: "border-[#FF8FAC06]" } }
-            },
-            {
-                text: "Run Errands", image: "/slider2.svg",
-                color: { text: "text-[#00A66D]", background: "from-[#DEFFE9]", modal: { background: "bg-[#00A56D26]", border: "border-[#FF8FAC06]" } }
-            },
-            {
-                text: "Shop, Track", image: "/slider3.svg",
-                color: { text: "text-[#066AC0]", background: "from-[#066AC026]", modal: { background: "bg-[#066AC026]", border: "border-[#FF8FAC06]" } }
-            },
-            {
-                text: "All Delivered", image: "/slider4.svg",
-                color: { text: "text-[#F5B400]", background: "from-[#F5B40026]", modal: { background: "bg-[#F5B40026]", border: "border-[#FF8FAC06]" } }
-            }
-
-        ];
-
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const onboardedCompanies: { companyLogo: string; image: string }[] = [
-        { companyLogo: "/cavem.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roban.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roots.svg", image: "/companyImage.svg" },
-        { companyLogo: "/cavem.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roban.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roots.svg", image: "/companyImage.svg" },
-        { companyLogo: "/cavem.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roban.svg", image: "/companyImage.svg" },
-        { companyLogo: "/roots.svg", image: "/companyImage.svg" }
-    ];
 
     const categories: {
         title: string;
@@ -79,105 +40,18 @@ export default function HomePage() {
             }
         ];
 
+    const percs: { title: string; description: string; color: { background: string; text: string; } }[] = [
+        { color: { background: "bg-[#FCD39033]", text: "text-[#FFBB4C]" }, description: "Safe deliveries, fair prices, and peace of mind from pickup to your doorstep.", title: "Safe, Affordable Delivery" },
+        { color: { background: "bg-[#7F85F533]", text: "text-[#7F85F5]" }, description: "We’ve got you. We’re always here to help whenever you need us.", title: "24/7 Customer Service" },
+        { color: { background: "bg-[#23874433]", text: "text-[#238744]" }, description: "Every ride and every order starts with trusted drivers and verified stores.", title: "Verified drivers,  Stores" },
+        { color: { background: "bg-[#ED646A33]", text: "text-[#ED646A]" }, description: "Track your order every step of the way, from pickup to delivery.", title: "Real-Time Tracking" }
+    ]
+
     return (
         <div className='relative '>
 
-            <div className='py-10 h-screen relative'>
-                <div className="flex items-center justify-center gap-10 px-40 ">
-                    <div className='rounded-[70px] p-10  relative  grid grid-cols-3   bg-white  w-full z-10'>
-                        <div className='col-span-2 flex flex-col  justify-center items-start relative z-10'>
-                            <Swiper
-                                direction={'vertical'}
-                                onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
 
-                                modules={[Autoplay]}
-                                autoplay={{ delay: 2000, reverseDirection: true }}
-                                speed={1000}
-                                loop={true}
-                                slidesPerView={1}        // Explicitly show 1 slide at a time
-                                className="w-full h-[70px]"  // Match or exceed your text size
-                            >
-                                {
-                                    slides.map((slide, index) => (
-                                        <SwiperSlide key={index} className={``}>
-                                            <p className={`text-[50px] font-semibold ${slide.color.text}`}>{slide.text}</p>
-                                        </SwiperSlide>
-                                    ))
-                                }
-
-                            </Swiper>
-                            <div className="relative">
-                                <p className={`text-[50px] font-semibold `}>With Swiftrun Logistics</p>
-                            </div>
-                            <p className='text-sm'>Don't worry about your location. Be assured it will get to your destination</p>
-                        </div>
-
-                        <div>
-                            <div className={`translate-x-[-14%] w-[350px] h-[350px] rounded-[50px] ${slides[currentSlide].color.modal.background} border duration-300 ${slides[currentSlide].color.modal.border} relative `}>
-
-                                <Swiper
-                                    direction={'vertical'}
-                                    modules={[Autoplay]}
-                                    autoplay={{ delay: 2000, reverseDirection: true }}
-                                    speed={1000}
-
-                                    loop={true}
-                                    slidesPerView={1}        // Explicitly show 1 slide at a time
-                                    className="w-full h-full"  // Match or exceed your text size
-                                >
-                                    {
-                                        slides.map((slide, index) => (
-                                            <SwiperSlide key={index} className="">
-                                                <div className="w-full h-full flex items-center justify-center">
-                                                    <Image
-                                                        src={slide.image}
-                                                        alt="slide"
-                                                        width={220}
-                                                        height={220}
-                                                        className="object-cover"
-                                                    />
-                                                </div>
-                                            </SwiperSlide>
-                                        ))
-                                    }
-
-                                </Swiper>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div className="w-full py-10 px-20  text-black relative z-20 grid grid-cols-3 gap-6">
-                    <div className="p-3 flex items-center justify-between bg-white rounded-2xl">
-                        <h1>SwiftRun</h1>
-                        <Image alt="" src="/sakat.svg" width={30} height={30} />
-                    </div>
-
-                    <div className="p-3 flex items-center justify-between bg-white rounded-2xl">
-                        <h1>Couriers</h1>
-                        <Image alt="" src="/CAR.png" width={30} height={30} />
-
-                    </div>
-
-                    <div className="p-3 flex items-center justify-between bg-white rounded-2xl">
-                        <h1>Business</h1>
-                        <div className="p-2 shadow-2xl rounded-xl">
-                            <Image alt="" src="/business.png" width={30} height={30} />
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className={`absolute inset-0 bg-linear-to-t ${slides[currentSlide].color.background} to-50% to-transparent flex items-end `}>
-
-                </div>
-            </div>
-
+            <HomePageHeader />
 
             <div className="py-10 px-40 bg-[#DDEEFF]">
                 <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 mb-10">
@@ -244,48 +118,7 @@ export default function HomePage() {
 
                     </div>
                 </div>
-                <div className="relative py-10 px-10">
-
-                    <Swiper
-                        modules={[Autoplay]}
-                        spaceBetween={40}
-                        slidesPerView={1}
-                        loop={true}
-                        autoHeight={true}          // <-- fixes height calculation
-                        autoplay={{
-                            delay: 2000,
-                            disableOnInteraction: false,
-                        }}
-                        breakpoints={{
-                            1024: { slidesPerView: 5.5 },
-                        }}
-                        className="company-swiper pb-8!"  // <-- padding for shadows
-                    >
-                        {onboardedCompanies.map((company, index) => (
-                            <SwiperSlide key={index} className="h-aut!o">  {/* <-- allow slide to grow */}
-                                <div className="flex justify-center ">    {/* reduced p-10 → p-6 so it fits nicer */}
-                                    <div>
-                                        <Image
-                                            src={company.image}
-                                            alt=""
-                                            width={200}
-                                            height={200}
-                                        />
-                                        <div className="h-14 shadow rounded-b-4xl flex items-center justify-center">
-                                            <Image
-                                                src={company.companyLogo}
-                                                alt=""
-                                                width={100}
-                                                height={100}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-
+                <HomepageSlider />
                 <div>
                     <div className="relative h-[450px] mt-12 px-20 flex items-center">
                         <Image alt="" src={"/landingPage.jpg"} fill />
@@ -358,8 +191,54 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    <div className="bg-[#086ABF33] rounded-b-[100px] h-100">
-                        <div className="rounded-2xl"></div>
+                    <div className="bg-[#086ABF33] rounded-b-[60px]  p-10 md:p-20 ">
+
+                        <div className="grid grid-cols-2 gap-10 mb-10">
+
+                            <div className="relative h-70">
+                                <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent rounded-[40px] z-10 p-12 text-white">
+                                    <h1 className="text-[24px] font-semibold">Life comes first.</h1>
+                                    <p className="text-sm">
+                                        Work your way, choose when you want to work and deliver on your own schedule.
+                                    </p>
+                                </div>
+                                <Image src={"/life_comes.jpg"} alt="" className="object-cover rounded-[40px]" fill />
+                            </div>
+
+                            <div className="relative h-70">
+                                <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent rounded-[40px] z-10 p-12 text-white">
+                                    <h1 className="text-[24px] font-semibold">Deliver more, Earn more.</h1>
+                                    <p className="text-sm font-primary">
+                                        More deliveries, more smiles, more money in your pocket after every trip.
+                                    </p>
+                                </div>
+                                <Image src={"/deliver_more.jpg"} alt="" className="object-cover rounded-[40px]" fill />
+                            </div>
+                        </div>
+                        <p className="text-center text-xl"><b className="font-heading">Benefits</b> How it works</p>
+
+                    </div>
+
+                    <div className="p-10 h-100 md:p-20 text-right relative my-20 flex justify-end items-center">
+                        <div className="relative z-10  w-full md:w-[40%]">
+                            <h1 className="text-white font-bold text-[60px] leading-16 mb-4">Your Personal companion</h1>
+                            <p className="text-[#FFDEBC] text-xl font-light">Whatever you need to make your day, SwiftRun’s got you. Tap. Order. Chill. 🚀</p>
+                        </div>
+                        <Image alt="Personal Companion" src={"/personal_companion.jpg"} className="object-cover -rotate-y-180" fill />
+                    </div>
+                    <div className="py-10 px-40 grid grid-cols-2 gap-7">
+                        {
+                            percs.map((perc, index) =>
+                                <div key={index} className={`${perc.color.background} h-70 rounded-3xl p-10 flex flex-col justify-end`}>
+                                    <Image src={`/${index === percs.length - 1 ? "real_time.png" : "House.svg"}`} alt="" width={70} height={70} />
+
+                                    <h1 className={`${perc.color.text} text-2xl font-bold mb-2 mt-4`}>{perc.title}</h1>
+                                    <p className="text-sm">{perc.description}</p>
+                                </div>
+
+                            )
+                        }
+
                     </div>
 
                 </div>
