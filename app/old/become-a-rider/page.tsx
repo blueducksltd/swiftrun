@@ -1,4 +1,4 @@
-import HeaderElem from "@/components/HeaderElem";
+import HeaderElem from "@/components/old/HeaderElem";
 import Image from "next/image";
 import { FaPlay } from "react-icons/fa6";
 import whyChooseUsBg1 from "@/public/whychooseusbg1.jpg";

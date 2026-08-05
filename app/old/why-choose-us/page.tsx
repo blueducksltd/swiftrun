@@ -1,4 +1,4 @@
-import WhyChooseUsSlides from "@/components/WhyChooseUsSlides";
+import WhyChooseUsSlides from "@/components/old/WhyChooseUsSlides";
 import { Metadata } from "next";
 export const metadata:Metadata = {
   title: "Why Choose Us"

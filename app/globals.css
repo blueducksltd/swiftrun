@@ -30,12 +30,12 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
@@ -60,4 +60,9 @@ border-radius: 0px !important;
 
 #whyChooseUs .swiper-pagination-bullet{
   border-radius: 100px !important;
+}
+
+.company-swiper,
+.company-swiper .swiper-slide {
+  height: auto !important;
 }

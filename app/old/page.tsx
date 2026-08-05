@@ -2,7 +2,7 @@ import Image from "next/image";
 import video from "@/public/video.gif";
 
 import Link from "next/link";
-import HeaderElem from "@/components/HeaderElem";
+import HeaderElem from "@/components/old/HeaderElem";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Home | SwiftRun",

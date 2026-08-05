@@ -1,5 +1,5 @@
 "use client";
-import HeaderElem from "@/components/HeaderElem";
+import HeaderElem from "@/components/old/HeaderElem";
 import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";

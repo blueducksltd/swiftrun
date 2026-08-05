@@ -1,7 +1,7 @@
 
 import Image, { StaticImageData } from "next/image";
 
-import HowItWorksDesktop from "@/components/HowItWorksDesktop";
+import HowItWorksDesktop from "@/components/old/HowItWorksDesktop";
 
 import { Metadata } from "next";
 export const metadata:Metadata = {

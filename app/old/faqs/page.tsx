@@ -1,7 +1,7 @@
 import Link from "next/link";
-import HeaderElem from "@/components/HeaderElem";
+import HeaderElem from "@/components/old/HeaderElem";
 import { Metadata } from "next";
-import FaqItems from "@/components/FaqItems";
+import FaqItems from "@/components/old/FaqItems";
 export const metadata: Metadata = {
   title: "FAQs",
 };
