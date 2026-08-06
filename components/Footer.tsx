@@ -61,24 +61,26 @@ export default function Footer() {
     }
   ]
   return (
-    <div className='bg-[#1E4E90]  p-20'>
-      <div className='grid grid-cols-1 md:grid-cols-6'>
-        <div className=' grid gap-4 md:col-span-2'>
+    <div className='bg-[#1E4E90] p-10 md:p-20'>
+      <div className='grid grid-cols-2 md:grid-cols-6 gap-10'>
+        <div className=' grid gap-4 col-span-2'>
           <div>
             <Link href={"/"} className='w-fit relative  inline-block'>
               <Image alt='' src={"/footer_logo.svg"} width={150} height={150} />
             </Link>
           </div>
-          <div>
-            <Link href={"/"} className='w-fit relative  inline-block'>
-              <Image alt='' src={"/download_appstore.svg"} width={100} height={100} />
-            </Link>
-          </div>
+          <div className='grid grid-cols-2 md:grid-cols-1'>
+            <div>
+              <Link href={"/"} className='w-fit relative  inline-block'>
+                <Image alt='' src={"/download_appstore.svg"} width={100} height={100} />
+              </Link>
+            </div>
 
-          <div className=''>
-            <Link href={"/"} className='w-fit relative  inline-block'>
-              <Image alt='' src={"/download_googleplay.svg"} width={100} height={100} />
-            </Link>
+            <div className=''>
+              <Link href={"/"} className='w-fit relative  inline-block'>
+                <Image alt='' src={"/download_googleplay.svg"} width={100} height={100} />
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -96,8 +98,8 @@ export default function Footer() {
 
       </div>
       <hr className='my-20 border-[#E6E6E680]' />
-      <div className='text-white flex justify-between items-center'>
-        <div className='flex items-center gap-6'>
+      <div className='text-white flex justify-between flex-wrap items-center gap-10'>
+        <div className='flex items-center gap-6 flex-wrap'>
           <span className='flex items-center gap-1'>
             <MdLocationOn />
             Nigeria
@@ -109,7 +111,7 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className='flex items-center gap-3 text-sm text-[#F6DBCC]'>
+        <div className='flex md:items-center gap-3 flex-col flex-wrap text-sm text-[#F6DBCC] w-full md:w-fit'>
           <Link href={"/"} className='underline'>Privacy</Link>
           <Link href={"/"} className='underline'>Terms and Condition</Link>
           <Link href={"/"} className='underline'>Security</Link>

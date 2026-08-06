@@ -20,7 +20,7 @@ export default function HomepageSlider() {
             <Swiper
                 modules={[Autoplay]}
                 spaceBetween={40}
-                slidesPerView={1}
+                slidesPerView={1.5}
                 loop={true}
                 autoHeight={true}          // <-- fixes height calculation
                 autoplay={{

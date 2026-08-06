@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light;
 }
@@ -6,11 +7,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   /* Font mappings — clean names */
-  --font-primary: var(--font-primary);      /* Sora becomes default */
-  --font-heading: var(--font-heading);   /* Bricolage for headings */
-  
+  --font-primary: var(--font-primary);
+  /* Sora becomes default */
+  --font-heading: var(--font-heading);
+  /* Bricolage for headings */
+
   --color-blue: #066AC0;
   --color-yellow: #FFF100;
   --color-black: #000000;
@@ -43,29 +46,50 @@ body {
   color: var(--foreground);
   /* font-family: Arial, Helvetica, sans-serif; */
 }
-h1{
+
+h1 {
   font-family: var(--font-heading);
 }
+
 .swiper-pagination-bullet {
-width: 25px !important;
-height: 5px !important;
-border-radius: 0px !important;
+  width: 25px !important;
+  height: 5px !important;
+  border-radius: 0px !important;
 }
-.swiper-pagination-bullet-active{
+
+.swiper-pagination-bullet-active {
   background-color: black !important;
 }
+
 .swiper-pagination {
-  bottom:  30px !important;
+  bottom: 30px !important;
 }
-.swiper-wrapper{
+
+.swiper-wrapper {
   transition-timing-function: ease-in;
 }
 
-#whyChooseUs .swiper-pagination-bullet{
+#whyChooseUs .swiper-pagination-bullet {
   border-radius: 100px !important;
 }
 
 .company-swiper,
 .company-swiper .swiper-slide {
   height: auto !important;
+}
+
+/* Hide scrollbar but keep scrolling */
+.scroll-hide {
+  /* overflow: auto; */
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Internet Explorer & Edge */
+  -ms-overflow-style: none;
+}
+
+/* Chrome, Safari, Opera */
+.scroll-hide::-webkit-scrollbar {
+  display: none;
 }

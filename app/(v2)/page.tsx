@@ -5,9 +5,10 @@ import { BsArrowRight } from "react-icons/bs";
 import HomePageHeader from "@/components/HomePageHeader";
 import HomepageSlider from "@/components/HomepageSlider";
 import { Metadata } from "next";
+import AnimationSection from "@/components/AnimationSection";
 
 export const metadata: Metadata = {
-  title: "Home",
+    title: "Home",
 };
 export default function HomePage() {
 
@@ -52,87 +53,101 @@ export default function HomePage() {
 
 
             <HomePageHeader />
+            <AnimationSection animation="fadeIn" amount={0.4}>
 
-            <div className="py-10 px-40 bg-[#DDEEFF]">
-                <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 mb-10">
-                    <b className="font-bold">Features</b>
-                    <span className="font-primary">How it works</span>
-                </h1>
+                <div className="py-10 px-10 md:px-40 bg-[#DDEEFF]">
+                    <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 mb-10">
+                        <b className="font-bold">Features</b>
+                        <span className="font-primary">How it works</span>
+                    </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {/* Large horizontal card */}
-                    <div className="p-6 md:p-10 bg-linear-to-b from-[#46A0FF] to-[#56B1FF] md:col-span-2 flex rounded-[40px] gap-5 items-center text-white shadow-[0_33px_67px_#5EAEFE80]">
-                        <div className="h-24 w-24 shrink-0 bg-white/30 rounded-[28px] flex items-center justify-center">
-                            <Image src={"./instantdelivery.svg"} alt="" width={60} height={60} />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        {/* Large horizontal card */}
+                        <div className="p-6 md:p-10 bg-linear-to-b from-[#46A0FF] to-[#56B1FF] md:col-span-2 flex rounded-[40px] gap-5 items-center text-white shadow-[0_33px_67px_#5EAEFE80]">
+                            <div className="h-24 w-24 shrink-0 bg-white/30 rounded-[28px] flex items-center justify-center">
+                                <Image src={"./instantdelivery.svg"} alt="" width={60} height={60} />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <h1 className="text-xl font-bold">Instant Delivery</h1>
+                                <p className="text-white/90 text-base leading-relaxed">Need it now? We've got you.</p>
+                            </div>
                         </div>
-                        <div className="flex flex-col gap-1.5">
-                            <h1 className="text-xl font-bold">Instant Delivery</h1>
-                            <p className="text-white/90 text-base leading-relaxed">Need it now? We've got you.</p>
-                        </div>
-                    </div>
 
-                    {/* Small vertical cards */}
-                    <div className="p-6 md:p-8 bg-linear-to-l from-[#AA53F3] to-[#8B5CF6] shadow-[0_13.55px_74.19px_#9359F580] flex flex-col rounded-[40px] gap-5 text-white">
-                        <div className="h-20 w-20 bg-white/30 rounded-3xl flex items-center justify-center">
-                            <Image src={"./Timelapse.svg"} alt="" width={60} height={60} />
+                        {/* Small vertical cards */}
+                        <div className="p-6 md:p-8 bg-linear-to-l from-[#AA53F3] to-[#8B5CF6] shadow-[0_13.55px_74.19px_#9359F580] flex flex-col rounded-[40px] gap-5 text-white">
+                            <div className="h-20 w-20 bg-white/30 rounded-3xl flex items-center justify-center">
+                                <Image src={"./Timelapse.svg"} alt="" width={60} height={60} />
+                            </div>
+                            <div className="flex flex-col gap-1 justify-end">
+                                <h1 className="text-xl font-bold">Schedule Delivery</h1>
+                                {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
+                            </div>
                         </div>
-                        <div className="flex flex-col gap-1 justify-end">
-                            <h1 className="text-xl font-bold">Schedule Delivery</h1>
-                            {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
-                        </div>
-                    </div>
 
-                    <div className="p-6 md:p-8 bg-linear-to-tr from-[#20CDD9] to-[#27D288] shadow-[0_13.55px_74.19px_#11DEDF66] flex flex-col rounded-[40px] gap-5 text-white">
-                        <div className="h-20 w-20 bg-white/30 rounded-3xl flex items-center justify-center">
-                            <Image src={"./streamline.svg"} alt="" width={50} height={50} />
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <h1 className="text-xl font-bold">Multi-Point  Delivery</h1>
-                            {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
+                        <div className="p-6 md:p-8 bg-linear-to-tr from-[#20CDD9] to-[#27D288] shadow-[0_13.55px_74.19px_#11DEDF66] flex flex-col rounded-[40px] gap-5 text-white">
+                            <div className="h-20 w-20 bg-white/30 rounded-3xl flex items-center justify-center">
+                                <Image src={"./streamline.svg"} alt="" width={50} height={50} />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <h1 className="text-xl font-bold">Multi-Point  Delivery</h1>
+                                {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </AnimationSection>
 
             <div className="py-30 bg-white relative">
-                <div className="grid grid-cols-2  px-30 relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 px-10  md:px-30 relative">
                     <div className="flex flex-col gap-5 ">
+                        <AnimationSection animation="slideRight" amount={0.4}>
 
-                        <h1 className="text-5xl font-bold text-left flex items-center justify-start gap-1 mb-10  md:w-[50%] w-full">
-                            <Image src="/love.svg" alt="" width={50} height={50} className="absolute -translate-y-20 animate-bounce " style={{ animationTimingFunction: "ease-in-out", animationDuration: "1.4s" }} />
-                            The Stress is over
-                        </h1>
+                            <h1 className="text-5xl font-bold text-left flex items-center justify-start gap-1 mb-10  md:w-[50%] w-full">
+                                <Image src="/love.svg" alt="" width={50} height={50} className="absolute -translate-y-20 animate-bounce " style={{ animationTimingFunction: "ease-in-out", animationDuration: "1.4s" }} />
+                                The Stress is over
+                            </h1>
+                        </AnimationSection>
                     </div>
                     <Image src="/star.svg" alt="" width={30} height={30} className="bottom-[50%] left-[40%]  absolute animate-bounce" />
 
 
                     <div>
-                        <p className="relative ">
+                        <AnimationSection animation="slideLeft" amount={0.4} >
+                            <p className="relative ">
 
-                            Your favourite stores are just a tap away. Order what you love, sit back, and let SwiftRun bring it right to your doorstep. Follow every step until it arrives. 📦
+                                Your favourite stores are just a tap away. Order what you love, sit back, and let SwiftRun bring it right to your doorstep. Follow every step until it arrives. 📦
 
-                            <Image src="/celebrate.svg" style={{ animationTimingFunction: "ease-in-out", animationDuration: "1.4s" }} alt="" width={50} height={50} className="absolute translate-y-[30px] right-0 animate-bounce" />
+                                <Image src="/celebrate.svg" style={{ animationTimingFunction: "ease-in-out", animationDuration: "1.4s" }} alt="" width={50} height={50} className="absolute translate-y-[30px] right-0 animate-bounce" />
 
 
-                        </p>
+                            </p>
+                        </AnimationSection>
 
                     </div>
                 </div>
-                <HomepageSlider />
+                <AnimationSection animation="fadeIn" amount={0.3}>
+                    <HomepageSlider />
+                </AnimationSection>
                 <div>
-                    <div className="relative h-[450px] mt-12 px-20 flex items-center">
+                    <div className="relative h-[450px] mt-12 px-10 md:px-20 flex items-center">
                         <Image alt="" src={"/landingPage.jpg"} fill />
-                        <div className="relative z-10 w-full md:w-[50%] grid gap-10">
-                            <h1 className="text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
-                            <div className="flex gap-4 flex-wrap">
-                                <Link href="/stores" className="bg-[#FFDEBC]  py-4 px-6 rounded-full transition duration-300 font-primary">
-                                    Download the  app
-                                </Link>
+                        <div className="relative z-10 w-full md:w-[50%] ">
+                            <AnimationSection animation="slideUp" className="grid gap-10">
+                                <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
+                                <div className="flex gap-4 flex-wrap">
+                                    <AnimationSection animation="fadeIn" amount={0.3}>
+                                        <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
+                                            Download the  app
+                                        </Link>
+                                    </AnimationSection>
 
-                                <Link href="/stores" className="bg-[#FFB5CB]  py-4 px-6 rounded-full transition duration-300 font-primary">
-                                    Learn how it works
-                                </Link>
-                            </div>
+                                    <AnimationSection animation="slideLeft" amount={0.5}>
+                                        <Link href="/stores" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
+                                            Learn how it works
+                                        </Link>
+                                    </AnimationSection>
+                                </div>
+                            </AnimationSection>
                         </div>
                     </div>
 
@@ -140,60 +155,77 @@ export default function HomePage() {
                         <ScrollScrubSlider categories={categories} />
                     </div>
 
-                    <div className="relative py-20 mt-12 px-20 grid grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
+                    <div className="relative py-20 mt-12 px-10 md:px-20 grid grid-cols-1 md:grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
 
-                        <div className="relative z-10   text-white">
-                            <p className="font-semibold">Swiftrun Business</p>
-                            <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
-                            <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
-                            <div className=" text-black mt-6">
-                                <Link href="/stores" className="bg-[#FFDEBC] flex items-center gap-2 w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
-                                    Join Swiftrun
-                                    <BsArrowRight />
-                                </Link>
+                        <AnimationSection animation="slideRight">
+                            <div className="relative z-10   text-white">
+                                <p className="font-semibold">Swiftrun Business</p>
+                                <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
+                                <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
+                                <div className=" text-black mt-6">
+                                    <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
+                                        Join Swiftrun
+                                        <BsArrowRight />
+                                    </Link>
 
 
+                                </div>
                             </div>
-                        </div>
+                        </AnimationSection>
 
-                        <div className="md:col-span-2 flex justify-end">
-                            <Image src={"/House.svg"} alt="" width={300} height={300} />
-                        </div>
-                    </div>
-
-                    <div className="px-10 md:px-40 pt-10 pb-20 grid grid-cols-1 md:grid-cols-2 text-white gap-10">
-                        <div className="flex flex-col justify-end bg-[#B69B8C] h-[300px] p-10 pb-12 rounded-4xl">
-                            <Image src={"/House.svg"} alt="" width={50} height={50} />
-                            <h1 className="text-3xl  font-bold mb-3">Lift Delivery Burden</h1>
-                            <p className="">Spend less time worrying about deliveries and more time delighting your customers.  🚚</p>
-                        </div>
-
-                        <div className="flex flex-col justify-end bg-[#1893A6] h-[300px] p-10 pb-12 rounded-4xl">
-                            <Image src={"/House.svg"} alt="" width={50} height={50} />
-                            <h1 className="text-3xl  font-bold mb-3">00% Commission Charge</h1>
-                            <p className="">Keep every naira you earn. With zero commission, every sale stays yours. 💰</p>
+                        <div className="md:col-span-2 md:flex justify-end hidden">
+                            <AnimationSection animation="slideUp" amount={0.6}>
+                                <Image src={"/House.svg"} alt="" width={300} height={300} />
+                            </AnimationSection>
                         </div>
                     </div>
 
-                    <div className="bg-linear-to-br to-[#56B1FF] from-[#086ABF]  grid grid-cols-1 md:grid-cols-3 p-10 md:py-10 md:px-30 text-white items-center">
-                        <div>
-                            <h1 className="text-[60px] leading-16  font-bold mb-3">
-                                Join, Serve, Earn.
-                            </h1>
-                            <p>
-                                Drive when it works for you, deliver with confidence, and earn every step of the way.
-                            </p>
+                    <div className="px-5 md:px-40 pt-10 pb-20 grid grid-cols-1 md:grid-cols-2 text-white gap-10">
+                        <AnimationSection animation="slideUp" amount={0.6}>
+                            <div className="flex flex-col justify-end bg-[#B69B8C] h-[300px] p-10 pb-12 rounded-4xl">
+                                <Image src={"/House.svg"} alt="" width={50} height={50} />
+                                <h1 className="text-3xl  font-bold mb-3">Lift Delivery Burden</h1>
+                                <p className="">Spend less time worrying about deliveries and more time delighting your customers.  🚚</p>
+                            </div>
+                        </AnimationSection>
+
+                        <AnimationSection animation="slideRight" amount={0.3}>
+                            <div className="flex flex-col justify-end bg-[#1893A6] h-[300px] p-10 pb-12 rounded-4xl">
+                                <Image src={"/House.svg"} alt="" width={50} height={50} />
+                                <h1 className="text-3xl  font-bold mb-3">00% Commission Charge</h1>
+                                <p className="">Keep every naira you earn. With zero commission, every sale stays yours. 💰</p>
+                            </div>
+                        </AnimationSection>
+                    </div>
+
+
+
+                    <div className="bg-linear-to-br to-[#56B1FF] from-[#086ABF]  grid grid-cols-1 md:grid-cols-5 p-10 md:py-10 md:px-30 text-white items-center gap-10">
+                        <div className="md:col-span-2">
+                            <AnimationSection animation="slideRight" amount={0.4}>
+                                <h1 className="text-[70px] leading-16  font-bold md:mb-3">
+                                    Join, Serve, Earn.
+                                </h1>
+                            </AnimationSection>
+                            <AnimationSection animation="slideLeft" amount={0.6}>
+
+                                <p className="text-lg md:text-base">
+                                    Drive when it works for you, deliver with confidence, and earn every step of the way.
+                                </p>
+                            </AnimationSection>
                         </div>
 
-                        <div className="md:col-span-2 flex md:justify-end items-center">
-                            <Image src={"/join_serve.png"} alt="" width={500} height={500} />
+                        <div className="md:col-span-3 flex md:justify-end items-center">
+                            <AnimationSection animation="scaleUp" amount={0.3}>
+                                <Image src={"/join_serve.png"} alt="" width={500} height={500} />
+                            </AnimationSection>
 
                         </div>
                     </div>
 
-                    <div className="bg-[#086ABF33] rounded-b-[60px]  p-10 md:p-20 ">
+                    <div className="bg-[#086ABF33] rounded-b-[60px]  p-5 md:p-20 ">
 
-                        <div className="grid grid-cols-2 gap-10 mb-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
 
                             <div className="relative h-70">
                                 <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent rounded-[40px] z-10 p-12 text-white">
@@ -219,14 +251,14 @@ export default function HomePage() {
 
                     </div>
 
-                    <div className="p-10 h-100 md:p-20 text-right relative my-20 flex justify-end items-center">
+                    <div className="p-5 h-100 md:p-20 text-left md:text-right relative my-20 flex md:justify-end items-center">
                         <div className="relative z-10  w-full md:w-[40%]">
                             <h1 className="text-white font-bold text-[60px] leading-16 mb-4">Your Personal companion</h1>
                             <p className="text-[#FFDEBC] text-xl font-light">Whatever you need to make your day, SwiftRun’s got you. Tap. Order. Chill. 🚀</p>
                         </div>
-                        <Image alt="Personal Companion" src={"/personal_companion.jpg"} className="object-cover -rotate-y-180" fill />
+                        <Image alt="Personal Companion" src={"/personal_companion.jpg"} className="object-cover md:-rotate-y-180" fill />
                     </div>
-                    <div className="py-10 px-40 grid grid-cols-2 gap-7">
+                    <div className="py-10 px- md:px-40 grid grid-cols-1 md:grid-cols-2 gap-7">
                         {
                             percs.map((perc, index) =>
                                 <div key={index} className={`${perc.color.background} h-70 rounded-3xl p-10 flex flex-col justify-end`}>
