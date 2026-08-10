@@ -28,7 +28,8 @@ export default function Navbar() {
   {
     href: '/news',
     label: 'News/blog',
-  }
+  },
+  
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
