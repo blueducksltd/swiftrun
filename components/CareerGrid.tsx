@@ -1,112 +1,12 @@
 "use client";
+import { careers } from '@/app/util/data';
+import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { BiChevronDown, BiCheck } from 'react-icons/bi'
 import { CiSearch } from 'react-icons/ci';
 
-type category = ["Marketing", "Finance", "Sales", "Technology", "Human Resources", "Operations", "Design", "Customer Service"]
 
-const careers: { category: category[number]; title: string; requirements: string[] }[] = [
-    {
-        category: "Marketing",
-        title: "Ads & Promotions Sales Specialist",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Marketing",
-        title: "Digital Marketing Specialist",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Marketing",
-        title: "Social Media Manager",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Marketing",
-        title: "Content Marketing Executive",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Sales",
-        title: "Sales Representative",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Sales",
-        title: "Business Development Executive",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Sales",
-        title: "Account Manager",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Customer Service",
-        title: "Customer Support Representative",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Customer Service",
-        title: "Customer Success Officer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Technology",
-        title: "Frontend Developer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Technology",
-        title: "Backend Developer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Technology",
-        title: "UI/UX Designer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Technology",
-        title: "Mobile App Developer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Finance",
-        title: "Accountant",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Finance",
-        title: "Finance Officer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Human Resources",
-        title: "HR Officer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Human Resources",
-        title: "Recruitment Specialist",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Operations",
-        title: "Operations Officer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Operations",
-        title: "Administrative Assistant",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    },
-    {
-        category: "Design",
-        title: "Graphic Designer",
-        requirements: ["Enugu, Nigeria", "Fulltime", "Female/Male"]
-    }
-];
+
 
 // ---- Dropdown primitive -------------------------------------------------
 // A single, reusable dropdown styled with a restrained, "Apple-ish" language:
@@ -263,7 +163,7 @@ export default function CareerGrid() {
         setOpenDropdown((current) => (current === name ? null : name))
     }
 
-    
+
 
     return (
         <div className=''>
@@ -319,16 +219,22 @@ export default function CareerGrid() {
 
             <div className='grid grid-cols-1 md:grid-cols-3 gap-10 my-20 p-0 md:p-5 md:pt-5'>
                 {
-                    filteredCareers.map((item, index) => <div key={index} className='shadow-[0px_4px_30px_#0000001A] bg-white  rounded-4xl p-10'>
-                        <p className='mb-2 text-[#00000033]'>{item.category}</p>
-                        <h1 className='font-bold text-3xl'>{item.title}</h1>
-                        <div className='mt-10 opacity-70 text-base md:text-sm grid gap-2'>
-                            {item.requirements.map((requirement, requirementsIndex) => <div key={requirementsIndex} className='flex items-center gap-2'>
-                                <div className='w-2 h-2 rounded-full outline-1 outline-offset-2 bg-black'></div>
-                                <p>{requirement}</p>
-                            </div>)}
-                        </div>
-                    </div>)
+                    filteredCareers.map((item, index) =>
+                        <Link href={`/career/${item.id}`} key={index} className='flex'>
+                            <div key={index} className='shadow-[0px_4px_30px_#0000001A] bg-white  rounded-4xl p-10 flex flex-col justify-between'>
+                                <div>
+                                    <p className='mb-2 text-[#00000033]'>{item.category}</p>
+                                    <h1 className='font-bold text-3xl'>{item.title}</h1>
+                                </div>
+                                <div className='mt-10 opacity-70 text-base md:text-sm grid gap-2'>
+                                    {item.requirements.map((requirement, requirementsIndex) => <div key={requirementsIndex} className='flex items-center gap-2'>
+                                        <div className='w-2 h-2 rounded-full outline-1 outline-offset-2 bg-black'></div>
+                                        <p>{requirement}</p>
+                                    </div>)}
+                                </div>
+                            </div>
+                        </Link>
+                    )
                 }
 
                 {filteredCareers.length === 0 && (

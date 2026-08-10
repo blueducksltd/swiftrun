@@ -17,6 +17,7 @@ const fontHeading = Bricolage_Grotesque({
 });
 
 
+
 export const metadata: Metadata = {
   title: {
     default: "HI",

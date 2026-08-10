@@ -1,6 +1,7 @@
 import AnimationSection from '@/components/AnimationSection'
 import BuiltAroundYou from '@/components/BuiltAroundYou'
 import NewsGrid from '@/components/NewsGrid'
+import SectionHeader from '@/components/SectionHeader'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import { Metadata } from 'next'
 import Image from 'next/image'
@@ -9,16 +10,9 @@ export const metadata: Metadata = { title: "News" }
 export default function NewsPage() {
     return (
         <div>
-            <div className='h-[70vh] relative'>
-                <Image alt='' src={"/newsBanner.jpg"} fill className='object-cover' />
+            <SectionHeader title='News/Blog/Tips' description='Fresh updates, helpful tips, and stories worth reading.
+'/>
 
-                <div className='absolute bg-black/30 inset-0 w-full h-full  flex items-center justify-center flex-col text-white'>
-                    <h1 className="font-bold text-4xl">News/Blog/Tips</h1>
-                    <p>
-                        Fresh updates, helpful tips, and stories worth reading.
-                    </p>
-                </div>
-            </div>
 
             <div className='py-10 px-6 md:px-30 '>
                 <NewsGrid />

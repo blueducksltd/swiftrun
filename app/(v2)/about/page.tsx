@@ -1,13 +1,7 @@
-import AboutComp from '@/components/AboutComp';
-import { Metadata } from 'next';
+import React from 'react'
 
-
-export const metadata: Metadata = {
-    title: "About Us",
-};
-export default function AnoutPage() {
-  
-    return (
-        <AboutComp />
-    )
+export default function About() {
+  return (
+    <div>page</div>
+  )
 }
