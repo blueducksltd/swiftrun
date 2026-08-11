@@ -30,17 +30,17 @@ export default function Footer() {
         href: "/business"
       }, {
         label: "Couriers",
-        href: "/couriers"
+        href: "/courier"
       }]
     },
     {
       category: "Quick Links",
       links: [{
         label: "Contact Us",
-        href: "/contact"
+        href: "/support"
       }, {
         label: "How to use",
-        href: "/howtouse"
+        href: "/customer"
       }, {
         label: "FAQs",
         href: "/faq"

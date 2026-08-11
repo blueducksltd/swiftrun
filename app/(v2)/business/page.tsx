@@ -110,7 +110,7 @@ export default function BusinessPage() {
             <div className='py-10 px-6 md:px-30'>
                 <SectionHeaderTexts paragraph='Get Started' heading='How SwiftRun works' reverse />
 
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-7 px-0 sm:px-5 md:px-10 py-10'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-7 px-0 sm:px-5 md:px-10 py-10 overflow-hidden'>
                     {
                         features.map((feature, index) => (
                             <AnimationSection key={index} animation={index % 2 ? "slideLeft" : "slideRight"} amount={0.3}>

@@ -1,8 +1,9 @@
 "use client";
-import  { useState } from 'react'
+import { useState } from 'react'
 import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
+import Link from 'next/link';
 
 
 export default function HomePageHeader() {
@@ -36,97 +37,103 @@ export default function HomePageHeader() {
 
         ];
     return (
-       <div>
-    <div className='py-10 min-h-screen relative font-heading flex flex-col justify-center'>
-        <div className="flex items-center justify-center gap-6 md:gap-10 px-4 md:px-10 lg:px-20 xl:px-40">
-            <div className='rounded-[30px] md:rounded-[50px] lg:rounded-[70px] p-6 md:p-8 lg:md:p-10 relative grid grid-cols-1 lg:grid-cols-3 bg-white w-full z-10'>
-                
-                {/* Left: Text */}
-                <div className='lg:col-span-2 flex flex-col justify-center items-start relative z-10 order-2 lg:order-1'>
-                    <Swiper
-                        direction={'vertical'}
-                        onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
-                        modules={[Autoplay]}
-                        autoplay={{ delay: 2000, reverseDirection: true }}
-                        speed={1000}
-                        loop={true}
-                        slidesPerView={1}
-                        className="w-full h-[45px] md:h-[55px] lg:h-[70px]"
-                    >
-                        {slides.map((slide, index) => (
-                            <SwiperSlide key={index}>
-                                <p className={`text-3xl md:text-4xl lg:text-[50px] font-semibold leading-tight ${slide.color.text}`}>
-                                    {slide.text}
+        <div>
+            <div className='py-10 min-h-screen relative font-heading flex flex-col justify-center'>
+                <div className="flex items-center justify-center gap-6 md:gap-10 px-4 md:px-10 lg:px-20 xl:px-40">
+                    <div className='rounded-[30px] md:rounded-[50px] lg:rounded-[70px] p-6 md:p-8 lg:md:p-10 relative grid grid-cols-1 lg:grid-cols-3 bg-white w-full z-10'>
+
+                        {/* Left: Text */}
+                        <div className='lg:col-span-2 flex flex-col justify-center items-start relative z-10 order-2 lg:order-1'>
+                            <Swiper
+                                direction={'vertical'}
+                                onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
+                                modules={[Autoplay]}
+                                autoplay={{ delay: 2000, reverseDirection: true }}
+                                speed={1000}
+                                loop={true}
+                                slidesPerView={1}
+                                className="w-full h-[45px] md:h-[55px] lg:h-[70px]"
+                            >
+                                {slides.map((slide, index) => (
+                                    <SwiperSlide key={index}>
+                                        <p className={`text-3xl md:text-4xl lg:text-[50px] font-semibold leading-tight ${slide.color.text}`}>
+                                            {slide.text}
+                                        </p>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                            <div className="relative">
+                                <p className="text-3xl md:text-4xl lg:text-[50px] font-semibold leading-tight">
+                                    With Swiftrun Logistics
                                 </p>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                    
-                    <div className="relative">
-                        <p className="text-3xl md:text-4xl lg:text-[50px] font-semibold leading-tight">
-                            With Swiftrun Logistics
-                        </p>
-                    </div>
-                    
-                    <p className='text-xs md:text-sm font-primary mt-2 max-w-md'>
-                        Don't worry about your location. Be assured it will get to your destination
-                    </p>
-                </div>
+                            </div>
 
-                {/* Right: Image */}
-                <div className='flex justify-center lg:justify-end order-1 lg:order-2 mb-6 lg:mb-0'>
-                    <div className={`w-[220px] h-[220px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] lg:translate-x-[-14%] rounded-[30px] md:rounded-[40px] lg:rounded-[50px] ${slides[currentSlide].color.modal.background} border duration-300 ${slides[currentSlide].color.modal.border} relative`}>
-                        <Swiper
-                            direction={'vertical'}
-                            modules={[Autoplay]}
-                            autoplay={{ delay: 2000, reverseDirection: true }}
-                            speed={1000}
-                            loop={true}
-                            slidesPerView={1}
-                            className="w-full h-full"
-                        >
-                            {slides.map((slide, index) => (
-                                <SwiperSlide key={index}>
-                                    <div className="w-full h-full flex items-center justify-center p-4 md:p-6">
-                                        <Image
-                                            src={slide.image}
-                                            alt="slide"
-                                            width={220}
-                                            height={220}
-                                            className="object-contain w-[150px] h-[150px] md:w-[180px] md:h-[180px] lg:w-[220px] lg:h-[220px]"
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                            <p className='text-xs md:text-sm font-primary mt-2 max-w-md'>
+                                Don't worry about your location. Be assured it will get to your destination
+                            </p>
+                        </div>
+
+                        {/* Right: Image */}
+                        <div className='flex justify-center lg:justify-end order-1 lg:order-2 mb-6 lg:mb-0'>
+                            <div className={`w-[220px] h-[220px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] lg:translate-x-[-14%] rounded-[30px] md:rounded-[40px] lg:rounded-[50px] ${slides[currentSlide].color.modal.background} border duration-300 ${slides[currentSlide].color.modal.border} relative`}>
+                                <Swiper
+                                    direction={'vertical'}
+                                    modules={[Autoplay]}
+                                    autoplay={{ delay: 2000, reverseDirection: true }}
+                                    speed={1000}
+                                    loop={true}
+                                    slidesPerView={1}
+                                    className="w-full h-full"
+                                >
+                                    {slides.map((slide, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div className="w-full h-full flex items-center justify-center p-4 md:p-6">
+                                                <Image
+                                                    src={slide.image}
+                                                    alt="slide"
+                                                    width={220}
+                                                    height={220}
+                                                    className="object-contain w-[150px] h-[150px] md:w-[180px] md:h-[180px] lg:w-[220px] lg:h-[220px]"
+                                                />
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        {/* Bottom Cards */}
-        <div className="w-full py-6 md:py-10 px-4 md:px-10 lg:px-20 text-black relative z-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
-                <h1 className="text-sm md:text-base font-semibold">SwiftRun</h1>
-                <Image alt="" src="/sakat.svg" width={30} height={30} />
-            </div>
+                {/* Bottom Cards */}
+                <div className="w-full py-6 md:py-10 px-4 md:px-10 lg:px-20 text-black relative z-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                    <Link href={"/"}>
+                        <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
+                            <h1 className="text-sm md:text-base font-semibold">SwiftRun</h1>
+                            <Image alt="" src="/sakat.svg" width={30} height={30} />
+                        </div>
+                    </Link>
 
-            <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
-                <h1 className="text-sm md:text-base font-semibold">Couriers</h1>
-                <Image alt="" src="/CAR.png" width={30} height={30} />
-            </div>
+                    <Link href={"/courier"}>
+                        <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
+                            <h1 className="text-sm md:text-base font-semibold">Couriers</h1>
+                            <Image alt="" src="/CAR.png" width={30} height={30} />
+                        </div>
+                    </Link>
 
-            <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
-                <h1 className="text-sm md:text-base font-semibold">Business</h1>
-                <div className="p-2 shadow-2xl rounded-xl">
-                    <Image alt="" src="/business.png" width={30} height={30} />
+                    <Link href={"/business"}>
+                        <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
+                            <h1 className="text-sm md:text-base font-semibold">Business</h1>
+                            <div className="p-2 shadow-2xl rounded-xl">
+                                <Image alt="" src="/business.png" width={30} height={30} />
+                            </div>
+                        </div>
+                    </Link>
                 </div>
+
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-linear-to-t ${slides[currentSlide].color.background} to-50% to-transparent flex items-end pointer-events-none`} />
             </div>
         </div>
-
-        {/* Background Gradient */}
-        <div className={`absolute inset-0 bg-linear-to-t ${slides[currentSlide].color.background} to-50% to-transparent flex items-end pointer-events-none`} />
-    </div>
-</div>
     )
 }

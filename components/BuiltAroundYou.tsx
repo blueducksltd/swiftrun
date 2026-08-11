@@ -3,13 +3,13 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 import SectionHeaderTexts from './SectionHeaderTexts';
 const builtAroundYou: { title: string; description: string; image: string; }[] = [
-    { title: "Safe, Affordable Delivery", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "" },
+    { title: "Safe, Affordable Delivery", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/coin.png" },
 
-    { title: "Real-Time Tracking", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "" },
+    { title: "Real-Time Tracking", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/map.png" },
 
-    { title: "One App for all", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "" },
+    { title: "One App for all", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/smartphone.png" },
 
-    { title: "Verified drivers,  Stores", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "" }
+    { title: "Verified drivers,  Stores", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/verified.png" }
 ];
 
 export default function BuiltAroundYou() {
@@ -56,7 +56,7 @@ export default function BuiltAroundYou() {
                                 builtAroundYouHoveredIndex === index ? null : index
                             )}
                         >
-                            <Image src={"/coin.png"} width={100} height={100} alt='' />
+                            <Image src={item.image} width={100} height={100} alt='' />
                             <div className='grid gap-2'>
                                 <h1 className='text-2xl font-bold'>{item.title}</h1>
                                 <p className={isExpanded ? '' : 'md:hidden'}>{item.description}</p>

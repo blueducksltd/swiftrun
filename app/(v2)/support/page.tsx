@@ -17,7 +17,7 @@ export default function SupportPage() {
 
             <div className='py-10 px-10 md:px-40'>
                 <div className='bg-[#1E4E90]  rounded-[50px] p-10 md:p-14'>
-                    <div className='w-full overflow-x-auto md:overflow-visible'>
+                    <div className='w-full overflow-x-auto md:overflow-visible scroll-hide'>
                         <div className='flex md:grid md:grid-cols-3 gap-4 md:gap-10 px-4 md:px-0 w-max md:w-full'>
                             <div className='bg-white rounded-4xl flex items-center gap-4 justify-center py-3 px-6 whitespace-nowrap  w-auto shrink-0 md:shrink'>
                                 <p>Send Email</p>

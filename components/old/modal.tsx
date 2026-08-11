@@ -18,7 +18,7 @@ export default function Modal({ isOpen, useDefaultWidth, children }: IProps) {
       </button>*/}
       <dialog id="my_modal_2" className={`modal duration-300 ${isOpen ? "modal-open" : ""}`}>
         <div
-          className={`modal-box bg-white text-black rounded-2xl ${!useDefaultWidth ? "w-full md:w-[800px]" : "w-[408px]"}`}
+          className={`modal-box bg-white text-black rounded-[50px] ${!useDefaultWidth ? "w-full md:w-[800px]" : "w-[408px]"}`}
         >
           {children}
         </div>

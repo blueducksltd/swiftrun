@@ -56,14 +56,16 @@ export default function AnimationSection({
   const [chosen] = useState<AnimationType>(animation ?? getRandomAnimation());
 
   return (
-    <motion.section
-      className={`${className} w-full `}
-      variants={animations[chosen]}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
-    >
-      {children}
-    </motion.section>
+    <div className="overflow-hidden">
+      <motion.section
+        className={`${className} w-full `}
+        variants={animations[chosen]}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once, amount }}
+      >
+        {children}
+      </motion.section>
+    </div>
   );
 }

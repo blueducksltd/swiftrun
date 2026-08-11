@@ -258,15 +258,17 @@ export default function HomePage() {
                         </div>
                         <Image alt="Personal Companion" src={"/personal_companion.jpg"} className="object-cover md:-rotate-y-180" fill />
                     </div>
-                    <div className="py-10 px- md:px-40 grid grid-cols-1 md:grid-cols-2 gap-7">
+                    <div className="py-10 px-10 md:px-40 grid grid-cols-1 md:grid-cols-2 gap-7">
                         {
                             percs.map((perc, index) =>
-                                <div key={index} className={`${perc.color.background} h-70 rounded-3xl p-10 flex flex-col justify-end`}>
+                                <AnimationSection key={index} animation={(index + 1) % 2 === 0 ? "slideRight" : "slideLeft"} amount={0.5}>
+                                    <div key={index} className={`${perc.color.background} h-70 rounded-3xl p-10 flex flex-col justify-end`}>
                                     <Image src={`/${index === percs.length - 1 ? "real_time.png" : "House.svg"}`} alt="" width={70} height={70} />
 
                                     <h1 className={`${perc.color.text} text-2xl font-bold mb-2 mt-4`}>{perc.title}</h1>
                                     <p className="text-sm">{perc.description}</p>
                                 </div>
+                                </AnimationSection>
 
                             )
                         }
