@@ -11,7 +11,6 @@ export default function SupportInput() {
     // The label should "float" up and shrink whenever the field has focus
     // OR already has a value in it (so it doesn't collapse back down onto
     // typed text once you click away).
-    const isActive = focused || value.length > 0
     const [inputs, setInputs] = useState<{ name: string; type: string; value: string; focused: boolean }[]>([
         {
             focused: false,
@@ -46,11 +45,11 @@ export default function SupportInput() {
     }
     return (
         <div>
-            <div className='mt-20 text-white grid gap-20'>
+            <div className='mt-20 text-white grid md:gap-20'>
                 <form action="">
-                    <div className='grid grid-cols-2 gap-14 mb-10'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-14 mb-10'>
                         {
-                            inputs.map((input, index) => <div key={index} className={`relative ${!["phone", "email"].includes(input.name) ? "col-span-2" : ""}`}>
+                            inputs.map((input, index) => <div key={index} className={`relative ${!["phone", "email"].includes(input.name) ? "md:col-span-2" : ""}`}>
                                 {input.name !== "message" ? <>
                                     <label
                                         key={index}

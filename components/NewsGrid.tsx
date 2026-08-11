@@ -44,19 +44,21 @@ export default function NewsGrid() {
 
     return (
         <div>
-            <div className='grid grid-cols-3 gap-20 px-10 md:px-20'>
-                {tabs.map((item, index) => (
-                    <div
-                        key={index}
-                        onClick={() => setSelectedTab(item)}
-                        className={`flex items-center justify-center p-3 cursor-pointer rounded-full border-2 ${selectedTab === item ? 'bg-[#1893A6] text-white border-none' : 'bg-[#0000000D] border-[#00000008]'}`}
-                    >
-                        <p>{item}</p>
-                    </div>
-                ))}
+            <div className="w-full overflow-x-auto md:overflow-visible">
+                <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-20 px-4 md:px-20 w-max md:w-full">
+                    {tabs.map((item, index) => (
+                        <div
+                            key={index}
+                            onClick={() => setSelectedTab(item)}
+                            className={`flex items-center justify-center p-3 whitespace-nowrap cursor-pointer rounded-full border-2 w-[calc(33.333vw-2rem)] md:w-auto shrink-0 md:shrink ${selectedTab === item ? 'bg-[#1893A6] text-white border-none' : 'bg-[#0000000D] border-[#00000008]'}`}
+                        >
+                            <p>{item}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10  my-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20 overflow-hidden">
 
                 {
 
@@ -66,7 +68,7 @@ export default function NewsGrid() {
                         const isEven = (row + col) % 2 === 0;
 
                         return (
-                            <AnimationSection  key={index} animation={isEven ? "slideRight" : "slideLeft"}>
+                            <AnimationSection key={index} animation={isEven ? "slideRight" : "slideLeft"}>
                                 <div key={index} className={`${isEven ? "bg-[#F9BACA33]" : "bg-[#8DD8EB33]"} rounded-4xl h-120 overflow-hidden`}>
                                     <div className="h-[60%] relative">
                                         <Image src={item.image} className="object-cover" alt="" fill />

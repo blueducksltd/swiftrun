@@ -90,7 +90,7 @@ function Dropdown({
                         onChange(null)
                         onToggle()
                     }}
-                    className="w-full flex items-center justify-between gap-2 rounded-xl px-3.5 py-2.5 text-sm text-black/50 hover:bg-black/[0.04] transition-colors duration-150"
+                    className="w-full flex items-center justify-between gap-2 rounded-xl px-3.5 py-2.5 text-sm text-black/50 hover:bg-black/4 transition-colors duration-150"
                 >
                     All {label}
                     {value === null && <BiCheck size={18} className="text-black" />}
@@ -112,7 +112,7 @@ function Dropdown({
                                     onToggle()
                                 }}
                                 className={`w-full flex items-center justify-between gap-2 rounded-xl px-3.5 py-2.5 text-sm transition-colors duration-150
-                                    ${active ? 'bg-black/[0.05] text-black font-medium' : 'text-black/80 hover:bg-black/[0.04]'}`}
+                                    ${active ? 'bg-black/5 text-black font-medium' : 'text-black/80 hover:bg-black/[4'}`}
                             >
                                 <span className="truncate">{option.label}</span>
                                 {active && <BiCheck size={18} className="text-black shrink-0" />}

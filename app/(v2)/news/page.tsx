@@ -14,7 +14,7 @@ export default function NewsPage() {
 '/>
 
 
-            <div className='py-10 px-6 md:px-30 '>
+            <div className='py-10 px-4 md:px-30 '>
                 <NewsGrid />
                 <BuiltAroundYou />
 

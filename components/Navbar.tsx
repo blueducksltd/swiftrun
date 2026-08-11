@@ -1,7 +1,8 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { BiCaretDown } from 'react-icons/bi'
 import { BsArrowRight } from 'react-icons/bs';
 
@@ -29,11 +30,16 @@ export default function Navbar() {
     href: '/news',
     label: 'News/blog',
   },
-  
+
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setShowDropdown(false);
+  }, [pathname])
   return (
     <nav className='  py-4 px-10 md:px-30  text-black fixed w-full z-50 ]'>
       <div className="flex justify-between items-center rounded-full bg-white/10 backdrop-blur-[1px] border border-white/20  ring-1 ring-white/10">

@@ -16,24 +16,24 @@ export default function SupportPage() {
             <SectionHeader title='Support/Contact' description="Talk to us. We're always ready to help" />
 
             <div className='py-10 px-10 md:px-40'>
-                <div className='bg-[#1E4E90]  rounded-[50px] p-14'>
-                    <div className='grid grid-cols-3 gap-10'>
-                        <div className='bg-white rounded-4xl flex items-center gap-4 justify-center py-3'>
-                            <p>Send Email</p>
-                            <Image alt='' src={"/support_email.svg"} width={15} height={15} />
+                <div className='bg-[#1E4E90]  rounded-[50px] p-10 md:p-14'>
+                    <div className='w-full overflow-x-auto md:overflow-visible'>
+                        <div className='flex md:grid md:grid-cols-3 gap-4 md:gap-10 px-4 md:px-0 w-max md:w-full'>
+                            <div className='bg-white rounded-4xl flex items-center gap-4 justify-center py-3 px-6 whitespace-nowrap  w-auto shrink-0 md:shrink'>
+                                <p>Send Email</p>
+                                <Image alt='' src={"/support_email.svg"} width={15} height={15} />
+                            </div>
+
+                            <Link href={"tel:+2349167066539"} className='bg-white/5 border border-white/10 text-white rounded-4xl flex items-center gap-4 justify-center py-3 px-6 whitespace-nowrap w-auto shrink-0 md:shrink'>
+                                <p>Call Us</p>
+                                <Image alt='' src={"/support_call.svg"} width={15} height={15} />
+                            </Link>
+
+                            <Link href={"https://wa.me/+2349167066539"} className='bg-white/5 border border-white/10 text-white rounded-4xl flex items-center gap-4 justify-center py-3 px-6 whitespace-nowrap w-auto shrink-0 md:shrink'>
+                                <p>Whatsapp</p>
+                                <Image alt='' src={"/support_whatsapp.svg"} width={15} height={15} />
+                            </Link>
                         </div>
-
-
-
-                        <Link href={"tel:+2349167066539"} className='bg-white/5 border border-white/10 text-white rounded-4xl flex items-center gap-4 justify-center py-3'>
-                            <p>Call Us</p>
-                            <Image alt='' src={"/support_call.svg"} width={15} height={15} />
-                        </Link>
-
-                        <Link href={"https://wa.me/+2349167066539"} className='bg-white/5 border border-white/10 text-white rounded-4xl flex items-center gap-4 justify-center py-3'>
-                            <p>Whatsapp </p>
-                            <Image alt='' src={"/support_whatsapp.svg"} width={15} height={15} />
-                        </Link>
                     </div>
 
                     <SupportInput />
@@ -52,7 +52,7 @@ export default function SupportPage() {
                     <div className={`bg-linear-to-tl from-[#46A0FF] to-[#56B1FF] text-white rounded-[50px] p-10 `}>
 
 
-                        <h1 className={` text-[120px] font-bold mb-2 mt-4 `}>
+                        <h1 className={`text-[80px] md:text-[120px] font-bold mb-2 mt-4 `}>
                             Help Us
                         </h1>
                         <p className='text-lg'>
@@ -79,25 +79,25 @@ export default function SupportPage() {
             <div className='bg-[#FEF6E9] py-20 px-10 md:px-40 grid gap-20'>
                 <AnimationSection amount={0.5} animation='slideUp'>
                     <div className='grid gap-5'>
-                    <h1 className='text-4xl font-bold'>Public Information</h1>
-                    <p className='font-medium mt-4 text-lg'>SwiftRun Logistics Limited</p>
-                    <p className=''>RC 123456789</p>
-                    <p>10 Ajali Crescent Independence Layout
-                        Enugu, Nigeria</p>
-                    <p>Monday - Friday (09:00AM-04:00AM)</p>
-                </div>
+                        <h1 className='text-4xl font-bold'>Public Information</h1>
+                        <p className='font-medium mt-4 text-lg'>SwiftRun Logistics Limited</p>
+                        <p className=''>RC 123456789</p>
+                        <p>10 Ajali Crescent Independence Layout
+                            Enugu, Nigeria</p>
+                        <p>Monday - Friday (09:00AM-04:00AM)</p>
+                    </div>
                 </AnimationSection>
 
-               <AnimationSection amount={0.5} animation='slideUp'>
-                 <div className='grid gap-5'>
-                    <h1 className='text-4xl font-bold'>Contact/Support</h1>
-                    <Link href={"tel:+23470123456789"}>+23470123456789</Link>
-                    <Link href={"tel:+23470123456789"}>+23470123456789</Link>
-                    <Link href={"mailto:support@swiftrun.com"}>support@swiftrun.com</Link>
-                    <Link href={"mailto:info@swiftrun.com"}>info@swiftrun.com</Link>
+                <AnimationSection amount={0.5} animation='slideUp'>
+                    <div className='grid gap-5'>
+                        <h1 className='text-4xl font-bold'>Contact/Support</h1>
+                        <Link href={"tel:+23470123456789"}>+23470123456789</Link>
+                        <Link href={"tel:+23470123456789"}>+23470123456789</Link>
+                        <Link href={"mailto:support@swiftrun.com"}>support@swiftrun.com</Link>
+                        <Link href={"mailto:info@swiftrun.com"}>info@swiftrun.com</Link>
 
-                </div>
-               </AnimationSection>
+                    </div>
+                </AnimationSection>
             </div>
 
             <div className='py-20 px-10 md:px-40'>

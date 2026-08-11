@@ -57,7 +57,7 @@ export default function AnimationSection({
 
   return (
     <motion.section
-      className={className}
+      className={`${className} w-full `}
       variants={animations[chosen]}
       initial="hidden"
       whileInView="visible"
