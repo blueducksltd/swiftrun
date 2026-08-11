@@ -9,9 +9,9 @@ export default function SectionHeaderTexts({ heading, paragraph, reverse = false
                         {paragraph}
 
                     </p>
-                    <h1 className='text-[50px] w-[60%] leading-16 font-bold'>{heading}</h1>
-                </> : <> <h1 className='text-[50px] w-[60%] leading-16 font-bold'>{heading}</h1>
-                    <p className='text-lg w-[60%] '>
+                    <h1 className='text-[40px] leading-11 md:text-[50px] md:w-[60%] md:leading-16 font-bold'>{heading}</h1>
+                </> : <> <h1 className='text-[40px] md:text-[50px] w-[60%] leading-11 md:leading-16 font-bold'>{heading}</h1>
+                    <p className='text-lg md:w-[60%] '>
                         {paragraph}
 
                     </p></>

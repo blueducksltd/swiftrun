@@ -36,7 +36,7 @@ export default function CourierPage() {
             </>} />
 
             <div className='py-20 px-10 md:px-30'>
-                <div className=' grid grid-cols-2 gap-10'>
+                <div className=' grid md:grid-cols-2 gap-10'>
 
                     {
                         swiftRunWorks.slice(0, 2).map((item, index) => <AnimationSection key={index} animation={"scaleUp"}>
@@ -158,10 +158,10 @@ export default function CourierPage() {
                 <div className='py-10 px-6 md:px-30 grid gap-20'>
                     <SectionHeaderTexts paragraph='It doesn’t take time' heading='The few Stages' reverse />
 
-                    <div className='grid grid-cols-3 gap-10'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
 
                         {
-                            [{title: "Submit  Your Document"}, {title: "Review and Verification"}, {title: "Start Delivering & Earning"}].map((item, index) => <AnimationSection key={index} animation={"scaleUp"}>
+                            [{ title: "Submit  Your Document" }, { title: "Review and Verification" }, { title: "Start Delivering & Earning" }].map((item, index) => <AnimationSection key={index} animation={"scaleUp"}>
                                 <div className='border-2 border-[#066AC0] flex flex-col items-center justify-center gap-10 rounded-[70px] p-7 '>
                                     <div className='h-10 w-10 bg-[#066AC0] text-white rounded-full flex items-center justify-center'>
                                         <h1 className='text-xl font-bold'>{index + 1}</h1>
@@ -169,14 +169,14 @@ export default function CourierPage() {
 
                                     <div className='grid gap-3 '>
                                         <h1 className='text-2xl text-center font-bold'>{item.title}</h1>
-                                        
+
                                     </div>
                                 </div>
                             </AnimationSection>)
                         }
                     </div>
 
-                      <FaqFooter />
+                    <FaqFooter />
                 </div>
             </div>
 

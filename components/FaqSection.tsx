@@ -1,8 +1,9 @@
 "use client";
-import  { useState } from 'react'
+import { useRef, useState } from 'react'
 import SectionHeaderTexts from './SectionHeaderTexts'
 
 export default function FaqSection() {
+    const answerRef = useRef<HTMLDivElement>(null);
     const [faqs, setFaqs] = useState<
         { title: string; description: string; selected: boolean }[]
     >([
@@ -49,23 +50,37 @@ export default function FaqSection() {
             selected: false,
         },
     ]);
+
+    const selectFaq = (index: number) => {
+        setFaqs(prev => prev.map((prevItem, prevIndex) => ({
+            ...prevItem,
+            selected: prevIndex === index,
+        })));
+
+        // On small screens the answer panel is below the question list.
+        // Wait for the selected answer to render before scrolling to it.
+        if (window.matchMedia('(max-width: 767px)').matches) {
+            requestAnimationFrame(() => {
+                answerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+    };
+
     return (
         <div>
             <SectionHeaderTexts paragraph='FAQs' heading='Common Questions' reverse />
 
 
-            <div className='grid grid-cols-2 gap-10 my-14'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 my-14'>
                 <div className='h-140 bg-[#B69B8C] rounded-[50px] p-6 overflow-auto scroll-hide'>
                     {
-                        faqs.map((item, index) => <div onClick={() => {
-                            setFaqs(prev => prev.map((prevItem, prevIndex) => ({ ...prevItem, selected: prevIndex === index ? true : false })))
-                        }} key={index} className={`mb-6 flex items-center py-4 px-5 text-sm rounded-full ${item.selected ? "bg-[#FBE2BA]" : "bg-[#FFFFFF4D]"} cursor-pointer`}>
+                        faqs.map((item, index) => <div onClick={() => selectFaq(index)} key={index} className={`mb-6 flex items-center py-4 px-5 text-sm rounded-full ${item.selected ? "bg-[#FBE2BA]" : "bg-[#FFFFFF4D]"} cursor-pointer`}>
                             <p>{item.title}</p>
                         </div>)
                     }
                 </div>
 
-                <div className=' bg-[#1893A6] rounded-[50px] p-10 flex justify-center  flex-col text-left text-white gap-3 overflow-auto scroll-hide'>
+                <div ref={answerRef} className='scroll-mt-24 bg-[#1893A6] rounded-[50px] p-10 flex justify-center flex-col text-left text-white gap-3 overflow-auto scroll-hide'>
                     <h1 className='text-4xl font-bold mb-3'>
                         {faqs.find(item => item.selected)?.title}
                     </h1>
