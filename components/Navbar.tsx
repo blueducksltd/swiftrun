@@ -96,7 +96,7 @@ export default function Navbar() {
                   onClick={() => {
                     if (!link.label.toLowerCase().includes("download app")) {
                       router.push(link.href)
-                    }else{
+                    } else {
                       setShowModal(true);
                     }
                   }}
@@ -104,7 +104,7 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   className="group flex items-center gap-4 p-3 text-sm text-gray-800 bg-white rounded-full    transition-all duration-200 
-                shadow-[0_4px_60px_rgba(0,0,0,0.2)]"
+                shadow-[0_4px_60px_rgba(0,0,0,0.2)] cursor-pointer"
                 >
                   <span>{link.label}</span>
                   <div className="relative w-4 h-4 overflow-hidden">
@@ -184,8 +184,8 @@ export default function Navbar() {
             <button
               onClick={() => setAppUser("users")}
               className={`${appUser === "users"
-                  ? "bg-cloudmist text-[#066AC0]"
-                  : "text-cloudmist"
+                ? "bg-cloudmist text-[#066AC0]"
+                : "text-cloudmist"
                 } px-10 py-3 rounded-full cursor-pointer`}
             >
               Customer
@@ -193,8 +193,8 @@ export default function Navbar() {
             <button
               onClick={() => setAppUser("drivers")}
               className={`${appUser === "drivers"
-                  ? "bg-cloudmist text-[#066AC0]"
-                  : "text-cloudmist"
+                ? "bg-cloudmist text-[#066AC0]"
+                : "text-cloudmist"
                 } px-10 py-3 rounded-full cursor-pointer`}
             >
               Driver&apos;s App
