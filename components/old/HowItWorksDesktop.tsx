@@ -1,8 +1,8 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Slides } from "@/app/how-it-works/page";
 import Image from "next/image";
+import { Slides } from "@/app/old/how-it-works/page";
 export default function HowItWorksDesktop({ sliders }: { sliders: Slides }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
