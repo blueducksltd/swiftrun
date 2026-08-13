@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import {  Bricolage_Grotesque, Sora } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { Onest, Bricolage_Grotesque } from "next/font/google";
+import "../globals.css";
+import Navbar from "@/components/old/Navbar";
+import Footer from "@/components/old/Footer";
+
 import "swiper/css";
 import "swiper/css/pagination";
-import Footer from "@/components/Footer";
 
-const sora = Sora({
+const onest = Onest({
   subsets: ["latin"],
   variable: "--font-primary",
-
 });
 const fontHeading = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-heading",
 });
-
-
-
 export const metadata: Metadata = {
   title: {
     default: "HI",
@@ -140,9 +137,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sora.variable} ${fontHeading.variable}`}>
-      <body className={`  ${sora.className} antialiased`}>
-        <div className="min-h-screen bg-white ">
+    <html lang="en">
+      <body className={` ${fontHeading.className} antialiased`}>
+        <div className="min-h-screen bg-white">
           <Navbar />
           {children}
           <Footer />

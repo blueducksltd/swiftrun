@@ -1,49 +1,42 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import logo from "@/public/logo.png";
-import logosvg from "@/public/logosvg.svg";
-import qrcode from "@/public/qr-code.svg";
-import Link from "next/link";
-import { FaChevronDown } from "react-icons/fa6";
-import { usePathname, useRouter } from "next/navigation";
-import Modal from "./modal";
-import { FiX } from "react-icons/fi";
+"use client"
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { BiCaretDown } from 'react-icons/bi'
+import { BsArrowRight } from 'react-icons/bs';
+import Modal from './old/modal';
+import { FiX } from 'react-icons/fi';
 
 export default function Navbar() {
-  const links: { text: string; href: string }[] = [
-    {
-      text: "Home",
-      href: "/",
-    },
-    {
-      text: "Why Choose Us",
-      href: "/why-choose-us",
-    },
-    {
-      text: "How it works",
-      href: "/how-it-works",
-    },
-    {
-      text: "Become a rider",
-      href: "/download-the-app/rider",
-    },
-    {
-      text: "Download  App",
-      href: "/download-the-app/user",
-    },
+  const links: { href: string; label: string }[] = [{
+    href: '/about',
+    label: 'Download app',
+  }, {
+    href: '/about',
+    label: 'About us',
+  },
+  {
+    href: '/courier',
+    label: 'Courier',
+  },
+  {
+    href: '/business',
+    label: 'Business',
+  },
+  {
+    href: '/support',
+    label: 'Support',
+  },
+  {
+    href: '/news',
+    label: 'News/blog',
+  },
 
-    {
-      text: "Contact us",
-      href: "/contact-us",
-    },
-    {
-      text: "FAQs",
-      href: "/faqs",
-    },
   ];
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [appUser, setAppUser] = useState<string>("users");
   const [origin, setOrigin] = useState<string>("");
@@ -57,137 +50,94 @@ export default function Navbar() {
   useEffect(() => {
     (() => {
       setShowDropdown(false);
-      setShowMobileNav(false);
     })();
   }, [pathname]);
 
-  const qrCodeLink = `${origin}/download-the-app/${
-    appUser === "users" ? "user" : "driver"
-  }`;
+  const qrCodeLink = `${origin}/download-the-app/${appUser === "users" ? "user" : "driver"
+    }`;
   const qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
     qrCodeLink
   )}`;
-
+  useEffect(() => {
+    setShowDropdown(false);
+  }, [pathname])
   return (
-    <>
-      {/* <div className="fixed h-screen w-full left-0 top-0  bg-black/5 z-10"></div> */}
-      <div
-        className="md:h-[12vh] h-[70px]"
-        onMouseLeave={() => setShowDropdown(false)}
-      >
-        <nav className="flex justify-between px-6  md:px-20 py-5 bg-headerColor items-center fixed w-full text-black z-50">
-          <Link href={"/"}>
-            <Image
-              src={"/logo.svg"}
-              height={100}
-              width={100}
-              alt="Swiftrun Logo"
-            />
-          </Link>
+    <nav className='  py-4 px-10 md:px-30  text-black fixed w-full z-50 ]'>
+      <div className="flex justify-between items-center rounded-full bg-white/10 backdrop-blur-[1px] border border-white/20  ring-1 ring-white/10">
+        <Link href='/' className="flex items-center gap-3 px-5 py-3 text-sm font-medium bg-white rounded-full  active:scale-[0.98] transition-all duration-300 cursor-pointer">
+          <Image src="/footerLogo.svg" alt="SwiftRun Logo" width={100} height={50} />
+        </Link>
 
-          <div className="relative">
-            <span
-              className="flex items-center gap-2 cursor-pointer font-semibold w-[150px]  justify-center md:w-[200px]"
-              onClick={() => setShowDropdown(true)}
-            >
-              <p>{links.find((item) => item.href == pathname)?.text}</p>
-              <FaChevronDown size={12} />
-            </span>
-            <div
-              className={`absolute bg-white px-5  w-[200px] md:w-[300px]  overflow-hidden -left-14  md:-left-[50%]  rounded-2xl grid gap-3 top-[0%] ${
-                showDropdown
-                  ? "  py-5 shadow-lg  md:-translate-y-2 duration-200 "
-                  : "h-0 translate-y-[100px] duration-100"
-              }`}
-              // onMouseLeave={() => setShowDropdown(false)}
-            >
-              {links.map(
-                (item, index) =>
-                  pathname != item.href && (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      className="outline outline-black/10 flex items-center  p-2 text-sm rounded-lg"
-                    >
-                      {item.text}
-                    </Link>
-                  )
-              )}
-            </div>
-          </div>
-
+        <div className="relative inline-block">
+          {/* Trigger Button */}
           <button
-            type="button"
-            onClick={() => setShowModal(true)}
-            className="bg-babyblue py-2 px-5 text-blue text-sm rounded-lg cursor-pointer hidden md:block"
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="flex items-center gap-3 px-5 py-3 text-sm font-medium bg-white rounded-full active:scale-[0.98] transition-all duration-300 cursor-pointer"
           >
-            Download the App
+            <Image src="/icon.svg" alt="SwiftRun" width={15} height={20} />
+            <span>Download</span>
+            <BiCaretDown
+              size={14}
+              className={`transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`}
+            />
           </button>
-        </nav>
 
-        {/* <nav
-          className={` md:hidden justify-between px-5 duration-300 sticky top-0  z-50 bg-headerColor backdrop-blur-sm shadow-sm shadow-black/10 py-5`}
-        >
-          <div className="flex justify-between w-full items-center ">
-            <Link href={"/"}>
-              <Image src={logo} height={100} width={100} alt="Swiftrun Logo" />
-            </Link>
-            <div
-              className="flex flex-col gap-2 "
-              onClick={() => setShowMobileNav(!showMobileNav)}
-            >
-              <span
-                className={`w-8 h-[1.5px] duration-500 bg-blue ${
-                  showMobileNav ? "rotate-45" : ""
-                }`}
-              ></span>
-              <span
-                className={`w-8 h-[1.5px] bg-blue ${
-                  showMobileNav ? "hidden" : ""
-                }`}
-              ></span>
-              <span
-                className={`w-8 h-[1.5px] duration-500 bg-blue relative ${
-                  showMobileNav ? "-rotate-45 -top-2" : ""
-                }`}
-              ></span>
+          {/* Dropdown */}
+          <div
+            className={`absolute top-full left-1/2 -translate-x-1/2 mt-10 w-40 origin-top transition-all duration-300 ${showDropdown
+              ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
+              : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+              }`}
+          >
+            <div className="flex flex-col gap-2">
+              {links.map((link, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    if (!link.label.toLowerCase().includes("download app")) {
+                      router.push(link.href)
+                    } else {
+                      setShowModal(true);
+                    }
+                  }}
+                  // href={link.href}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="group flex items-center gap-4 p-3 text-sm text-gray-800 bg-white rounded-full    transition-all duration-200 
+                shadow-[0_4px_60px_rgba(0,0,0,0.2)] cursor-pointer"
+                >
+                  <span>{link.label}</span>
+                  <div className="relative w-4 h-4 overflow-hidden">
+                    <BsArrowRight
+                      className={`absolute inset-0 transition-transform duration-300 ${hoveredIndex === index ? 'translate-x-0' : '-translate-x-full'
+                        }`}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div
-            className={`${
-              showMobileNav
-                ? "  h-[330px] border-black/20 py-5 mt-10"
-                : " h-0 overflow-hidden"
-            } duration-300 grid gap-5 `}
-          >
-            {links.map((link, index) => (
-              <Link href={link.href} key={index} className="text-black">
-                {link.text}
-              </Link>
-            ))}
-          </div>
-        </nav> */}
+        </div>
       </div>
 
-      {/* Modal for download */}
       <Modal isOpen={showModal} useDefaultWidth>
-        <section className="flex flex-col gap-10">
-          <section className="flex flex-col justify-center items-center">
-            <div className={`relative w-full flex justify-center items-center`}>
+        <section className="flex flex-col gap-10 py-5">
+          <section className="flex flex-col justify-between items-center">
+            <div className={`relative w-full flex justify-between items-center`}>
               <Image
-                src={logosvg}
-                height={190}
-                width={190}
+                src={"/modal_logo.svg"}
+                height={150}
+                width={150}
                 alt="Swiftrun Logo"
               />
               <span
-                className="absolute right-2 border w-6 h-6 flex justify-center items-center text-sm text-red-900 rounded-full cursor-pointer"
+                className="absolute right-2 bg-[#F82525] text-white outline-10 outline-[#F825250D]  flex justify-center items-center text-sm  rounded-full cursor-pointer p-2"
                 onClick={() => setShowModal(false)}
               >
-                <FiX size={15} />
+                <FiX size={20} />
               </span>
             </div>
-            <hr className="w-full text-gray-300 my-3" />
+            <hr className="w-full text-gray-300 my-6" />
           </section>
           <p className="text-center font-bold text-xl">
             Point your Phone camera at the QR code to download
@@ -233,27 +183,25 @@ export default function Navbar() {
           <div className="bg-[#066AC0] flex justify-center items-center w-full p-3 rounded-full space-x-3 text-sm">
             <button
               onClick={() => setAppUser("users")}
-              className={`${
-                appUser === "users"
-                  ? "bg-cloudmist text-[#066AC0]"
-                  : "text-cloudmist"
-              } px-10 py-3 rounded-full cursor-pointer`}
+              className={`${appUser === "users"
+                ? "bg-cloudmist text-[#066AC0]"
+                : "text-cloudmist"
+                } px-10 py-3 rounded-full cursor-pointer`}
             >
-              User&apos;s App
+              Customer
             </button>
             <button
               onClick={() => setAppUser("drivers")}
-              className={`${
-                appUser === "drivers"
-                  ? "bg-cloudmist text-[#066AC0]"
-                  : "text-cloudmist"
-              } px-10 py-3 rounded-full cursor-pointer`}
+              className={`${appUser === "drivers"
+                ? "bg-cloudmist text-[#066AC0]"
+                : "text-cloudmist"
+                } px-10 py-3 rounded-full cursor-pointer`}
             >
               Driver&apos;s App
             </button>
           </div>
         </section>
       </Modal>
-    </>
-  );
+    </nav>
+  )
 }
