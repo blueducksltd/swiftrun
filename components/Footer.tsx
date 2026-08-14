@@ -114,7 +114,7 @@ export default function Footer() {
         <div className='flex md:items-center gap-3 flex-col md:flex-row flex-wrap text-sm text-[#F6DBCC] w-full md:w-fit'>
           <Link href={"/privacy-policy"} className='underline'>Privacy</Link>
           <Link href={"/terms-and-conditions"} className='underline'>Terms and Condition</Link>
-          <Link href={"/"} className='underline'>Security</Link>
+          <Link href={"/security"} className='underline'>Security</Link>
           <Link href={"/"} className='underline'>&copy; SwiftRun 2026</Link>
         </div>
 

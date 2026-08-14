@@ -4,48 +4,57 @@ import { number } from "framer-motion";
 import { useState } from "react";
 
 type TabType = "customer" | "courier" | "business";
+type ListType = "paragraph" | "list";
 const tabs: TabType[] = ["customer", "courier", "business"];
+
 const tabContent: {
-    customer: { heading: string; paragraphs: string[] }[];
-    courier: { heading: string; paragraphs: string[] }[];
-    business: { heading: string; paragraphs: string[] }[];
+    customer: { heading: string; lists: string[]; listType: ListType }[];
+    courier: { heading: string; lists: string[]; listType: ListType }[];
+    business: { heading: string; lists: string[]; listType: ListType }[];
 } = {
     customer: [
         {
             heading: "Tell us what you're sending",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         },
 
         {
             heading: "Job Description",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "list"
         }
     ],
     courier: [
         {
             heading: "Tell us for courier",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         },
 
         {
             heading: "Job Description",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         }
     ],
     business: [
         {
             heading: "Tell us what you're sending, Business",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         },
 
-         {
+        {
             heading: "Job Description",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package .", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package .", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         },
 
-         {
+        {
             heading: "Job Description",
-            paragraphs: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."]
+            lists: ["Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package. Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.", "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package . Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package ."],
+            listType: "paragraph"
         }
     ]
 }
@@ -68,7 +77,13 @@ export default function TermsandConditionsComp() {
                 {tabContent[activeTab].map((item, index) => <div key={index} className="grid gap-4 mb-14">
                     <h1 className="font-bold text-xl">{item.heading}</h1>
                     {
-                        item.paragraphs.map((para, paraIndex) => <p className="text-sm" key={paraIndex}>{para}</p>)
+                        item.lists.map((para, paraIndex) => item.listType === "paragraph" ?  <p className="text-sm" key={paraIndex}>{para}</p> : <div key={paraIndex} className="flex  gap-3 w-full">
+                            <div className="w-2 h-2 translate-y-3 rounded-full bg-[#066AC0] outline outline-[#066AC0] outline-offset-2"></div>
+
+                            <div className="w-[90%]">
+                                <p>{para}</p>
+                            </div>
+                        </div>)
                     }
                 </div>)}
             </div>
