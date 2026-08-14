@@ -7,14 +7,14 @@ export default function SectionHeader({ title, description, image = "/newsBanner
             <Image alt='' src={image} fill className='object-cover' />
 
             <div className='absolute bg-black/30 inset-0 w-full h-full  flex items-center justify-center flex-col text-white gap-4 px-10'>
-                {!isLeft ? <>
+                {!isLeft ? <div className='w-full md:w-[50%] grid gap-2'>
                     <h1 className="font-bold text-4xl text-center">{title}</h1>
                     <p className='text-center'>
                         {description}
                     </p>
                     {children}
-                </> :
-                    <div className='grid gap-2'>
+                </div> :
+                    <div className='grid gap-2 w-full md:w-[50%]' >
 
                         <h1 className="font-bold text-4xl ">{title}</h1>
                         <p>

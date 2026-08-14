@@ -1,6 +1,7 @@
 import { careers } from "@/app/util/data";
 import AnimationSection from "@/components/AnimationSection";
 import BuiltAroundYou from "@/components/BuiltAroundYou";
+import GetSwiftRunFooter from "@/components/GetSwiftRunFooter";
 import SectionHeader from "@/components/SectionHeader";
 import SectionHeaderTexts from "@/components/SectionHeaderTexts";
 import { Metadata } from "next"
@@ -74,15 +75,7 @@ export default async function page({ params }: Props) {
 
                 <BuiltAroundYou />
 
-                <AnimationSection animation='slideUp' amount={0.4}>
-                    <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
-
-                    <div className='flex justify-center mt-6 px-4 sm:px-0'>
-                        <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary font-medium">
-                            Download the App
-                        </Link>
-                    </div>
-                </AnimationSection>
+               <GetSwiftRunFooter/>
             </div>
 
 
