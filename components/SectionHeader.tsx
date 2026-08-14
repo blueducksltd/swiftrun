@@ -14,7 +14,7 @@ export default function SectionHeader({ title, description, image = "/newsBanner
                     </p>
                     {children}
                 </div> :
-                    <div className='grid gap-2 w-full md:w-[50%]' >
+                    <div className=' gap-2 w-full md:w-[50%] flex flex-col justify-center items-center' >
 
                         <h1 className="font-bold text-4xl ">{title}</h1>
                         <p>

@@ -2,10 +2,10 @@ import React from 'react'
 import AnimationSection from './AnimationSection'
 import BoldAndNormalTextComp from './BoldAndNormalTextComp'
 
-export default function SkyBlueBanner({ bold, normal, slideLeftHeading, slideLeftDescription, slideRightChildren }: { bold: string; normal: string; slideLeftHeading: string; slideLeftDescription: string; slideRightChildren: React.ReactNode }) {
+export default function SkyBlueBanner({ bold, normal, slideLeftHeading, slideLeftDescription, slideRightChildren, reverse = false }: { bold: string; normal: string; slideLeftHeading: string; slideLeftDescription: string; slideRightChildren: React.ReactNode, reverse?: boolean }) {
     return (
         <div className="bg-[#DDEEFF] py-10 px-10 md:px-40 grid gap-10">
-            <div className="flex items-center justify-center">
+            <div className={`flex items-center justify-center pt-10 ${reverse ? "order-1" : ""}`}>
                 <BoldAndNormalTextComp bold={bold} normal={normal} />
 
             </div>
