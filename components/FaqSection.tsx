@@ -1,55 +1,49 @@
 "use client";
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SectionHeaderTexts from './SectionHeaderTexts'
+const defaultFAQs = [
+    {
+        title: "How do I become a rider?",
+        description:
+            "Joining SwiftRun as a rider is simple. Sign up through our rider application process, submit the required documents for verification, and once approved, you can start accepting delivery requests and earning.",
+    },
+    {
+        title: "How do I get my business on SwiftRun?",
+        description:
+            "Register your business with SwiftRun by providing your business details and completing our onboarding process. Once approved, your store will be available for customers to discover and order from.",
+    },
+    {
+        title: "How much does delivery cost?",
+        description:
+            "Delivery fees vary depending on factors such as distance, package size, and delivery location. You'll always see the exact delivery cost before confirming your order.",
+    },
+    {
+        title: "Which areas does SwiftRun currently serve?",
+        description:
+            "SwiftRun operates in selected cities and continues to expand its coverage. Enter your pickup or delivery location in the app to check if your area is currently supported.",
+    },
+    {
+        title: "What services does SwiftRun offer?",
+        description:
+            "SwiftRun provides on-demand package delivery, food and grocery delivery, business logistics, and local courier services designed for individuals and businesses.",
+    },
+    {
+        title: "What happens if the recipient isn't available?",
+        description:
+            "If the recipient can't be reached, the rider will attempt to contact them. If delivery still isn't possible, the order may be returned to the sender or rescheduled based on SwiftRun's delivery policy.",
+    },
+    {
+        title: "Which stores can I order from?",
+        description:
+            "You can order from a growing network of restaurants, supermarkets, pharmacies, and local businesses partnered with SwiftRun. Available stores are displayed based on your location."
 
-export default function FaqSection() {
+    },
+];
+export default function FaqSection({ heading, paragraph, customFaqs }: { heading?: string; paragraph?: string, customFaqs?: { title: string; description: string; }[] }) {
     const answerRef = useRef<HTMLDivElement>(null);
     const [faqs, setFaqs] = useState<
         { title: string; description: string; selected: boolean }[]
-    >([
-        {
-            title: "How do I become a rider?",
-            description:
-                "Joining SwiftRun as a rider is simple. Sign up through our rider application process, submit the required documents for verification, and once approved, you can start accepting delivery requests and earning.",
-            selected: true,
-        },
-        {
-            title: "How do I get my business on SwiftRun?",
-            description:
-                "Register your business with SwiftRun by providing your business details and completing our onboarding process. Once approved, your store will be available for customers to discover and order from.",
-            selected: false,
-        },
-        {
-            title: "How much does delivery cost?",
-            description:
-                "Delivery fees vary depending on factors such as distance, package size, and delivery location. You'll always see the exact delivery cost before confirming your order.",
-            selected: false,
-        },
-        {
-            title: "Which areas does SwiftRun currently serve?",
-            description:
-                "SwiftRun operates in selected cities and continues to expand its coverage. Enter your pickup or delivery location in the app to check if your area is currently supported.",
-            selected: false,
-        },
-        {
-            title: "What services does SwiftRun offer?",
-            description:
-                "SwiftRun provides on-demand package delivery, food and grocery delivery, business logistics, and local courier services designed for individuals and businesses.",
-            selected: false,
-        },
-        {
-            title: "What happens if the recipient isn't available?",
-            description:
-                "If the recipient can't be reached, the rider will attempt to contact them. If delivery still isn't possible, the order may be returned to the sender or rescheduled based on SwiftRun's delivery policy.",
-            selected: false,
-        },
-        {
-            title: "Which stores can I order from?",
-            description:
-                "You can order from a growing network of restaurants, supermarkets, pharmacies, and local businesses partnered with SwiftRun. Available stores are displayed based on your location.",
-            selected: false,
-        },
-    ]);
+    >([]);
 
     const selectFaq = (index: number) => {
         setFaqs(prev => prev.map((prevItem, prevIndex) => ({
@@ -66,9 +60,15 @@ export default function FaqSection() {
         }
     };
 
+    useEffect(() => {
+        const selectedFaqs = customFaqs ?? defaultFAQs;
+
+        setFaqs(selectedFaqs.map((item, index) => ({ ...item, selected: index === 0 ? true : false })))
+    }, [])
+
     return (
         <div>
-            <SectionHeaderTexts paragraph='FAQs' heading='Common Questions' reverse />
+            <SectionHeaderTexts paragraph={paragraph ?? 'FAQs'} heading={heading ?? 'Common Questions'} reverse />
 
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 my-14'>

@@ -25,7 +25,7 @@ export default function Navbar() {
     label: 'Business',
   },
   {
-    href: '/support',
+    href: '/contact-us',
     label: 'Support',
   },
   {

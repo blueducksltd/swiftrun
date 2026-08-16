@@ -37,7 +37,7 @@ export default function Footer() {
       category: "Quick Links",
       links: [{
         label: "Contact Us",
-        href: "/support"
+        href: "/contact-us"
       }, {
         label: "How to use",
         href: "/customer"
@@ -111,10 +111,10 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className='flex md:items-center gap-3 flex-col flex-wrap text-sm text-[#F6DBCC] w-full md:w-fit'>
+        <div className='flex md:items-center gap-3 flex-col md:flex-row flex-wrap text-sm text-[#F6DBCC] w-full md:w-fit'>
           <Link href={"/privacy-policy"} className='underline'>Privacy</Link>
           <Link href={"/terms-and-conditions"} className='underline'>Terms and Condition</Link>
-          <Link href={"/"} className='underline'>Security</Link>
+          <Link href={"/security"} className='underline'>Security</Link>
           <Link href={"/"} className='underline'>&copy; SwiftRun 2026</Link>
         </div>
 
