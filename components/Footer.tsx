@@ -37,7 +37,7 @@ export default function Footer() {
       category: "Quick Links",
       links: [{
         label: "Contact Us",
-        href: "/support"
+        href: "/contact-us"
       }, {
         label: "How to use",
         href: "/customer"
