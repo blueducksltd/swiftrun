@@ -100,7 +100,7 @@ export default function Navbar() {
                       setShowModal(true);
                     }
                   }}
-                  // href={link.href}
+
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   className="group flex items-center gap-4 p-3 text-sm text-gray-800 bg-white rounded-full    transition-all duration-200 

@@ -1,3 +1,4 @@
+import { questionsAboutRiders } from "@/app/util/data"
 import AnimationSection from "@/components/AnimationSection"
 import BoldAndNormalTextComp from "@/components/BoldAndNormalTextComp"
 import BuiltAroundYou from "@/components/BuiltAroundYou"
@@ -41,7 +42,31 @@ const pageType = {
         icon: "/instantdelivery.svg",
         title: "Instant Delivery",
         description: "Courier takes only your package and deliver instantly",
-        data,
+        data: [
+            {
+                title: "Set Your Route",
+                description: "Enter your pickup and drop-off locations,  choose the vehicle that best suits your delivery. We'll take care of the rest.",
+                image: "/set_your_route.png"
+            },
+
+            {
+                title: "Add Delivery Details",
+                description: "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider identify the package.",
+                image: "/add_delivery_details.png"
+            },
+
+            {
+                title: "Choose Payment Method",
+                description: "Select your preferred payment method before completing your booking. Simple, secure, and hassle free.",
+                image: "/choose_payment_method.png"
+            },
+            {
+                title: "Confirm and Track",
+                description: "Review your details, complete your payment, and we'll instantly assign a nearby rider to pick up and deliver your package.",
+                image: "/confirm_and_track.png"
+            },
+
+        ],
         image: ""
     },
     schedule: {
@@ -49,7 +74,31 @@ const pageType = {
         icon: "/Timelapse.svg",
         title: "Schedule Delivery",
         description: "Book your delivery ahead and we'll handle the rest",
-        data,
+        data: [
+            {
+                title: "Plan Your Delivery",
+                description: "Enter your pickup and drop-off locations, choose your preferred pickup time, and select the right vehicle for your delivery.",
+                image: "/plan_your_delivery.png"
+            },
+
+            {
+                title: "Add Delivery Details",
+                description: "Provide your item details, quantity, recipient information, contact details, and upload a photo to help your rider identify the package.",
+                image: "/add_delivery_details.png"
+            },
+
+            {
+                title: "Choose Your Payment",
+                description: "Select your preferred payment method, and make sure everything looks just the way you want it.",
+                image: "/choose_payment_method.png"
+            },
+            {
+                title: "Confirm and Schedule",
+                description: "Review your booking, complete your payment, and we'll dispatch a rider at your chosen time to pick up and deliver your package.",
+                image: "/confirm_and_schedule.png"
+            },
+
+        ],
         image: ""
     },
     multipoint: {
@@ -100,9 +149,9 @@ export default async function Page({
     return (
         <div className="grid gap-20">
             <div
-                className={`${currentPageType.image ? "h-[60vh]": "h-[80vh]"} relative overflow-hidden bg-linear-to-br ${currentPageType.color.background} gap-7 flex flex-col items-center justify-center text-white rounded-b-[80px] bg-cover bg-center`}
+                className={`${currentPageType.image ? "h-[60vh]" : "h-[80vh]"} relative overflow-hidden bg-linear-to-br ${currentPageType.color.background} gap-7 flex flex-col items-center justify-center text-white rounded-b-[80px] bg-cover bg-center`}
                 style={{
-                    boxShadow: currentPageType.image ?  `0px 10px 40px ${currentPageType.color.shadow}` : "",
+                    boxShadow: currentPageType.image ? `0px 10px 40px ${currentPageType.color.shadow}` : "",
                     backgroundImage: currentPageType.image ? `url(${currentPageType.image})` : undefined,
                 }}
             >
@@ -117,7 +166,7 @@ export default async function Page({
                 </div>
 
                 {
-                    currentPageType.image && <div className="bg-black/30 absolute top-0 left-0 w-full h-full"/>
+                    currentPageType.image && <div className="bg-black/30 absolute top-0 left-0 w-full h-full" />
                 }
             </div>
 
@@ -161,7 +210,7 @@ export default async function Page({
 
                 <BuiltAroundYou />
 
-                <FaqFooter />
+                <FaqFooter customFaqs={questionsAboutRiders}/>
             </div>
 
 

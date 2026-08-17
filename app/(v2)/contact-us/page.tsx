@@ -1,3 +1,4 @@
+import { questionsAboutSupport } from '@/app/util/data'
 import AnimationSection from '@/components/AnimationSection'
 import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp'
 import FaqSection from '@/components/FaqSection'
@@ -101,7 +102,7 @@ export default function SupportPage() {
             </div>
 
             <div className='py-20 px-10 md:px-40'>
-                <FaqSection />
+                <FaqSection customFaqs={questionsAboutSupport}/>
                 <div className='my-30'>
                     <AnimationSection animation='slideUp' amount={0.4}>
                         <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />

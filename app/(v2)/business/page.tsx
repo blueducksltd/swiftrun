@@ -1,3 +1,4 @@
+import { questionsAboutBusiness } from '@/app/util/data'
 import AnimationSection from '@/components/AnimationSection'
 import BuiltAroundYou from '@/components/BuiltAroundYou'
 import CustomerSupportBanner from '@/components/CustomerSupportBanner'
@@ -11,35 +12,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 export const metadata: Metadata = { title: "Business" }
 const features: { title: string; description: string; background: string; color: string; image: string; }[] = [
-    { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/priceless.png" },
+    { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/customer_places_order.png" },
 
-    { title: "Order Confirmation ", description: "The store confirms the order, makes any needed substitution, and prepare everything for a smooth pickup.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/car2.jpg" },
+    { title: "Order Confirmation ", description: "The store confirms the order, makes any needed substitution, and prepare everything for a smooth pickup.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/order_confirmation.png" },
 
-    { title: "SwiftRun assigns rider", description: "SwiftRun matches the order with a trusted rider, handles dispatch, and keeps everyone updated with live tracking.", background: "bg-[#23874433]", color: "text-[#238744]", image: "/priceless.png" },
+    { title: "SwiftRun assigns rider", description: "SwiftRun matches the order with a trusted rider, handles dispatch, and keeps everyone updated with live tracking.", background: "bg-[#23874433]", color: "text-[#238744]", image: "/swiftrun_assigns_riders.png" },
 
-    { title: "Customer receives order ", description: "Customers follow every step of their order with live tracking until it arrives safely at their doorstep.", background: "bg-[#ED646A33]", color: "text-[#ED646A]", image: "/car2.jpg" }
+    { title: "Customer receives order ", description: "Customers follow every step of their order with live tracking until it arrives safely at their doorstep.", background: "bg-[#ED646A33]", color: "text-[#ED646A]", image: "/customer_receives_order.png" }
 ];
 
-const everythingyouneed: { title: string; description: string; image: string; color: { background: string; shadow: string; } }[] = [
-    {
-        title: "Instant Delivery",
-        description: "Rider picks up your package immediately after booking.",
-        color: { background: "from-[#46A0FF] to-[#56B1FF]", shadow: "shadow-[0_10px_30px_#5EAEFE80]" },
-        image: "/instantdelivery.svg"
-    },
-    {
-        title: "Schedule Delivery",
-        description: "Life gets busy. Plan ahead and Schedule deliveries your way.",
-        color: { background: "from-[#AA53F3] to-[#AA53F3]", shadow: "shadow-[0_20px_50px_#9359F580]" },
-        image: "/Timelapse.svg"
-    },
-    {
-        title: "Multi-Point Delivery",
-        description: "Save time by delivering to multiple locations together.",
-        color: { background: "from-[#27D288] to-[#20CDD9]", shadow: "shadow-[0_10px_30px_#11DEDF66]" },
-        image: "/streamline.svg"
-    }
-];
 
 
 export default function BusinessPage() {
@@ -85,23 +66,25 @@ export default function BusinessPage() {
 
                     <div className='bg-linear-to-r text-black bg-white p-8 md:p-10 rounded-[40px] md:rounded-[60px] flex justify-center flex-col shadow-[0px_13px_70px_rgba(0,0,0,.05)] gap-4'>
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Registration/Onboarding</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Product/Service listing</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Store management tools</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
-                            <p className='text-xl md:text-2xl font-bold'>0000%</p>
+
+                            <p className="text-sm bg-linear-to-r from-[#8B5CF6] to-[#AA53F3] bg-clip-text text-transparent">
+                                Meet our requirements, and you're good to go!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +129,7 @@ export default function BusinessPage() {
                     <DeliveryTypes />
                 </div>
 
-                <FaqFooter />
+                <FaqFooter customFaqs={questionsAboutBusiness}/>
             </div>
         </div>
     )

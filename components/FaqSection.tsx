@@ -3,14 +3,24 @@ import { useEffect, useRef, useState } from 'react'
 import SectionHeaderTexts from './SectionHeaderTexts'
 const defaultFAQs = [
     {
-        title: "How do I become a rider?",
+        title: "Alergies?",
         description:
-            "Joining SwiftRun as a rider is simple. Sign up through our rider application process, submit the required documents for verification, and once approved, you can start accepting delivery requests and earning.",
+            "If you have an  allergy, please let us know when placing your order and check the product details carefully. If you’re unsure about an item, our support team is happy to help.",
     },
     {
-        title: "How do I get my business on SwiftRun?",
+        title: "How do i know my package is safe during delivery?",
         description:
-            "Register your business with SwiftRun by providing your business details and completing our onboarding process. Once approved, your store will be available for customers to discover and order from.",
+            "Every delivery is handled by trusted, verified riders and backed by real-time tracking, so you can follow every step and feel confident your package is in safe hands.",
+    },
+    {
+        title: "How do i get my business on SwiftRun?",
+        description:
+            "Ready to get your business moving? Sign up for SwiftRun Business, provide your business details, and complete the setup. We’ll help you get your store ready to start reaching customers!",
+    },
+    {
+        title: "Some items in my order are missing or wrong!?",
+        description:
+            "Oops, that’s not how it should go! Quickly Reach out to our support team and we’ll help look into the order and get things sorted for you.",
     },
     {
         title: "How much does delivery cost?",
@@ -20,22 +30,19 @@ const defaultFAQs = [
     {
         title: "Which areas does SwiftRun currently serve?",
         description:
-            "SwiftRun operates in selected cities and continues to expand its coverage. Enter your pickup or delivery location in the app to check if your area is currently supported.",
+            "Right now, SwiftRun covers the entire Enugu Town metropolis, so wherever you are within the city, we’re ready to get things moving!",
     },
     {
         title: "What services does SwiftRun offer?",
         description:
-            "SwiftRun provides on-demand package delivery, food and grocery delivery, business logistics, and local courier services designed for individuals and businesses.",
+            "SwiftRun provides on-demand package delivery, food and grocery delivery, business logistics, and local courier services designed for individuals and businesses."
+
     },
+
     {
         title: "What happens if the recipient isn't available?",
         description:
-            "If the recipient can't be reached, the rider will attempt to contact them. If delivery still isn't possible, the order may be returned to the sender or rescheduled based on SwiftRun's delivery policy.",
-    },
-    {
-        title: "Which stores can I order from?",
-        description:
-            "You can order from a growing network of restaurants, supermarkets, pharmacies, and local businesses partnered with SwiftRun. Available stores are displayed based on your location."
+            "SwiftRun provides on-demand package delivery, food and grocery delivery, business logistics, and local courier services designed for individuals and businesses."
 
     },
 ];

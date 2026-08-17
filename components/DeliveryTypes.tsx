@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import LearnMore from './LearnMore';
 const everythingyouneed: { title: string; description: string; image: string; url: string; color: { background: string; shadow: string; } }[] = [
     {
         title: "Instant Delivery",
@@ -45,6 +46,9 @@ export default function DeliveryTypes() {
                         <div className="flex flex-col gap-3">
                             <h1 className="text-2xl md:text-4xl font-bold">{item.title}</h1>
                             <p className="text-white/90 text-base md:text-lg leading-relaxed">{item.description}</p>
+                        </div>
+                        <div className='text-[#FFFFFFB2] hover:text-white duration-500'>
+                            {index === 1 && <LearnMore />}
                         </div>
                     </Link>
                 ))

@@ -6,6 +6,8 @@ import HomePageHeader from "@/components/HomePageHeader";
 import HomepageSlider from "@/components/HomepageSlider";
 import { Metadata } from "next";
 import AnimationSection from "@/components/AnimationSection";
+import BoldAndNormalTextComp from "@/components/BoldAndNormalTextComp";
+import LearnMore from "@/components/LearnMore";
 
 export const metadata: Metadata = {
     title: "Home",
@@ -23,29 +25,89 @@ export default function HomePage() {
     }[] = [
             {
                 title: "Restaurant",
-                image: "/instantdelivery.svg",
+                image: "/restuarant.png",
                 description: "Fresh meals delivered from your favorite spots.",
                 color: { background: "from-[#E9AE4E] to-[#E38111]", shadow: "shadow-[#E3811180]" }
             },
             {
-                title: "Pharmacy",
-                image: "/timelapse.svg",
+                title: "Supermarket",
+                image: "/supermarket.png",
                 description: "Medications and health essentials delivered safely.",
                 color: { background: "from-[#AA53F3] to-[#8B5CF6]", shadow: "shadow-[#9359F580]" }
             },
             {
+                title: "Pharmacy",
+                image: "/pharmacy.png",
+                description: "Medications and health essentials delivered safely.",
+                color: { background: "from-[#E8865C] to-[#ED5E5E]", shadow: "shadow-[#ED5E5E80]" }
+            },
+            {
                 title: "Laundry",
-                image: "/streamline.svg",
+                image: "/laundry.png",
                 description: "Deliver to multiple locations seamlessly.",
                 color: { background: "from-[#46A0FF] to-[#56B1FF]", shadow: "shadow-[#5EAEFE80]" }
-            }
+            },
+            {
+                title: "Bakery",
+                image: "/baker.png",
+                description: "Fresh bread, cakes, pastries and small chops.",
+                color: { background: "from-[#B97649] to-[#8C5125]", shadow: "shadow-[#8D522680]" }
+            },
+            {
+                title: "Beauty",
+                image: "/cosmetic.png",
+                description: "Beauty products and personal care essentials.",
+                color: { background: "from-[#FFBDC0] to-[#CE787D]", shadow: "shadow-[#D3808580]" }
+            },
+            {
+                title: "Clothing",
+                image: "/clothing.png",
+                description: "Fashion, footwears and accessories for every style.",
+                color: { background: "from-[#9DBBFA] to-[#4A5CAD]", shadow: "shadow-[#4F62B280]" }
+            },
+            {
+                title: "Foodstuff",
+                image: "/foodstuff.png",
+                description: "Fresh produce, soup ingredient and market ruuuuu.",
+                color: { background: "from-[#9CE890] to-[#237E28]", shadow: "shadow-[#2C863080]" }
+            },
+            {
+                title: "Electronics",
+                image: "/electronics.png",
+                description: "Gadgets, accessories, and tech essentials.",
+                color: { background: "from-[#FAB381] to-[#3C2446]", shadow: "shadow-[#3D254780]" }
+            },
+            {
+                title: "Pet Supplies",
+                image: "/pet.png",
+                description: "Pet food, care and accessories",
+                color: { background: "from-[#E3D149] to-[#BB890E]", shadow: "shadow-[#BA890E80]" }
+            },
+            {
+                title: "Stationery",
+                image: "/stationery.png",
+                description: "Books, school and office supplies",
+                color: { background: "from-[#34B4E5] to-[#1776B8]", shadow: "shadow-[#1878BA80]" }
+            },
+            {
+                title: "Drinks",
+                image: "/drinks.png",
+                description: "Soft drinks, juice, water, wine, alcohol delivered fresh and cold",
+                color: { background: "from-[#F678C0] to-[#AA3784]", shadow: "shadow-[#AB378480]" }
+            },
+            {
+                title: "Home & Kitchen",
+                image: "/kitchen.png",
+                description: "Cookware, homeware and small appliances",
+                color: { background: "from-[#B39E89] to-[#62513F]", shadow: "shadow-[#62514080]" }
+            },
         ];
 
-    const percs: { title: string; description: string; color: { background: string; text: string; } }[] = [
-        { color: { background: "bg-[#FCD39033]", text: "text-[#FFBB4C]" }, description: "Safe deliveries, fair prices, and peace of mind from pickup to your doorstep.", title: "Safe, Affordable Delivery" },
-        { color: { background: "bg-[#7F85F533]", text: "text-[#7F85F5]" }, description: "We’ve got you. We’re always here to help whenever you need us.", title: "24/7 Customer Service" },
-        { color: { background: "bg-[#23874433]", text: "text-[#238744]" }, description: "Every ride and every order starts with trusted drivers and verified stores.", title: "Verified drivers,  Stores" },
-        { color: { background: "bg-[#ED646A33]", text: "text-[#ED646A]" }, description: "Track your order every step of the way, from pickup to delivery.", title: "Real-Time Tracking" }
+    const percs: { title: string; description: string; color: { background: string; text: string; }; image: string; }[] = [
+        { color: { background: "bg-[#FCD39033]", text: "text-[#FFBB4C]" }, description: "Safe deliveries, fair prices, and peace of mind from pickup to your doorstep.", title: "Safe, Affordable Delivery", image: "/shopping_cart.png" },
+        { color: { background: "bg-[#7F85F533]", text: "text-[#7F85F5]" }, description: "We’ve got you. We’re always here to help whenever you need us.", title: "24/7 Customer Service", image: "/customer_service.png" },
+        { color: { background: "bg-[#23874433]", text: "text-[#238744]" }, description: "Every ride and every order starts with trusted drivers and verified stores.", title: "Verified drivers,  Stores", image: "/verified_drivers.png" },
+        { color: { background: "bg-[#ED646A33]", text: "text-[#ED646A]" }, description: "Track your order every step of the way, from pickup to delivery.", title: "Real-Time Tracking", image: "/real_time.png" }
     ]
 
     return (
@@ -56,10 +118,12 @@ export default function HomePage() {
             <AnimationSection animation="fadeIn" amount={0.4}>
 
                 <div className="py-10 px-10 md:px-40 bg-[#DDEEFF]">
-                    <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 mb-10">
-                        <b className="font-bold">Features</b>
-                        <span className="font-primary">How it works</span>
-                    </h1>
+
+                    <div className="flex items-center justify-center mb-6">
+
+                        <BoldAndNormalTextComp bold={"Features"} normal={"How it works"} />
+                    </div>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                         {/* Large horizontal card */}
@@ -136,14 +200,14 @@ export default function HomePage() {
                                 <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
                                 <div className="flex gap-4 flex-wrap">
                                     <AnimationSection animation="fadeIn" amount={0.3}>
-                                        <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
-                                            Download the  app
-                                        </Link>
+                                        <div  className="bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
+                                            <LearnMore text="Download the app"/>
+                                        </div>
                                     </AnimationSection>
 
                                     <AnimationSection animation="slideLeft" amount={0.5}>
-                                        <Link href="/stores" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
-                                            Learn how it works
+                                        <Link href="/delivery/errand" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
+                                            <LearnMore text="Learn how it works"/>
                                         </Link>
                                     </AnimationSection>
                                 </div>
@@ -163,9 +227,8 @@ export default function HomePage() {
                                 <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
                                 <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
                                 <div className=" text-black mt-6">
-                                    <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
-                                        Join Swiftrun
-                                        <BsArrowRight />
+                                    <Link href="/business" className="bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
+                                        <LearnMore text="Join Swiftrun"/>
                                     </Link>
 
 
@@ -175,7 +238,7 @@ export default function HomePage() {
 
                         <div className="md:col-span-2 md:flex justify-end hidden">
                             <AnimationSection animation="slideUp" amount={0.6}>
-                                <Image src={"/House.svg"} alt="" width={300} height={300} />
+                                <Image src={"/store_front.png"} alt="" width={300} height={300} />
                             </AnimationSection>
                         </div>
                     </div>
@@ -183,7 +246,7 @@ export default function HomePage() {
                     <div className="px-5 md:px-40 pt-10 pb-20 grid grid-cols-1 md:grid-cols-2 text-white gap-10">
                         <AnimationSection animation="slideUp" amount={0.6}>
                             <div className="flex flex-col justify-end bg-[#B69B8C] h-[300px] p-10 pb-12 rounded-4xl">
-                                <Image src={"/House.svg"} alt="" width={50} height={50} />
+                                <Image src={"/courier_front.png"} alt="" width={100} height={100} />
                                 <h1 className="text-3xl  font-bold mb-3">Lift Delivery Burden</h1>
                                 <p className="">Spend less time worrying about deliveries and more time delighting your customers.  🚚</p>
                             </div>
@@ -191,7 +254,7 @@ export default function HomePage() {
 
                         <AnimationSection animation="slideRight" amount={0.3}>
                             <div className="flex flex-col justify-end bg-[#1893A6] h-[300px] p-10 pb-12 rounded-4xl">
-                                <Image src={"/House.svg"} alt="" width={50} height={50} />
+                                <Image src={"/pink_front.png"} alt="" width={100} height={100} />
                                 <h1 className="text-3xl  font-bold mb-3">00% Commission Charge</h1>
                                 <p className="">Keep every naira you earn. With zero commission, every sale stays yours. 💰</p>
                             </div>
@@ -247,7 +310,12 @@ export default function HomePage() {
                                 <Image src={"/deliver_more.jpg"} alt="" className="object-cover rounded-[40px]" fill />
                             </div>
                         </div>
-                        <p className="text-center text-xl"><b className="font-heading">Benefits</b> How it works</p>
+
+                <div className="flex items-center justify-center">
+                                            <BoldAndNormalTextComp bold={"Benefits"} normal={"How it works"} />
+
+                </div>
+                        {/* <p className="text-center text-xl"><b className="font-heading"></b> How it works</p> */}
 
                     </div>
 
@@ -256,18 +324,18 @@ export default function HomePage() {
                             <h1 className="text-white font-bold text-[60px] leading-16 mb-4">Your Personal companion</h1>
                             <p className="text-[#FFDEBC] text-xl font-light">Whatever you need to make your day, SwiftRun’s got you. Tap. Order. Chill. 🚀</p>
                         </div>
-                        <Image alt="Personal Companion" src={"/personal_companion.jpg"} className="object-cover md:-rotate-y-180" fill />
+                        <Image alt="Personal Companion" src={"/personal_companion_banner.svg"} className="object-cover " fill />
                     </div>
                     <div className="py-10 px-10 md:px-40 grid grid-cols-1 md:grid-cols-2 gap-7">
                         {
                             percs.map((perc, index) =>
                                 <AnimationSection key={index} animation={(index + 1) % 2 === 0 ? "slideRight" : "slideLeft"} amount={0.5}>
                                     <div key={index} className={`${perc.color.background} h-70 rounded-3xl p-10 flex flex-col justify-end`}>
-                                    <Image src={`/${index === percs.length - 1 ? "real_time.png" : "House.svg"}`} alt="" width={70} height={70} />
+                                        <Image src={perc.image} alt="" width={70} height={70} />
 
-                                    <h1 className={`${perc.color.text} text-2xl font-bold mb-2 mt-4`}>{perc.title}</h1>
-                                    <p className="text-sm">{perc.description}</p>
-                                </div>
+                                        <h1 className={`${perc.color.text} text-2xl font-bold mb-2 mt-4`}>{perc.title}</h1>
+                                        <p className="text-sm">{perc.description}</p>
+                                    </div>
                                 </AnimationSection>
 
                             )
