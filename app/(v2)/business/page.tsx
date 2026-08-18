@@ -1,4 +1,8 @@
+import { questionsAboutBusiness } from '@/app/util/data'
 import AnimationSection from '@/components/AnimationSection'
+import BannerButton from '@/components/BannerButton'
+import BannerButtonsBusinessPage from '@/components/BannerButtonsBusinessPage'
+import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp'
 import BuiltAroundYou from '@/components/BuiltAroundYou'
 import CustomerSupportBanner from '@/components/CustomerSupportBanner'
 import DeliveryTypes from '@/components/DeliveryTypes'
@@ -8,56 +12,32 @@ import HomepageSlider from '@/components/HomepageSlider'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 export const metadata: Metadata = { title: "Business" }
 const features: { title: string; description: string; background: string; color: string; image: string; }[] = [
-    { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/priceless.png" },
+    { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/customer_places_order.png" },
 
-    { title: "Order Confirmation ", description: "The store confirms the order, makes any needed substitution, and prepare everything for a smooth pickup.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/car2.jpg" },
+    { title: "Order Confirmation ", description: "The store confirms the order, makes any needed substitution, and prepare everything for a smooth pickup.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/order_confirmation.png" },
 
-    { title: "SwiftRun assigns rider", description: "SwiftRun matches the order with a trusted rider, handles dispatch, and keeps everyone updated with live tracking.", background: "bg-[#23874433]", color: "text-[#238744]", image: "/priceless.png" },
+    { title: "SwiftRun assigns rider", description: "SwiftRun matches the order with a trusted rider, handles dispatch, and keeps everyone updated with live tracking.", background: "bg-[#23874433]", color: "text-[#238744]", image: "/swiftrun_assigns_riders.png" },
 
-    { title: "Customer receives order ", description: "Customers follow every step of their order with live tracking until it arrives safely at their doorstep.", background: "bg-[#ED646A33]", color: "text-[#ED646A]", image: "/car2.jpg" }
+    { title: "Customer receives order ", description: "Customers follow every step of their order with live tracking until it arrives safely at their doorstep.", background: "bg-[#ED646A33]", color: "text-[#ED646A]", image: "/customer_receives_order.png" }
 ];
 
-const everythingyouneed: { title: string; description: string; image: string; color: { background: string; shadow: string; } }[] = [
-    {
-        title: "Instant Delivery",
-        description: "Rider picks up your package immediately after booking.",
-        color: { background: "from-[#46A0FF] to-[#56B1FF]", shadow: "shadow-[0_10px_30px_#5EAEFE80]" },
-        image: "/instantdelivery.svg"
-    },
-    {
-        title: "Schedule Delivery",
-        description: "Life gets busy. Plan ahead and Schedule deliveries your way.",
-        color: { background: "from-[#AA53F3] to-[#AA53F3]", shadow: "shadow-[0_20px_50px_#9359F580]" },
-        image: "/Timelapse.svg"
-    },
-    {
-        title: "Multi-Point Delivery",
-        description: "Save time by delivering to multiple locations together.",
-        color: { background: "from-[#27D288] to-[#20CDD9]", shadow: "shadow-[0_10px_30px_#11DEDF66]" },
-        image: "/streamline.svg"
-    }
-];
 
 
 export default function BusinessPage() {
     return (
         <div>
+            
             <header className='h-[70vh] flex items-center justify-center relative px-6'>
                 <div className='relative z-20 flex items-center justify-center flex-col text-center'>
                     <h1 className='text-[32px] sm:text-[44px] md:text-[60px] text-white font-bold leading-tight'>SwiftRun Business</h1>
                     <p className='text-[#FFDEBC]'>Everything Delivered</p>
 
                     <div className='my-10 flex items-center gap-4 flex-col sm:flex-row w-full sm:w-auto'>
-                        <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center w-full sm:w-fit py-2 px-14 text-sm rounded-full transition duration-300 font-primary">
-                            Login
-                        </Link>
+                       <BannerButtonsBusinessPage/>
 
-                        <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
-                            Register
-                        </Link>
+
                     </div>
                 </div>
 
@@ -75,7 +55,8 @@ export default function BusinessPage() {
             </AnimationSection>
 
             <div className='bg-[#DDEEFF] py-10 px-6 md:px-30'>
-                <p className="text-center text-xl"><b className="font-heading">Features</b> How it works</p>
+                <BoldAndNormalTextComp bold='Features' normal='How it works' href='#get-started'/>
+                {/* <p className="text-center text-xl"><b className="font-heading">Features</b> How it works</p> */}
 
                 <div className='my-20 grid gap-10'>
                     <div className='bg-linear-to-r text-white from-[#56B1FF] to-[#46A0FF] p-8 md:p-10 rounded-[40px] md:rounded-[60px] flex justify-center flex-col shadow-[0px_0px_30px_#5EAEFE80]'>
@@ -85,30 +66,32 @@ export default function BusinessPage() {
 
                     <div className='bg-linear-to-r text-black bg-white p-8 md:p-10 rounded-[40px] md:rounded-[60px] flex justify-center flex-col shadow-[0px_13px_70px_rgba(0,0,0,.05)] gap-4'>
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Registration/Onboarding</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Product/Service listing</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
+                            <p>Store management tools</p>
                             <p className='text-xl md:text-2xl font-bold'>0000%</p>
                         </div>
 
                         <div className='flex justify-between gap-3'>
-                            <p>Multi-Point Delivery</p>
-                            <p className='text-xl md:text-2xl font-bold'>0000%</p>
+
+                            <p className="text-sm bg-linear-to-r from-[#8B5CF6] to-[#AA53F3] bg-clip-text text-transparent">
+                                Meet our requirements, and you're good to go!
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className='py-10 px-6 md:px-30'>
-                <SectionHeaderTexts paragraph='Get Started' heading='How SwiftRun works' reverse />
+            <div className='py-10 px-6 md:px-30' id='get-started'>
+                <SectionHeaderTexts paragraph='Get Started' heading='How SwiftRun works' reverse  />
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-7 px-0 sm:px-5 md:px-10 py-10 overflow-hidden'>
                     {
@@ -146,7 +129,7 @@ export default function BusinessPage() {
                     <DeliveryTypes />
                 </div>
 
-                <FaqFooter />
+                <FaqFooter customFaqs={questionsAboutBusiness} />
             </div>
         </div>
     )

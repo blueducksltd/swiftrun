@@ -7,12 +7,15 @@ import CustomerSupportBanner from './CustomerSupportBanner';
 import SectionHeaderTexts from './SectionHeaderTexts';
 import FaqSection from './FaqSection';
 import Link from 'next/link';
+import LearnMore from './LearnMore';
+import { questionsAboutUsers } from '@/app/util/data';
 
-const features: { title: string; description: string; background: string; }[] = [
-    { title: "Instant Delivery", description: "Send packages immediately with fast rider dispatch and reliable doorstep delivery across Enugu.", background: "to-[#46A0FF] from-[#56B1FF]" },
-    { title: "Schedule Delivery ", description: "Plan deliveries in advance and choose the perfect pickup and delivery time effortlessly.", background: "from-[#8B5CF6] to-[#AA53F3]" },
+const features: { title: string; description: string; background: string; image: string; href: string;}[] = [
+    { title: "Instant Delivery", description: "Send packages immediately with fast rider dispatch and reliable doorstep delivery across Enugu.", background: "to-[#46A0FF] from-[#56B1FF]", image: "/instant_delivery.png", href: "/delivery/instant" },
+    { title: "Schedule Delivery ", description: "Plan deliveries in advance and choose the perfect pickup and delivery time effortlessly.", background: "from-[#8B5CF6] to-[#AA53F3]" , image: "/scheduled_delivery.png", href: "/delivery/schedule"},
 
-    { title: "Multi-Point Delivery", description: "Deliver to multiple locations in one trip, saving time, money, and unnecessary repeat bookings.", background: "from-[#27D288] to-[#20CDD9]" }
+    { title: "Multi-Point Delivery", description: "Deliver to multiple locations in one trip, saving time, money, and unnecessary repeat bookings.", background: "from-[#27D288] to-[#20CDD9]", image: "/multipoint_delivery.png", href: "/delivery/multipoint" },
+     { title: "Swiftrun Errand ", description: "Shop local stores, buy essentials, and complete everyday errands without leaving your location.", background: "from-[#E9AE4E] to-[#E38111]", image: "/swiftrun_errand_1.png", href: "/delivery/errand" }
 ];
 
 const swiftRunWorks: { title: string; description: string }[] = [
@@ -39,9 +42,7 @@ export default function AboutComp() {
                 <div className='absolute  w-full h-full inset-0'>
                     <Image alt='About Us Gif' fill src={"/aboutGif.gif"} className='object-cover' />
 
-                    <div className='w-full relative h-full bg-black/70'>
-
-                    </div>
+                  
                 </div>
             </header>
 
@@ -70,15 +71,21 @@ export default function AboutComp() {
                         >
                             {
                                 [...features, ...features].map((feature, index) => <SwiperSlide key={index} className='px-2 md:px-10'>
-                                    <Link href={""}>
+                                    <Link href={feature.href} className='group'>
                                         <div className={`h-100  pb-3  flex flex-col justify-between bg-linear-to-br ${feature.background} rounded-[40px] overflow-hidden`}>
                                             <div className='h-[60%] bg-[#D9D9D9] relative'>
-                                                <Image alt='' src={"/priceless.png"} fill className='object-cover' />
+                                                <Image alt='' src={feature.image} fill className='object-cover' />
                                             </div>
                                             <div className='p-7  text-left text-white grid gap-3'>
                                                 <h1 className='text-2xl font-bold'>{feature.title}</h1>
                                                 <p className='text-sm'>{feature.description}</p>
+
+                                                <div className='text-sm'>
+                                                     <LearnMore/>
+                                                </div>
                                             </div>
+
+                                           
                                         </div>
                                     </Link>
                                 </SwiperSlide>)
@@ -90,24 +97,9 @@ export default function AboutComp() {
 
                         <BuiltAroundYou />
 
-                        <div>
-
-                        </div>
+                        
                     </div>
-                    {/* <div className="relative py-10 mt-12 px-10 md:px-20 grid grid-cols-1 md:grid-cols-2 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
-                        <div className=" ">
-                            <AnimationSection animation="slideUp" amount={0.6}>
-                                <Image src={"/House.svg"} alt="" width={300} height={300} />
-                            </AnimationSection>
-                        </div>
-                        <AnimationSection animation="slideRight">
-                            <div className="relative z-10   text-white text-left md:text-right  my-20  items-center">
-                                <h1 className="text-white font-bold text-[70px] leading-16 mb-4">24/7 Customer Support</h1>
-                                <p className="text-[#FFDEBC] text-xl mt-10">Questions? Need a hand? We're here day and night. We even help vendors upload products with ease.🚀</p>
-                            </div>
-                        </AnimationSection>
-
-                    </div> */}
+                  
                     <div className='my-10'>
                         <CustomerSupportBanner />
 
@@ -135,7 +127,7 @@ export default function AboutComp() {
 
                         </div>
 
-                        <FaqSection />
+                        <FaqSection  customFaqs={questionsAboutUsers}/>
                     </div>
 
 

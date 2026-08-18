@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import LearnMore from './LearnMore';
 const everythingyouneed: { title: string; description: string; image: string; url: string; color: { background: string; shadow: string; } }[] = [
     {
         title: "Instant Delivery",
@@ -34,7 +35,7 @@ export default function DeliveryTypes() {
                     <Link
                         href={`/delivery/${item.url}`}
                         key={index}
-                        className={`p-6 md:p-10 bg-linear-to-tr ${item.color.background} ${item.color.shadow} grid rounded-[40px] gap-5 items-center text-white transition-all duration-500 ${index === 1
+                        className={`group p-6 md:p-10 bg-linear-to-tr ${item.color.background} ${item.color.shadow} grid rounded-[40px] gap-5 items-center text-white transition-all duration-500 ${index === 1
                             ? "md:scale-110 md:z-20 md:-translate-y-4"
                             : "md:scale-90 md:z-10"
                             }`}
@@ -45,6 +46,9 @@ export default function DeliveryTypes() {
                         <div className="flex flex-col gap-3">
                             <h1 className="text-2xl md:text-4xl font-bold">{item.title}</h1>
                             <p className="text-white/90 text-base md:text-lg leading-relaxed">{item.description}</p>
+                        </div>
+                        <div className='text-[#FFFFFFB2] hover:text-white duration-500'>
+                            {index === 1 && <LearnMore />}
                         </div>
                     </Link>
                 ))

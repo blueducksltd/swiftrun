@@ -110,23 +110,22 @@ export default function HomePageHeader() {
                     <Link href={"/"}>
                         <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
                             <h1 className="text-sm md:text-base font-semibold">SwiftRun</h1>
-                            <Image alt="" src="/sakat.svg" width={30} height={30} />
+                            <Image alt="" src="/swiftrun_blue.png" width={35} height={35} />
                         </div>
                     </Link>
 
                     <Link href={"/courier"}>
                         <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
                             <h1 className="text-sm md:text-base font-semibold">Couriers</h1>
-                            <Image alt="" src="/CAR.png" width={30} height={30} />
+                            <Image alt="" src="/swiftrun_blaq.png" width={35} height={35} />
                         </div>
                     </Link>
 
                     <Link href={"/business"}>
                         <div className="p-3 flex items-center justify-between bg-white rounded-2xl shadow-sm">
                             <h1 className="text-sm md:text-base font-semibold">Business</h1>
-                            <div className="p-2 shadow-2xl rounded-xl">
-                                <Image alt="" src="/business.png" width={30} height={30} />
-                            </div>
+                            <Image alt="" src="/swiftrun_busines.png" width={35} height={35} className='border-[0.5px] border-[#066AC0] rounded-lg' />
+
                         </div>
                     </Link>
                 </div>

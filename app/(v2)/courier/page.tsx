@@ -1,8 +1,12 @@
+import { questionsAboutRiders } from '@/app/util/data';
 import AnimationSection from '@/components/AnimationSection';
 import Banner from '@/components/Banner'
+import BannerButton from '@/components/BannerButton';
+import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp';
 import BuiltAroundYou from '@/components/BuiltAroundYou';
 import CustomerSupportBanner from '@/components/CustomerSupportBanner';
 import FaqFooter from '@/components/FaqFooter';
+import LearnMore from '@/components/LearnMore';
 import SectionHeaderTexts from '@/components/SectionHeaderTexts';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -18,9 +22,9 @@ const swiftRunWorks: { title: string; description: string }[] = [
 ];
 
 const features: { title: string; description: string; background: string; color: string; image: string; }[] = [
-    { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/priceless.png" },
+    { title: "Competitive Earnings", description: "Customers order from your store on SwiftRun and pay for both the items and delivery in one payment.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/riders_image.png" },
 
-    { title: "Order Confirmation ", description: "The store confirms the order, makes any needed substitution, and prepare everything for a smooth pickup.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/car2.jpg" },
+    { title: "Flexible Workhour", description: "Your store confirms item availability, handles substitutions where needed, and prepares the order.", background: "bg-[#FCD39033]", color: "text-[#FFBB4C]", image: "/car2.jpg" },
 
 
 ];
@@ -30,9 +34,8 @@ export default function CourierPage() {
     return (
         <div>
             <Banner heading='SwiftRun Courier' paragraph='Join, Serve, Earn.' children={<>
-                <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
-                    Join Us
-                </Link>
+                <BannerButton bg='bg-[#FFB5CB]'  href='rider' text='Join Us'/>
+           
             </>} />
 
             <div className='py-20 px-10 md:px-30'>
@@ -109,7 +112,8 @@ export default function CourierPage() {
             <div className='grid gap-20'>
                 <CustomerSupportBanner />
                 <div className='bg-[#DDEEFF] py-10 px-6 md:px-30'>
-                    <p className="text-center text-xl"><b className="font-heading">Requirements</b> Things You  need</p>
+                    <BoldAndNormalTextComp bold='Requirements' normal='Things You  need'/>
+                    {/* <p className="text-center text-xl"><b className="font-heading"></b> </p> */}
 
                     <div className='my-20 grid gap-10'>
                         <div className='bg-linear-to-r text-white from-[#56B1FF] to-[#46A0FF] p-8 md:p-4 rounded-[10px] md:rounded-[20px] flex gap-7 justify-center items-center shadow-[0px_0px_30px_#5EAEFE80]'>
@@ -176,7 +180,7 @@ export default function CourierPage() {
                         }
                     </div>
 
-                    <FaqFooter />
+                    <FaqFooter customFaqs={questionsAboutRiders} paragraph='Earn with Peace of Mind' buttonText='Join Swifturn Now'  />
                 </div>
             </div>
 

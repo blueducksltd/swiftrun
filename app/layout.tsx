@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import {  Bricolage_Grotesque, Sora } from "next/font/google";
+import { Bricolage_Grotesque, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import "swiper/css";
 import "swiper/css/pagination";
 import Footer from "@/components/Footer";
+import DownloadAppProvider from "@/stores/DownloadAppProvider";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -142,11 +143,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${fontHeading.variable}`}>
       <body className={`  ${sora.className} antialiased`}>
-        <div className="min-h-screen bg-white ">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <DownloadAppProvider>
+          <div className="min-h-screen bg-white ">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </DownloadAppProvider>
+
       </body>
     </html>
   );
