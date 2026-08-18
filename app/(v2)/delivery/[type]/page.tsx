@@ -106,7 +106,31 @@ const pageType = {
         icon: "/streamline.svg",
         title: "Multi-Point Delivery",
         description: "Courier takes only your package and deliver instantly",
-        data,
+        data: [
+            {
+                title: "Add Your Stops",
+                description: "Enter your pickup location, add one or more drop-off points, fill in the delivery details for each stop, and choose the right vehicle.",
+                image: "/add_your_stops.png"
+            },
+
+            {
+                title: "Choose your payment",
+                description: "Select your preferred payment method, review the total delivery cost, and ensure everything is set for a smooth multi-stop journey.",
+                image: "/choose_your_payment.png"
+            },
+
+            {
+                title: "Review Every Delivery",
+                description: "Check each destination, confirm recipient details, uploaded package photos, and make sure every stop is ready before moving forward.",
+                image: "/review_every_delivery.png"
+            },
+            {
+                title: "Confirm and Track",
+                description: "Review your details, complete your payment, and we'll instantly assign a nearby rider to pick up and deliver your package.",
+                image: "/confirm_track.png"
+            },
+
+        ],
         image: ""
     },
     errand: {
