@@ -3,7 +3,7 @@ import { useDownloadApp } from '@/stores/DownloadAppProvider';
 import LearnMore from './LearnMore'
 import { useRouter } from 'next/navigation';
 
-type BannerHref = "customer" | "rider" | `/${string}` | `http${string}`;
+type BannerHref = "customer" | "rider" | `/${string}` | `http${string}` | `#${string}`;
 
 export default function BannerButton({
     text,
@@ -30,7 +30,7 @@ export default function BannerButton({
             window.location.href = href;
             return;
         }
-        if (href.startsWith("/")) {
+        if (href.startsWith("/") || href.startsWith("#")) {
             router.push(href);
             return;
         }

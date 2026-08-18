@@ -79,7 +79,7 @@ export default function FaqSection({ heading, paragraph, customFaqs }: { heading
 
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 my-14'>
-                <div className='h-140 bg-[#B69B8C] rounded-[50px] p-6 overflow-auto scroll-hide'>
+                <div className='h-140 bg-[#B69B8C] rounded-[50px] p-4 md:p-6 overflow-auto scroll-hide'>
                     {
                         faqs.map((item, index) => <div onClick={() => selectFaq(index)} key={index} className={`mb-6 flex items-center py-4 px-5 text-sm rounded-full ${item.selected ? "bg-[#FBE2BA]" : "bg-[#FFFFFF4D]"} cursor-pointer`}>
                             <p>{item.title}</p>
@@ -87,12 +87,12 @@ export default function FaqSection({ heading, paragraph, customFaqs }: { heading
                     }
                 </div>
 
-                <div ref={answerRef} className='scroll-mt-24 bg-[#1893A6] rounded-[50px] p-10 flex justify-center flex-col text-left text-white gap-3 overflow-auto scroll-hide'>
-                    <h1 className='text-4xl font-bold mb-3'>
+                <div ref={answerRef} className='scroll-mt-24 bg-[#1893A6] rounded-[50px] p-6 md:p-10 flex justify-center flex-col text-left text-white gap-3 overflow-auto scroll-hide'>
+                    <h1 className='text-2xl font-bold mb-3'>
                         {faqs.find(item => item.selected)?.title}
                     </h1>
 
-                    <p className='text-xl'>
+                    <p className='text-lg'>
                         {faqs.find(item => item.selected)?.description}
 
                     </p>
