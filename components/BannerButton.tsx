@@ -3,13 +3,33 @@ import { useDownloadApp } from '@/stores/DownloadAppProvider';
 import LearnMore from './LearnMore'
 import { useRouter } from 'next/navigation';
 
-type BannerHref = "customer" | "rider" | `/${string}`;
+type BannerHref = "customer" | "rider" | `/${string}` | `http${string}`;
 
-export default function BannerButton({ text, bg, href }: { text: string; bg: string; href: BannerHref }) {
+export default function BannerButton({
+    text,
+    bg,
+    href,
+    onClick,
+}: {
+    text: string;
+    bg: string;
+    href?: BannerHref;
+    onClick?: () => void;
+}) {
     const { setState } = useDownloadApp();
     const router = useRouter();
 
     const handleClick = () => {
+        if (onClick) {
+            onClick();
+            return;
+        }
+        if (!href) return;
+
+        if (href.startsWith("http")) {
+            window.location.href = href;
+            return;
+        }
         if (href.startsWith("/")) {
             router.push(href);
             return;

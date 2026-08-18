@@ -18,7 +18,7 @@ export default function Modal({ isOpen, useDefaultWidth, children }: IProps) {
       </button>*/}
       <dialog id="my_modal_2" className={`modal duration-300 ${isOpen ? "modal-open" : ""}`}>
         <div
-          className={`max-h-[85vh] p-5 overflow-y-auto bg-white text-black rounded-[50px] ${!useDefaultWidth ? "w-full md:w-[800px]" : "w-[408px]"}`}
+          className={`max-h-[85vh] p-5 overflow-y-auto bg-white text-black rounded-[50px] w-full ${!useDefaultWidth ? " md:w-[40%]" : "md:w-[30%]"}`}
         >
           {children}
         </div>

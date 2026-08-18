@@ -15,7 +15,7 @@ export default function HomepageSlider() {
         { companyLogo: "/roots.svg", image: "/companyImage.svg" }
     ];
     return (
-        <div className="relative py-10 px-0 pl-5 md:pl-0 md:px-10">
+        <div className="relative py-10 px-0 pl-5 md:pl-30">
 
             <Swiper
                 modules={[Autoplay]}
@@ -24,16 +24,20 @@ export default function HomepageSlider() {
                 loop={true}
                 autoHeight={true}          // <-- fixes height calculation
                 autoplay={{
-                    delay: 2000,
+                    // delay: 2000,
+                    delay: 0,
+                
                     disableOnInteraction: false,
                 }}
                 breakpoints={{
-                    1024: { slidesPerView: 5.5 },
+                    1024: { slidesPerView: 5.5, spaceBetween: 40 },
                 }}
-                className="company-swiper pb-8!"  // <-- padding for shadows
+                speed={2000}
+                
+                className=" pb-8! swiper-wrapper"  // <-- padding for shadows
             >
                 {onboardedCompanies.map((company, index) => (
-                    <SwiperSlide key={index} className="h-aut!o">  {/* <-- allow slide to grow */}
+                    <SwiperSlide key={index} className="h-auto">  {/* <-- allow slide to grow */}
                         <div className="flex justify-center ">    {/* reduced p-10 → p-6 so it fits nicer */}
                             <div>
                                 <Image

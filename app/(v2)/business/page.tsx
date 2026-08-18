@@ -1,5 +1,8 @@
 import { questionsAboutBusiness } from '@/app/util/data'
 import AnimationSection from '@/components/AnimationSection'
+import BannerButton from '@/components/BannerButton'
+import BannerButtonsBusinessPage from '@/components/BannerButtonsBusinessPage'
+import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp'
 import BuiltAroundYou from '@/components/BuiltAroundYou'
 import CustomerSupportBanner from '@/components/CustomerSupportBanner'
 import DeliveryTypes from '@/components/DeliveryTypes'
@@ -9,7 +12,6 @@ import HomepageSlider from '@/components/HomepageSlider'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 export const metadata: Metadata = { title: "Business" }
 const features: { title: string; description: string; background: string; color: string; image: string; }[] = [
     { title: "Customer places order", description: "Customers order from a store on SwiftRun and pay for their items and delivery in one seamless checkout.", background: "bg-[#7F85F533]", color: "text-[#7F85F5]", image: "/customer_places_order.png" },
@@ -26,19 +28,16 @@ const features: { title: string; description: string; background: string; color:
 export default function BusinessPage() {
     return (
         <div>
+            
             <header className='h-[70vh] flex items-center justify-center relative px-6'>
                 <div className='relative z-20 flex items-center justify-center flex-col text-center'>
                     <h1 className='text-[32px] sm:text-[44px] md:text-[60px] text-white font-bold leading-tight'>SwiftRun Business</h1>
                     <p className='text-[#FFDEBC]'>Everything Delivered</p>
 
                     <div className='my-10 flex items-center gap-4 flex-col sm:flex-row w-full sm:w-auto'>
-                        <Link href="/stores" className="bg-[#FFDEBC] flex items-center justify-center w-full sm:w-fit py-2 px-14 text-sm rounded-full transition duration-300 font-primary">
-                            Login
-                        </Link>
+                       <BannerButtonsBusinessPage/>
 
-                        <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
-                            Register
-                        </Link>
+
                     </div>
                 </div>
 
@@ -56,7 +55,8 @@ export default function BusinessPage() {
             </AnimationSection>
 
             <div className='bg-[#DDEEFF] py-10 px-6 md:px-30'>
-                <p className="text-center text-xl"><b className="font-heading">Features</b> How it works</p>
+                <BoldAndNormalTextComp bold='Features' normal='How it works' href='#get-started'/>
+                {/* <p className="text-center text-xl"><b className="font-heading">Features</b> How it works</p> */}
 
                 <div className='my-20 grid gap-10'>
                     <div className='bg-linear-to-r text-white from-[#56B1FF] to-[#46A0FF] p-8 md:p-10 rounded-[40px] md:rounded-[60px] flex justify-center flex-col shadow-[0px_0px_30px_#5EAEFE80]'>
@@ -90,8 +90,8 @@ export default function BusinessPage() {
                 </div>
             </div>
 
-            <div className='py-10 px-6 md:px-30'>
-                <SectionHeaderTexts paragraph='Get Started' heading='How SwiftRun works' reverse />
+            <div className='py-10 px-6 md:px-30' id='get-started'>
+                <SectionHeaderTexts paragraph='Get Started' heading='How SwiftRun works' reverse  />
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-7 px-0 sm:px-5 md:px-10 py-10 overflow-hidden'>
                     {
@@ -129,7 +129,7 @@ export default function BusinessPage() {
                     <DeliveryTypes />
                 </div>
 
-                <FaqFooter customFaqs={questionsAboutBusiness}/>
+                <FaqFooter customFaqs={questionsAboutBusiness} />
             </div>
         </div>
     )

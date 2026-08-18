@@ -65,7 +65,7 @@ export default function Navbar() {
   }, [pathname])
   return (
     <nav className='  py-4 px-4 md:px-30  text-black fixed w-full z-50 '>
-      <div className="flex justify-between items-center rounded-full bg-white/10 backdrop-blur-[1px] border border-white/20  ring-1 ring-white/10">
+      <div className="flex justify-between items-center rounded-full bg-white/10 backdrop-blur-[1px]  border border-white/20  ring-1 ring-white/10">
         <Link href='/' className="flex items-center gap-3 px-6 py-4 md:px-5 md:py-3 text-sm font-medium bg-white rounded-full  active:scale-[0.98] transition-all duration-300 cursor-pointer">
           <Image src="/footerLogo.svg" alt="SwiftRun Logo" width={100} height={50} />
         </Link>
@@ -124,25 +124,25 @@ export default function Navbar() {
       </div>
 
       <Modal isOpen={state.show} useDefaultWidth>
-        <section className="flex flex-col gap-6 py-2">
+        <section className="flex flex-col gap-4 py-2">
           <section className="flex flex-col justify-between items-center">
             <div className={`relative w-full flex justify-between items-center`}>
               <Image
                 src={"/modal_logo.svg"}
-                height={24}
+                height={20}
                 width={150}
                 alt="Swiftrun Logo"
               />
               <span
-                className="absolute right-2 bg-[#F82525] text-white outline-10 outline-[#F825250D]  flex justify-center items-center text-sm  rounded-full cursor-pointer p-2"
+                className="absolute right-2 bg-[#F82525] text-white outline-5 outline-[#F825250D]  flex justify-center items-center text-sm  rounded-full cursor-pointer p-1"
                 onClick={() => setState(prev => ({ ...prev, show: false }))}
               >
-                <FiX size={20} />
+                <FiX size={14} />
               </span>
             </div>
             <hr className="w-full text-gray-300 my-4" />
           </section>
-          <p className="text-center font-bold text-xl">
+          <p className="text-center font-bold text-lg">
             Point your Phone camera at the QR code to download
           </p>
 
@@ -161,7 +161,7 @@ export default function Navbar() {
           </section>
 
           <div className="flex flex-col items-center">
-            <p className="text-center leading-5 text-sm font-medium">
+            <p className="text-center leading-5 text-xs font-medium">
               Use your phone or browser camera to scan the QR code and download
               the SwiftRun {state.type == "customer" ? "User's App" : "Driver's App"}.
             </p>
