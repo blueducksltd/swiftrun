@@ -255,10 +255,12 @@ export default function PrivacyPolicy() {
             </p>
           </section>
         </div>
-        <div className='mt-30'>
 
+        <div className='mt-30'>
           <BuiltAroundYou />
         </div>
+
+
         <div className='my-30'>
           <AnimationSection animation='slideUp' amount={0.4}>
             <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
@@ -270,6 +272,8 @@ export default function PrivacyPolicy() {
             </div>
           </AnimationSection>
         </div>
+
+
       </div>
     </div>
   );
