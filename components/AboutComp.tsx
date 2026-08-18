@@ -71,7 +71,7 @@ export default function AboutComp() {
                         >
                             {
                                 [...features, ...features].map((feature, index) => <SwiperSlide key={index} className='px-2 md:px-10'>
-                                    <Link href={feature.href}>
+                                    <Link href={feature.href} className='group'>
                                         <div className={`h-100  pb-3  flex flex-col justify-between bg-linear-to-br ${feature.background} rounded-[40px] overflow-hidden`}>
                                             <div className='h-[60%] bg-[#D9D9D9] relative'>
                                                 <Image alt='' src={feature.image} fill className='object-cover' />

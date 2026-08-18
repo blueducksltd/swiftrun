@@ -200,13 +200,13 @@ export default function HomePage() {
                                 <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
                                 <div className="flex gap-4 flex-wrap">
                                     <AnimationSection animation="fadeIn" amount={0.3}>
-                                        <div  className="bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
+                                        <div  className="group bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
                                             <LearnMore text="Download the app"/>
                                         </div>
                                     </AnimationSection>
 
                                     <AnimationSection animation="slideLeft" amount={0.5}>
-                                        <Link   href="/delivery/errand" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
+                                        <Link   href="/delivery/errand" className="group bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
                                             <LearnMore text="Learn how it works"/>
                                         </Link>
                                     </AnimationSection>
@@ -227,7 +227,7 @@ export default function HomePage() {
                                 <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
                                 <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
                                 <div className=" text-black mt-6">
-                                    <Link href="/business" className="bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
+                                    <Link href="/business" className="group bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
                                         <LearnMore text="Join Swiftrun"/>
                                     </Link>
 
