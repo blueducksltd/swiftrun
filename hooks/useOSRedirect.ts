@@ -6,6 +6,7 @@ interface RedirectionLinks {
   android: string;
 }
 
+
 export const useOSRedirect = (links: RedirectionLinks) => {
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
