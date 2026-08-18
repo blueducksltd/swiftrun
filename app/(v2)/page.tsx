@@ -206,7 +206,7 @@ export default function HomePage() {
                                     </AnimationSection>
 
                                     <AnimationSection animation="slideLeft" amount={0.5}>
-                                        <Link href="/delivery/errand" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
+                                        <Link   href="/delivery/errand" className="bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
                                             <LearnMore text="Learn how it works"/>
                                         </Link>
                                     </AnimationSection>
