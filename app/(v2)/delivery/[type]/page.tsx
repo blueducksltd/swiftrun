@@ -138,7 +138,31 @@ const pageType = {
         description: "Courier takes only your package and deliver instantly",
         icon: "",
         color: { background: "", shadow: "" },
-        data,
+        data: [
+            {
+                title: "Choose a Store",
+                description: "Browse supermarkets, restaurants, pharmacies, or bakeries, then explore available products and add everything you need to your cart.",
+                image: "/choose_a_store.png"
+            },
+
+            {
+                title: "Review Your Cart",
+                description: "Check your selected items, update quantities if needed, then proceed to checkout when you're happy with your order.",
+                image: "/review_your_cart.png"
+            },
+
+            {
+                title: "Add Delivery Details",
+                description: "Enter your delivery address, contact information, review your order, choose your preferred payment method, and place your errand request.",
+                image: "/add_delivery_details_2.png"
+            },
+            {
+                title: "Track Your Errand",
+                description: "We'll instantly assign a trusted rider to shop and deliver your order. Follow every step in real time until it arrives safely at your doorstep.",
+                image: "/confirm_and_track.png"
+            },
+
+        ],
         image: "/landingPage.jpg"
     }
 } as const;

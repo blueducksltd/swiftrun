@@ -1,15 +1,20 @@
 "use client";
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 
-export default function BoldAndNormalTextComp({ bold, normal }: { bold: string; normal: string }) {
+export default function BoldAndNormalTextComp({ bold, normal, href }: { bold: string; normal: string, href?: string }) {
     const [hovered, setHovered] = useState<boolean>(false);
+    const router = useRouter()
     return (
-        <div className='flex items-center justify-center gap-3' onMouseOut={()=>{
-                setHovered(false)
-            }} onMouseOver={()=>{
-                setHovered(true)
-            }}>
+        <div onClick={() => {
+            if (!href) return;
+           router.push(href) 
+        }} className={`flex items-center justify-center gap-3 ${href ? "cursor-pointer" : ""}`} onMouseOut={() => {
+            setHovered(false)
+        }} onMouseOver={() => {
+            setHovered(true)
+        }} >
             <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 " >
                 <b className="font-bold ">{bold}</b>
                 <span className="font-primary">{normal}</span>

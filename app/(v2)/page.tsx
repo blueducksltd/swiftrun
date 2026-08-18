@@ -8,12 +8,13 @@ import { Metadata } from "next";
 import AnimationSection from "@/components/AnimationSection";
 import BoldAndNormalTextComp from "@/components/BoldAndNormalTextComp";
 import LearnMore from "@/components/LearnMore";
+import DownloadTheApp from "@/components/DownloadTheApp";
 
 export const metadata: Metadata = {
     title: "Home",
 };
 export default function HomePage() {
-
+    
     const categories: {
         title: string;
         image: string;
@@ -121,7 +122,7 @@ export default function HomePage() {
 
                     <div className="flex items-center justify-center mb-6">
 
-                        <BoldAndNormalTextComp bold={"Features"} normal={"How it works"} />
+                        <BoldAndNormalTextComp href="/customer" bold={"Features"} normal={"How it works"} />
                     </div>
 
 
@@ -193,24 +194,12 @@ export default function HomePage() {
                     <HomepageSlider />
                 </AnimationSection>
                 <div>
-                    <div className="relative h-[450px] mt-12 px-10 md:px-20 flex items-center">
-                        <Image alt="" src={"/landingPage.jpg"} fill />
+                    <div className="relative min-h-[450px] mt-12 py-20 px-5 md:px-20 flex items-center">
+                        <Image alt="" src={"/order_from_stores_banner.jpg"} fill className="object-cover"/>
                         <div className="relative z-10 w-full md:w-[50%] ">
                             <AnimationSection animation="slideUp" className="grid gap-10">
                                 <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
-                                <div className="flex gap-4 flex-wrap">
-                                    <AnimationSection animation="fadeIn" amount={0.3}>
-                                        <div  className="group bg-[#FFDEBC] flex items-center justify-center w-full  md:w-fit py-4 px-10 rounded-full transition duration-300 font-primary">
-                                            <LearnMore text="Download the app"/>
-                                        </div>
-                                    </AnimationSection>
-
-                                    <AnimationSection animation="slideLeft" amount={0.5}>
-                                        <Link   href="/delivery/errand" className="group bg-[#FFB5CB]  py-4 px-10 rounded-full transition duration-300 font-primary flex items-center justify-center w-full md:w-fit">
-                                            <LearnMore text="Learn how it works"/>
-                                        </Link>
-                                    </AnimationSection>
-                                </div>
+                               <DownloadTheApp/>
                             </AnimationSection>
                         </div>
                     </div>
@@ -228,7 +217,7 @@ export default function HomePage() {
                                 <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
                                 <div className=" text-black mt-6">
                                     <Link href="/business" className="group bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
-                                        <LearnMore text="Join Swiftrun"/>
+                                        <LearnMore text="Join Swiftrun" />
                                     </Link>
 
 
@@ -245,7 +234,7 @@ export default function HomePage() {
 
                     <div className="px-5 md:px-40 pt-10 pb-20 grid grid-cols-1 md:grid-cols-2 text-white gap-10">
                         <AnimationSection animation="slideUp" amount={0.6}>
-                            <div className="flex flex-col justify-end bg-[#B69B8C] h-[300px] p-10 pb-12 rounded-4xl">
+                            <div className="flex flex-col justify-end bg-[#B69B8C] min-h-[300px] p-10 pb-12 rounded-4xl">
                                 <Image src={"/courier_front.png"} alt="" width={100} height={100} />
                                 <h1 className="text-3xl  font-bold mb-3">Lift Delivery Burden</h1>
                                 <p className="">Spend less time worrying about deliveries and more time delighting your customers.  🚚</p>
@@ -253,9 +242,9 @@ export default function HomePage() {
                         </AnimationSection>
 
                         <AnimationSection animation="slideRight" amount={0.3}>
-                            <div className="flex flex-col justify-end bg-[#1893A6] h-[300px] p-10 pb-12 rounded-4xl">
+                            <div className="flex flex-col justify-end bg-[#1893A6] min-h-[300px] p-10 pb-12 rounded-4xl">
                                 <Image src={"/pink_front.png"} alt="" width={100} height={100} />
-                                <h1 className="text-3xl  font-bold mb-3">00% Commission Charge</h1>
+                                <h1 className="text-3xl  font-bold mb-3">Commission Charge</h1>
                                 <p className="">Keep every naira you earn. With zero commission, every sale stays yours. 💰</p>
                             </div>
                         </AnimationSection>
@@ -311,10 +300,10 @@ export default function HomePage() {
                             </div>
                         </div>
 
-                <div className="flex items-center justify-center">
-                                            <BoldAndNormalTextComp bold={"Benefits"} normal={"How it works"} />
+                        <div className="flex items-center justify-center">
+                            <BoldAndNormalTextComp href="/courier" bold={"Benefits"} normal={"How it works"} />
 
-                </div>
+                        </div>
                         {/* <p className="text-center text-xl"><b className="font-heading"></b> How it works</p> */}
 
                     </div>

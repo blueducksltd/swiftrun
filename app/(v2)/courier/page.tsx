@@ -1,6 +1,7 @@
 import { questionsAboutRiders } from '@/app/util/data';
 import AnimationSection from '@/components/AnimationSection';
 import Banner from '@/components/Banner'
+import BannerButton from '@/components/BannerButton';
 import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp';
 import BuiltAroundYou from '@/components/BuiltAroundYou';
 import CustomerSupportBanner from '@/components/CustomerSupportBanner';
@@ -33,10 +34,8 @@ export default function CourierPage() {
     return (
         <div>
             <Banner heading='SwiftRun Courier' paragraph='Join, Serve, Earn.' children={<>
-                <Link href="/stores" className="group bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
-
-                    <LearnMore text='Join Us' />
-                </Link>
+                <BannerButton bg='bg-[#FFB5CB]'  href='rider' text='Join Us'/>
+           
             </>} />
 
             <div className='py-20 px-10 md:px-30'>

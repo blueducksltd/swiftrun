@@ -15,11 +15,11 @@ export default function HomepageSlider() {
         { companyLogo: "/roots.svg", image: "/companyImage.svg" }
     ];
     return (
-        <div className="relative py-10 px-10">
+        <div className="relative py-10 px-0 pl-5 md:pl-0 md:px-10">
 
             <Swiper
                 modules={[Autoplay]}
-                spaceBetween={40}
+                spaceBetween={0}
                 slidesPerView={1.5}
                 loop={true}
                 autoHeight={true}          // <-- fixes height calculation
