@@ -204,11 +204,11 @@ export default function HomePage() {
                         </div>
                     </div>
 
-                    <div className="bg-[#FDEFE1]  rounded-b-[50px] p-7 pr-0">
+                    <div className="bg-[#FDEFE1]   py-7 pr-0">
                         <ScrollScrubSlider categories={categories} />
                     </div>
 
-                    <div className="relative py-20 mt-12 px-10 md:px-20 grid grid-cols-1 md:grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
+                    <div className="relative py-20  px-10 md:px-20 grid grid-cols-1 md:grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
 
                         <AnimationSection animation="slideRight">
                             <div className="relative z-10   text-white">
