@@ -33,7 +33,7 @@ export default function CourierPage() {
     return (
         <div>
             <Banner heading='SwiftRun Courier' paragraph='Join, Serve, Earn.' children={<>
-                <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
+                <Link href="/stores" className="group bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-2 px-14 rounded-full transition duration-300 font-primary">
 
                     <LearnMore text='Join Us' />
                 </Link>

@@ -121,12 +121,12 @@ export default function Navbar() {
       </div>
 
       <Modal isOpen={showModal} useDefaultWidth>
-        <section className="flex flex-col gap-10 py-5">
+        <section className="flex flex-col gap-6 py-2">
           <section className="flex flex-col justify-between items-center">
             <div className={`relative w-full flex justify-between items-center`}>
               <Image
                 src={"/modal_logo.svg"}
-                height={150}
+                height={24}
                 width={150}
                 alt="Swiftrun Logo"
               />
@@ -137,7 +137,7 @@ export default function Navbar() {
                 <FiX size={20} />
               </span>
             </div>
-            <hr className="w-full text-gray-300 my-6" />
+            <hr className="w-full text-gray-300 my-4" />
           </section>
           <p className="text-center font-bold text-xl">
             Point your Phone camera at the QR code to download
@@ -162,7 +162,7 @@ export default function Navbar() {
               Use your phone or browser camera to scan the QR code and download
               the SwiftRun {appUser == "users" ? "User's App" : "Driver's App"}.
             </p>
-            <p className="text-xs my-1">
+            <p className="text-xs mt-2">
               Having problems scanning?{" "}
               <button
                 onClick={() => {
@@ -180,13 +180,13 @@ export default function Navbar() {
             <button className="btn btn-accent">Download directly</button> */}
           </div>
 
-          <div className="bg-[#066AC0] flex justify-center items-center w-full p-3 rounded-full space-x-3 text-sm">
+          <div className="bg-[#066AC0] flex justify-between items-center w-full p-2 rounded-full space-x-3 text-sm">
             <button
               onClick={() => setAppUser("users")}
               className={`${appUser === "users"
                 ? "bg-cloudmist text-[#066AC0]"
                 : "text-cloudmist"
-                } px-10 py-3 rounded-full cursor-pointer`}
+                } px-8 py-2.5 rounded-full cursor-pointer`}
             >
               Customer
             </button>
@@ -195,7 +195,7 @@ export default function Navbar() {
               className={`${appUser === "drivers"
                 ? "bg-cloudmist text-[#066AC0]"
                 : "text-cloudmist"
-                } px-10 py-3 rounded-full cursor-pointer`}
+                } px-8 py-2.5 rounded-full cursor-pointer`}
             >
               Driver&apos;s App
             </button>

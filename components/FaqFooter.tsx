@@ -27,7 +27,7 @@ export default function FaqFooter({
                 <SectionHeaderTexts paragraph={paragraph} heading={heading} />
 
                 <div className='flex justify-center mt-6 px-4 sm:px-0'>
-                    <Link href={buttonHref} className="bg-[#FFB5CB] flex gap-3 text-sm items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary">
+                    <Link href={buttonHref} className="group bg-[#FFB5CB] flex gap-3 text-sm items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary">
                         <LearnMore text={buttonText}/>
                     </Link>
                 </div>

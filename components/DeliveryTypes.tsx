@@ -35,7 +35,7 @@ export default function DeliveryTypes() {
                     <Link
                         href={`/delivery/${item.url}`}
                         key={index}
-                        className={`p-6 md:p-10 bg-linear-to-tr ${item.color.background} ${item.color.shadow} grid rounded-[40px] gap-5 items-center text-white transition-all duration-500 ${index === 1
+                        className={`group p-6 md:p-10 bg-linear-to-tr ${item.color.background} ${item.color.shadow} grid rounded-[40px] gap-5 items-center text-white transition-all duration-500 ${index === 1
                             ? "md:scale-110 md:z-20 md:-translate-y-4"
                             : "md:scale-90 md:z-10"
                             }`}
