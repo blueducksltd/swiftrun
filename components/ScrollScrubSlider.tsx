@@ -4,7 +4,10 @@ import Image from "next/image";
 
 export default function ScrollScrubSlider({ categories }: { categories: any[] }) {
   return (
-    <div className="flex gap-6 py-14 px-10 overflow-x-auto overscroll-x-contain snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex gap-6 py-14 overflow-x-auto overscroll-x-contain snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {/* leading spacer — now a valid snap point too, so position 0 isn't "corrected" away from */}
+      <div className="snap-start shrink-0 w-60 " aria-hidden="true" />
+
       {categories.map((category, index) => (
         <div
           key={index}
