@@ -197,7 +197,7 @@ export default async function Page({
     return (
         <div className="grid gap-20">
             <div
-                className={`${currentPageType.image ? "h-[60vh]" : "h-[80vh]"} relative overflow-hidden bg-linear-to-br ${currentPageType.color.background} gap-7 flex flex-col items-center justify-center text-white rounded-b-[80px] bg-cover bg-center`}
+                className={`${currentPageType.image ? "h-[60vh]" : "h-[65vh] md:h-[80vh]"} relative overflow-hidden bg-linear-to-br ${currentPageType.color.background} gap-7 flex flex-col items-center justify-center text-white rounded-b-[50px] md:rounded-b-[80px] bg-cover bg-center`}
                 style={{
                     boxShadow: currentPageType.image ? `0px 10px 40px ${currentPageType.color.shadow}` : "",
                     backgroundImage: currentPageType.image ? `url(${currentPageType.image})` : undefined,
@@ -206,9 +206,9 @@ export default async function Page({
                 {!currentPageType.image && <div className="h-20 w-20 bg-white/10 flex items-center justify-center rounded-2xl">
                     <Image src={currentPageType.icon} alt="" width={50} height={50} />
                 </div>}
-                <div className="flex items-center justify-center flex-col relative z-10">
+                <div className="flex items-center justify-center flex-col relative z-10 px-10 md:px-0 text-center gap-3">
                     <h1 className="font-bold text-4xl">{currentPageType.title}</h1>
-                    <p>
+                    <p className="text-xl md:text-base"> 
                         {currentPageType.description}
                     </p>
                 </div>
@@ -223,12 +223,12 @@ export default async function Page({
                 <div className="my-20 grid gap-10">
                     {
                         currentPageType.data.map((item, index) => <AnimationSection key={index} animation={index % 2 ? "slideRight" : "slideLeft"}>
-                            <div className={`${index % 2 ? "bg-[#FCD39033]" : "bg-[#7F85F533]"} h-85 rounded-[50px] grid grid-cols-1 md:grid-cols-2  overflow-hidden`}>
-                                <div className="relative">
+                            <div className={`${index % 2 ? "bg-[#FCD39033]" : "bg-[#7F85F533]"}  rounded-[50px] grid grid-cols-1 md:grid-cols-2  overflow-hidden`}>
+                                <div className="relative h-60">
                                     <Image fill alt="" src={`${item.image}`} className="object-cover" />
                                 </div>
 
-                                <div className=" flex flex-col justify-center p-14 gap-6">
+                                <div className=" flex flex-col justify-center p-8 md:p-14 gap-6">
                                     <h1 className={`font-extrabold text-3xl ${index % 2 ? "text-[#FFBB4C]" : "text-[#7F85F5]"}`}>{item.title}</h1>
                                     <p className="text-base">{item.description}</p>
                                 </div>

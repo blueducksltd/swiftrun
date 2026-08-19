@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Home",
 };
 export default function HomePage() {
-    
+
     const categories: {
         title: string;
         image: string;
@@ -126,14 +126,14 @@ export default function HomePage() {
                     </div>
 
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 ">
                         {/* Large horizontal card */}
                         <div className="p-6 md:p-10 bg-linear-to-b from-[#46A0FF] to-[#56B1FF] md:col-span-2 flex rounded-[40px] gap-5 items-center text-white shadow-[0_33px_67px_#5EAEFE80]">
                             <div className="h-24 w-24 shrink-0 bg-white/30 rounded-[28px] flex items-center justify-center">
                                 <Image src={"./instantdelivery.svg"} alt="" width={60} height={60} />
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <h1 className="text-xl font-bold">Instant Delivery</h1>
+                                <h1 className="md:text-xl font-bold">Instant Delivery</h1>
                                 <p className="text-white/90 text-base leading-relaxed">Need it now? We've got you.</p>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ export default function HomePage() {
                                 <Image src={"./Timelapse.svg"} alt="" width={60} height={60} />
                             </div>
                             <div className="flex flex-col gap-1 justify-end">
-                                <h1 className="text-xl font-bold">Schedule Delivery</h1>
+                                <h1 className="md:text-xl font-bold">Schedule Delivery</h1>
                                 {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
                             </div>
                         </div>
@@ -154,7 +154,7 @@ export default function HomePage() {
                                 <Image src={"./streamline.svg"} alt="" width={50} height={50} />
                             </div>
                             <div className="flex flex-col gap-1">
-                                <h1 className="text-xl font-bold">Multi-Point  Delivery</h1>
+                                <h1 className="md:text-xl font-bold">Multi-Point  Delivery</h1>
                                 {/* <p className="text-white/90 text-sm leading-relaxed">Need it now? We've got you.</p> */}
                             </div>
                         </div>
@@ -195,11 +195,13 @@ export default function HomePage() {
                 </AnimationSection>
                 <div>
                     <div className="relative min-h-[450px] mt-12 py-20 px-5 md:px-20 flex items-center">
-                        <Image alt="" src={"/order_from_stores_banner.jpg"} fill className="object-cover"/>
+                        <Image alt="" src={"/order_from_stores_banner.jpg"} fill className="object-cover" />
                         <div className="relative z-10 w-full md:w-[50%] ">
-                            <AnimationSection animation="slideUp" className="grid gap-10">
-                                <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
-                               <DownloadTheApp/>
+                            <AnimationSection animation="slideUp" >
+                              <div className="grid gap-10">
+                                  <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
+                                <DownloadTheApp />
+                              </div>
                             </AnimationSection>
                         </div>
                     </div>
@@ -208,24 +210,26 @@ export default function HomePage() {
                         <ScrollScrubSlider categories={categories} />
                     </div>
 
-                    <div className="relative py-20  px-10 md:px-20 grid grid-cols-1 md:grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
+                    <div className="relative py-20 gap-10  px-10 md:px-20 grid grid-cols-1 md:grid-cols-3 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
 
-                        <AnimationSection animation="slideRight">
-                            <div className="relative z-10   text-white">
-                                <p className="font-semibold">Swiftrun Business</p>
-                                <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
-                                <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
-                                <div className=" text-black mt-6">
-                                    <Link href="/business" className="group bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
-                                        <LearnMore text="Join Swiftrun" />
-                                    </Link>
+                        <div className="order-1 md:order-first">
+                            <AnimationSection animation="slideRight">
+                                <div className="relative z-10   text-white">
+                                    <p className="font-semibold">Swiftrun Business</p>
+                                    <h1 className="text-[40px] leading-16 font-bold text-white">Be everywhere</h1>
+                                    <p>Reach more customers, grow with confidence, and let SwiftRun handle every delivery.</p>
+                                    <div className=" text-black mt-6">
+                                        <Link href="/business" className="group bg-[#FFDEBC] flex items-center justify-center gap-2 w-full text-center  md:w-fit  py-3 px-7 rounded-full transition duration-300 font-primary">
+                                            <LearnMore text="Join Swiftrun" />
+                                        </Link>
 
 
+                                    </div>
                                 </div>
-                            </div>
-                        </AnimationSection>
+                            </AnimationSection>
+                        </div>
 
-                        <div className="md:col-span-2 md:flex justify-end hidden">
+                        <div className="md:col-span-2 md:flex justify-end ">
                             <AnimationSection animation="slideUp" amount={0.6}>
                                 <Image src={"/store_front.png"} alt="" width={300} height={300} />
                             </AnimationSection>
@@ -280,7 +284,7 @@ export default function HomePage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
 
                             <div className="relative h-70">
-                                <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent rounded-[40px] z-10 p-12 text-white">
+                                <div className="absolute inset-0 bg-linear-to-b from-black/80 from-55% to-transparent rounded-[40px] z-10 p-12 text-white">
                                     <h1 className="text-[24px] font-semibold">Life comes first.</h1>
                                     <p className="text-sm">
                                         Work your way, choose when you want to work and deliver on your own schedule.
@@ -290,7 +294,7 @@ export default function HomePage() {
                             </div>
 
                             <div className="relative h-70">
-                                <div className="absolute inset-0 bg-linear-to-b from-black/80 to-transparent rounded-[40px] z-10 p-12 text-white">
+                                <div className="absolute inset-0 bg-linear-to-b from-black/80 from-55% to-transparent rounded-[40px] z-10 p-12 text-white">
                                     <h1 className="text-[24px] font-semibold">Deliver more, Earn more.</h1>
                                     <p className="text-sm font-primary">
                                         More deliveries, more smiles, more money in your pocket after every trip.
@@ -313,7 +317,7 @@ export default function HomePage() {
                             <h1 className="text-white font-bold text-[60px] leading-16 mb-4">Your Personal companion</h1>
                             <p className="text-[#FFDEBC] text-xl font-light">Whatever you need to make your day, SwiftRun’s got you. Tap. Order. Chill. 🚀</p>
                         </div>
-                        <Image alt="Personal Companion" src={"/personal_companion_banner.svg"} className="object-cover " fill />
+                        <Image alt="Personal Companion" src={"/personal_companion_banner.svg"} className="object-cover md:object-center object-right" fill />
                     </div>
                     <div className="py-10 px-10 md:px-40 grid grid-cols-1 md:grid-cols-2 gap-7">
                         {

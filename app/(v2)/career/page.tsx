@@ -1,6 +1,7 @@
 import AnimationSection from '@/components/AnimationSection'
 import BuiltAroundYou from '@/components/BuiltAroundYou'
 import CareerGrid from '@/components/CareerGrid'
+import DownloadTheAppBtn from '@/components/DownloadTheAppBtn'
 import SectionHeader from '@/components/SectionHeader'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import { Metadata } from 'next'
@@ -12,7 +13,7 @@ export default function Career() {
             <SectionHeader title='Join Our Story' description='Explore exciting opportunities and grow your career with us' children={<Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-3 px-8 sm:px-20 text-black rounded-full transition duration-300 font-primary">
                 About Swiftrun
             </Link>} />
-        
+
 
             <div className='py-10 px-10 md:px-30 '>
                 <CareerGrid />
@@ -23,9 +24,7 @@ export default function Career() {
                         <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
 
                         <div className='flex justify-center mt-6 px-4 sm:px-0'>
-                            <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary">
-                                Download the App
-                            </Link>
+                            <DownloadTheAppBtn />
                         </div>
                     </AnimationSection>
                 </div>

@@ -4,9 +4,11 @@ import Banner from '@/components/Banner'
 import BannerButton from '@/components/BannerButton';
 import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp';
 import BuiltAroundYou from '@/components/BuiltAroundYou';
+import CourierBannerBtn from '@/components/CourierBannerBtn';
 import CustomerSupportBanner from '@/components/CustomerSupportBanner';
 import FaqFooter from '@/components/FaqFooter';
 import LearnMore from '@/components/LearnMore';
+import SectionHeader from '@/components/SectionHeader';
 import SectionHeaderTexts from '@/components/SectionHeaderTexts';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -33,10 +35,15 @@ const features: { title: string; description: string; background: string; color:
 export default function CourierPage() {
     return (
         <div>
-            <Banner heading='SwiftRun Courier' paragraph='Join, Serve, Earn.' children={<>
-                <BannerButton bg='bg-[#FFB5CB]'  href='rider' text='Join Us'/>
-           
+            <div className='t'>    
+                <SectionHeader image='/swiftrun_banner.png' title='SwiftRun Courier' description='Join, Serve, Earn.' children={<>
+                <div className='text-black'>
+                    <CourierBannerBtn />
+                </div>
             </>} />
+
+            </div>
+         
 
             <div className='py-20 px-10 md:px-30'>
                 <div className=' grid md:grid-cols-2 gap-10'>
@@ -112,50 +119,49 @@ export default function CourierPage() {
             <div className='grid gap-20'>
                 <CustomerSupportBanner />
                 <div className='bg-[#DDEEFF] py-10 px-6 md:px-30'>
-                    <BoldAndNormalTextComp bold='Requirements' normal='Things You  need'/>
+                    <BoldAndNormalTextComp bold='Requirements' normal='Things You  need' />
                     {/* <p className="text-center text-xl"><b className="font-heading"></b> </p> */}
 
-                    <div className='my-20 grid gap-10'>
-                        <div className='bg-linear-to-r text-white from-[#56B1FF] to-[#46A0FF] p-8 md:p-4 rounded-[10px] md:rounded-[20px] flex gap-7 justify-center items-center shadow-[0px_0px_30px_#5EAEFE80]'>
-                            <div className='bg-white/10 h-16 w-16 flex items-center justify-center rounded-2xl relative'>
-                                <Image alt='' src={"/shield.png"} width={30} height={30} />
+                    <div className='my-20 grid gap-6 md:gap-10'>
+                        <div className='bg-linear-to-r text-white from-[#56B1FF] to-[#46A0FF] p-6 md:p-8 rounded-[30px] md:rounded-[40px] flex gap-4 md:gap-7 items-center shadow-[0px_0px_30px_#5EAEFE80]'>
+                            <div className='bg-white/10 h-10 w-10 shrink-0 flex items-center justify-center rounded-2xl relative'>
+                                <Image alt='' src={"/shield.png"} width={20} height={20} />
                             </div>
 
-                            <p>Your safety matters to us. To provide secure deliveries, we'll ask for a few important details, including the following:</p>
+                            <p className='text-sm md:text-base'>Your safety matters to us. To provide secure deliveries, we'll ask for a few important details, including the following:</p>
                         </div>
 
-                        <div className='bg-white  p-7 rounded-full flex gap-7  items-center'>
-                            <div className='bg-[#066AC0] h-8 w-8 flex items-center justify-center rounded-full relative'>
+                        <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
+                            <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
                                 <Image alt='' src={"/checks.svg"} width={14} height={14} />
                             </div>
 
-                            <h1 className='font-bold text-lg'>Personal Details</h1>
+                            <h1 className='font-bold text-base md:text-lg min-w-0'>Personal Details</h1>
                         </div>
 
-                        <div className='bg-white  p-7 rounded-full flex gap-7  items-center'>
-                            <div className='bg-[#066AC0] h-8 w-8 flex items-center justify-center rounded-full relative'>
+                        <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
+                            <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
                                 <Image alt='' src={"/checks.svg"} width={14} height={14} />
                             </div>
 
-                            <h1 className='font-bold text-lg'>National ID</h1>
+                            <h1 className='font-bold text-base md:text-lg min-w-0'>National ID</h1>
                         </div>
 
-                        <div className='bg-white  p-7 rounded-full flex gap-7  items-center'>
-                            <div className='bg-[#066AC0] h-8 w-8 flex items-center justify-center rounded-full relative'>
+                        <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
+                            <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
                                 <Image alt='' src={"/checks.svg"} width={14} height={14} />
                             </div>
 
-                            <h1 className='font-bold text-lg'>Driver's License or permit Details</h1>
+                            <h1 className='font-bold text-base md:text-lg min-w-0'>Driver's License or permit Details</h1>
                         </div>
 
-                        <div className='bg-white  p-7 rounded-full flex gap-7  items-center'>
-                            <div className='bg-[#066AC0] h-8 w-8 flex items-center justify-center rounded-full relative'>
+                        <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
+                            <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
                                 <Image alt='' src={"/checks.svg"} width={14} height={14} />
                             </div>
 
-                            <h1 className='font-bold text-lg'>Guarantor Information</h1>
+                            <h1 className='font-bold text-base md:text-lg min-w-0'>Guarantor Information</h1>
                         </div>
-
                     </div>
                 </div>
 
@@ -180,7 +186,7 @@ export default function CourierPage() {
                         }
                     </div>
 
-                    <FaqFooter customFaqs={questionsAboutRiders} paragraph='Earn with Peace of Mind' buttonText='Join Swifturn Now'  />
+                    <FaqFooter customFaqs={questionsAboutRiders} paragraph='Earn with Peace of Mind' buttonText='Join Swifturn Now' />
                 </div>
             </div>
 

@@ -221,7 +221,7 @@ export default function CareerGrid() {
                 {
                     filteredCareers.map((item, index) =>
                         <Link href={`/career/${item.id}`} key={index} className='flex'>
-                            <div key={index} className='shadow-[0px_4px_30px_#0000001A] bg-white  rounded-4xl p-10 flex flex-col justify-between'>
+                            <div key={index} className='shadow-[0px_4px_30px_#0000001A] bg-white w-full  rounded-4xl p-10 flex flex-col justify-between'>
                                 <div>
                                     <p className='mb-2 text-[#00000033]'>{item.category}</p>
                                     <h1 className='font-bold text-3xl'>{item.title}</h1>

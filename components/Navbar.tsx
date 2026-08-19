@@ -8,7 +8,18 @@ import { BsArrowRight } from 'react-icons/bs';
 import Modal from './old/modal';
 import { FiX } from 'react-icons/fi';
 import { useDownloadApp } from '@/stores/DownloadAppProvider';
+import { STORE_LINKS } from '@/app/(v2)/download-the-app/User';
 
+function getOS(): "android" | "ios" | "mac" | "windows" | "linux" | "" {
+  const ua = navigator.userAgent;
+  const isIpad = /Mac OS X/.test(ua) && navigator.maxTouchPoints > 1;
+  if (/iPhone|iPad|iPod/.test(ua) || isIpad) return 'ios';
+  if (/Android/.test(ua)) return 'android';
+  if (/Mac OS X/.test(ua)) return 'mac';
+  if (/Windows/.test(ua)) return 'windows';
+  if (/Linux/.test(ua)) return 'linux';
+  return '';
+}
 export default function Navbar() {
   const links: { href: string; label: string }[] = [{
     href: '/about',
@@ -66,7 +77,7 @@ export default function Navbar() {
   return (
     <nav className='  py-4 px-4 md:px-30  text-black fixed w-full z-50 '>
       <div className="flex justify-between items-center rounded-full bg-white/10 backdrop-blur-[1px]  border border-white/20  ring-1 ring-white/10">
-        <Link href='/' className="flex items-center gap-3 px-6 py-4 md:px-5 md:py-3 text-sm font-medium bg-white rounded-full  active:scale-[0.98] transition-all duration-300 cursor-pointer">
+        <Link href='/' className="flex items-center gap-3 px-6 py-4 md:px-5 md:py-3 text-sm font-medium bg-white rounded-full  active:scale-[0.98] transition-all duration-300 cursor-pointer shadow-[0px_5px_30px_rgba(0,0,0,.05)]">
           <Image src="/footerLogo.svg" alt="SwiftRun Logo" width={100} height={50} />
         </Link>
 
@@ -74,7 +85,7 @@ export default function Navbar() {
           {/* Trigger Button */}
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-3 px-6 py-4 md:px-5 md:py-3 text-sm font-medium bg-white rounded-full active:scale-[0.98] transition-all duration-300 cursor-pointer"
+            className="flex items-center gap-3 px-6 py-4 md:px-5 md:py-3 text-sm font-medium bg-white rounded-full active:scale-[0.98] transition-all duration-300 cursor-pointer outline-none shadow-[0px_5px_30px_rgba(0,0,0,.05)]"
           >
             <Image src="/icon.svg" alt="SwiftRun" width={15} height={20} />
             <span>Download</span>
@@ -89,7 +100,7 @@ export default function Navbar() {
             className={`absolute top-full left-1/2 -translate-x-1/2 mt-10 w-40 origin-top transition-all duration-300 ${showDropdown
               ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
-              }`}
+              } `}
           >
             <div className="flex flex-col gap-2">
               {links.map((link, index) => (
@@ -99,8 +110,16 @@ export default function Navbar() {
                     if (!link.label.toLowerCase().includes("download app")) {
                       router.push(link.href)
                     } else {
-                      setState(prev => ({ ...prev, show: true }))
-                      // setShowModal(true);
+                      if (getOS() === "android") {
+                        window.location.href = STORE_LINKS.android
+                        // router.push("/download-the-app/user")
+                      } else if (getOS() === "ios") {
+                        window.location.href = STORE_LINKS.ios
+                      } else {
+                        setState(prev => ({ ...prev, show: true }))
+
+                      }
+
                     }
                   }}
 
@@ -195,7 +214,7 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => setState(prev => ({ ...prev, type: "rider" }))}
-               className={`${state.type === "rider"
+              className={`${state.type === "rider"
                 ? "bg-cloudmist text-[#066AC0]"
                 : "text-cloudmist"
                 } px-8 py-2.5 rounded-full cursor-pointer`}

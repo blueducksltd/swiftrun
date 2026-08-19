@@ -4,9 +4,12 @@ import Link from "next/link";
 import Appstore from "@/public/appstore.png";
 import { useOSRedirect } from "@/hooks/useOSRedirect";
 
-const STORE_LINKS = {
+export const STORE_LINKS = {
   ios: "https://apps.apple.com/ng/app/swiftrun-delivery-app/id6758913445",
   android: "https://play.google.com/store/apps/details?id=com.swiftrun.customer",
+  driver: {
+    
+  }
 };
 
 export default function User() {

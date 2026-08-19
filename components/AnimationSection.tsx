@@ -8,15 +8,15 @@ type AnimationType = "fadeIn" | "scaleUp" | "slideUp" | "slideLeft" | "slideRigh
 const animations: Record<AnimationType, Variants> = {
   fadeIn: {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
   },
   scaleUp: {
     hidden: { opacity: 0, scale: 0.85 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } },
   },
   slideUp: {
     hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
   },
   slideLeft: {
     hidden: { opacity: 0, x: 80 },
@@ -58,7 +58,7 @@ export default function AnimationSection({
   return (
     <div className="overflow-hidden">
       <motion.section
-        className={`${className} w-full `}
+        className={`w-full `}
         variants={animations[chosen]}
         initial="hidden"
         whileInView="visible"

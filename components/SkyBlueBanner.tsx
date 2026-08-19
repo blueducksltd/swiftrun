@@ -14,7 +14,7 @@ export default function SkyBlueBanner({ bold, normal, slideLeftHeading, slideLef
                 <div className={`bg-linear-to-tl from-[#46A0FF] to-[#56B1FF] text-white rounded-[50px] p-10 `}>
 
 
-                    <h1 className={`text-[80px] md:text-[120px] font-bold mb-2 mt-4 `}>
+                    <h1 className={`text-[60px] md:text-[120px] font-bold mb-2 mt-4 `}>
                         {slideLeftHeading}
                     </h1>
                     <p className='text-lg'>

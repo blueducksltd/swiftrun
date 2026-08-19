@@ -1,5 +1,6 @@
 import AnimationSection from "@/components/AnimationSection";
 import BuiltAroundYou from "@/components/BuiltAroundYou";
+import DownloadTheAppBtn from "@/components/DownloadTheAppBtn";
 import HeaderElem from "@/components/old/HeaderElem";
 import SectionHeader from "@/components/SectionHeader";
 import SectionHeaderTexts from "@/components/SectionHeaderTexts";
@@ -266,9 +267,7 @@ export default function PrivacyPolicy() {
             <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
 
             <div className='flex justify-center mt-6 px-4 sm:px-0'>
-              <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary font-medium">
-                Download the App
-              </Link>
+              <DownloadTheAppBtn/>
             </div>
           </AnimationSection>
         </div>

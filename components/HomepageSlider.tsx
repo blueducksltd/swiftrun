@@ -15,7 +15,7 @@ export default function HomepageSlider() {
         { companyLogo: "/roots.svg", image: "/companyImage.svg" }
     ];
     return (
-        <div className="relative py-10 px-0 pl-5 md:pl-30">
+        <div className="relative py-10 px-0 pl-0 md:pl-30">
 
             <Swiper
                 modules={[Autoplay]}
