@@ -41,14 +41,17 @@ function getOS(): "android" | "ios" | "mac" | "windows" | "linux" | "" {
 export const redirectDownloadTheAppHooks = () => {
   const { setState } = useDownloadApp();
 
-  const redirectUser = (type: "user" | "driver") => {
+  const redirectUser = (type: "user" | "driver", showModal = true) => {
     if (getOS() === "android") {
       window.location.href = STORE_LINKS[type].android
       // router.push("/download-the-app/user")
     } else if (getOS() === "ios") {
       window.location.href = STORE_LINKS[type].ios
     } else {
-      setState(prev => ({ ...prev, show: true }))
+      if (showModal) {
+
+        setState(prev => ({ ...prev, show: true, type: type === "user" ? "user" : "rider"}))
+      }
 
     }
   }

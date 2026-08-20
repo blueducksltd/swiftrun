@@ -4,8 +4,8 @@ import BoldAndNormalTextComp from './BoldAndNormalTextComp'
 
 export default function SkyBlueBanner({ bold, normal, slideLeftHeading, slideLeftDescription, slideRightChildren, reverse = false }: { bold: string; normal: string; slideLeftHeading: string; slideLeftDescription: string; slideRightChildren: React.ReactNode, reverse?: boolean }) {
     return (
-        <div className="bg-[#DDEEFF] py-10 px-10 md:px-40 grid gap-10">
-            <div className={`flex items-center justify-center pt-10 ${reverse ? "order-1" : ""}`}>
+        <div className="bg-[#DDEEFF] py-20 px-10 md:px-40 grid gap-10">
+            <div className={`flex items-center justify-center  ${reverse ? "order-1 pt-10" : ""}`}>
                 <BoldAndNormalTextComp bold={bold} normal={normal} />
 
             </div>

@@ -29,7 +29,7 @@ export default function BusinessPageComp() {
     return (
         <div>
 
-            <SectionHeader image='/swiftrun_banner.png' title='SwiftRun Business' description='Sell beyond borders' children={<div className='flex flex-col md:flex-row items-center gap-4 text-black'>
+            <SectionHeader video='/videos/business_banner.mp4' title='SwiftRun Business' description='Sell beyond borders' children={<div className='flex flex-col md:flex-row items-center gap-4 text-black'>
                 <BannerButton bg='bg-[#FFDEBC]' href='https://business.swiftrunapp.com/login' text='Login' />
                 <BannerButton bg='bg-[#FFB5CB]' text='Register' onClick={openModal} />
             </div>} />

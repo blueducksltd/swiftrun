@@ -1,10 +1,12 @@
 "use client"
+import { useRouter } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 
 export default function VideoBanner() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
@@ -40,6 +42,7 @@ export default function VideoBanner() {
     <div
       ref={containerRef}
       className="relative h-full w-full rounded-4xl overflow-hidden"
+
     //   className="p-10 flex items-center justify-center h-80 bg-white rounded-4xl relative overflow-hidden"
     >
       <video
@@ -51,10 +54,12 @@ export default function VideoBanner() {
       />
 
       <div
-        onClick={handlePlay}
-        className={`w-full h-full inset-0 bg-black/50 absolute flex items-center justify-center transition-opacity duration-500 ease-in-out cursor-pointer ${
-          isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+        onClick={() => {
+          window.open("https://youtube.com/@swiftrunlogisticss?si=PiwqxgWjzJDUnuEQ", "_blank", "noopener,noreferrer")
+
+        }}
+        className={`w-full h-full inset-0 bg-black/50 absolute flex items-center justify-center transition-opacity duration-500 ease-in-out cursor-pointer ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
       >
         <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full">
           <FaPlay />

@@ -52,8 +52,8 @@ export default function Footer() {
         label: "Instagram",
         href: "https://www.instagram.com/swiftrunlogistics?igsh=aXM5d2FqcXN1NzZ0",
       }, {
-        label: "Youtube",
-        href: "/"
+        label: "Facebook",
+        href: "https://www.facebook.com/share/1JPkdfhFHc/?mibextid=wwXIfr"
       }, {
         label: "Tiktok",
         href: "https://www.tiktok.com/@swiftrunlogistics?_r=1&_t=ZS-98ZfzWOZhDR",

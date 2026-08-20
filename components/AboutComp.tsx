@@ -35,7 +35,7 @@ export default function AboutComp() {
 
     return (
         <div>
-            <SectionHeader title='SwiftRun' description='Everything Delivered' image='/swiftrun_banner.png'/>
+            <SectionHeader title='SwiftRun' description='Everything Delivered' video='/videos/customer_banner.mp4'/>
             {/* <header className='h-[70vh] flex items-center justify-center relative'>
                 <div className='relative z-20 flex items-center justify-center flex-col'>
                     <h1 className='text-[60px] text-white font-bold'>SwiftRun</h1>

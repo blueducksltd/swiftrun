@@ -10,9 +10,11 @@ import FaqFooter from '@/components/FaqFooter';
 import LearnMore from '@/components/LearnMore';
 import SectionHeader from '@/components/SectionHeader';
 import SectionHeaderTexts from '@/components/SectionHeaderTexts';
+import { redirectDownloadTheAppHooks } from '@/hooks/useOSRedirect';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import CourierComp from './CourierComp';
 export const metadata: Metadata = {
     title: "Courier"
 }
@@ -35,15 +37,15 @@ const features: { title: string; description: string; background: string; color:
 export default function CourierPage() {
     return (
         <div>
-            <div className='t'>    
-                <SectionHeader image='/swiftrun_banner.png' title='SwiftRun Courier' description='Join, Serve, Earn.' children={<>
-                <div className='text-black'>
-                    <CourierBannerBtn />
-                </div>
-            </>} />
+            <div className='t'>
+                <SectionHeader video='/videos/courier_banner.mp4' title='SwiftRun Courier' description='Join, Serve, Earn.' children={<>
+                    <div className='text-black'>
+                        <CourierBannerBtn />
+                    </div>
+                </>} />
 
             </div>
-         
+
 
             <div className='py-20 px-10 md:px-30'>
                 <div className=' grid md:grid-cols-2 gap-10'>
@@ -65,22 +67,24 @@ export default function CourierPage() {
                         </AnimationSection>)
                     }
 
-                    <div className='md:col-span-2 flex justify-center'>
+                    <div className='md:col-span-2 grid'>
                         {
-                            swiftRunWorks.slice(2).map((item, index) => <AnimationSection key={index} animation='slideUp' className='flex justify-center'>
-                                <div className='border-2 border-[#066AC0] md:w-[60%] grid gap-14 rounded-[70px] p-10'>
-                                    <div className='h-14 w-14 bg-[#066AC0] text-white rounded-full flex items-center justify-center'>
-                                        <h1 className='text-3xl font-bold'>{index + 3}</h1>
-                                    </div>
+                            swiftRunWorks.slice(2).map((item, index) => (
+                                <AnimationSection key={index} animation='slideUp'>
+                                    <div className='border-2 border-[#066AC0] md:w-[60%] mx-auto grid gap-14 rounded-[70px] p-10'>
+                                        <div className='h-14 w-14 bg-[#066AC0] text-white rounded-full flex items-center justify-center'>
+                                            <h1 className='text-3xl font-bold'>{index + 3}</h1>
+                                        </div>
 
-                                    <div className='grid gap-3'>
-                                        <h1 className='text-3xl font-bold'>{item.title}</h1>
-                                        <p>
-                                            {item.description}
-                                        </p>
+                                        <div className='grid gap-3'>
+                                            <h1 className='text-3xl font-bold'>{item.title}</h1>
+                                            <p>
+                                                {item.description}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </AnimationSection>)
+                                </AnimationSection>
+                            ))
                         }
                     </div>
 
@@ -186,7 +190,8 @@ export default function CourierPage() {
                         }
                     </div>
 
-                    <FaqFooter customFaqs={questionsAboutRiders} paragraph='Earn with Peace of Mind' buttonText='Join Swifturn Now' />
+
+                    <CourierComp />
                 </div>
             </div>
 

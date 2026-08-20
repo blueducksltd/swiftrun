@@ -208,7 +208,7 @@ export default async function Page({
                 </div>}
                 <div className="flex items-center justify-center flex-col relative z-10 px-10 md:px-0 text-center gap-3">
                     <h1 className="font-bold text-4xl">{currentPageType.title}</h1>
-                    <p className="text-xl md:text-base"> 
+                    <p className="text-xl md:text-base">
                         {currentPageType.description}
                     </p>
                 </div>
@@ -258,7 +258,7 @@ export default async function Page({
 
                 <BuiltAroundYou />
 
-                <FaqFooter customFaqs={questionsAboutRiders}/>
+                <FaqFooter customFaqs={questionsAboutRiders} />
             </div>
 
 

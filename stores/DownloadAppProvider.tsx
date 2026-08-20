@@ -4,9 +4,9 @@ import React, { createContext, useContext, useState } from "react";
 type DownloadAppContextType = {
   state: {
     show: boolean;
-    type: "customer" | "rider";
+    type: "user" | "rider";
   };
-  setState: React.Dispatch<React.SetStateAction<{show: boolean; type: "customer" | "rider"}>>;
+  setState: React.Dispatch<React.SetStateAction<{show: boolean; type: "user" | "rider"}>>;
 };
 
 const DownloadAppContext = createContext<DownloadAppContextType | undefined>(undefined);
@@ -22,7 +22,7 @@ export function useDownloadApp() {
 }
 
 export default function DownloadAppProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<{show: boolean; type: "customer" | "rider"}>({ show: false, type: "customer"});
+  const [state, setState] = useState<{show: boolean; type: "user" | "rider"}>({ show: false, type: "user"});
 
   return (
     <DownloadAppContext.Provider value={{ state, setState }}>

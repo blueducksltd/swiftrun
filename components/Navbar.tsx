@@ -8,7 +8,9 @@ import { BsArrowRight } from 'react-icons/bs';
 import Modal from './old/modal';
 import { FiX } from 'react-icons/fi';
 import { useDownloadApp } from '@/stores/DownloadAppProvider';
-import { STORE_LINKS } from '@/app/(v2)/download-the-app/User';
+import { STORE_LINKS } from '@/app/util/data';
+import QrCodeComp from './QrCodeComp';
+
 
 function getOS(): "android" | "ios" | "mac" | "windows" | "linux" | "" {
   const ua = navigator.userAgent;
@@ -66,7 +68,7 @@ export default function Navbar() {
     })();
   }, [pathname]);
 
-  const qrCodeLink = `${origin}/download-the-app/${state.type === "customer" ? "customer" : "rider"
+  const qrCodeLink = `${origin}/download-the-app/${state.type === "user" ? "user" : "rider"
     }`;
   const qrCodeImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
     qrCodeLink
@@ -97,7 +99,7 @@ export default function Navbar() {
 
           {/* Dropdown */}
           <div
-            className={`absolute top-full left-1/2 -translate-x-1/2 mt-10 w-40 origin-top transition-all duration-300 ${showDropdown
+            className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-40 origin-top transition-all duration-300 ${showDropdown
               ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
               : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
               } `}
@@ -111,10 +113,10 @@ export default function Navbar() {
                       router.push(link.href)
                     } else {
                       if (getOS() === "android") {
-                        window.location.href = STORE_LINKS.android
+                        window.location.href = STORE_LINKS["user"].android
                         // router.push("/download-the-app/user")
                       } else if (getOS() === "ios") {
-                        window.location.href = STORE_LINKS.ios
+                        window.location.href = STORE_LINKS["user"].ios
                       } else {
                         setState(prev => ({ ...prev, show: true }))
 
@@ -166,32 +168,22 @@ export default function Navbar() {
           </p>
 
           <section className="flex flex-col justify-center items-center">
-            {origin ? (
-              <img
-                src={qrCodeImageUrl}
-                height={150}
-                width={150}
-                alt="SwiftRun QR Code"
-                className="bg-white p-2 rounded-lg"
-              />
-            ) : (
-              <div className="w-[150px] h-[150px] bg-gray-100 animate-pulse rounded-lg" />
-            )}
+            <QrCodeComp imageSize={150} downloadType={state.type} />
+           
           </section>
 
           <div className="flex flex-col items-center">
             <p className="text-center leading-5 text-xs font-medium">
               Use your phone or browser camera to scan the QR code and download
-              the SwiftRun {state.type == "customer" ? "User's App" : "Driver's App"}.
+              the SwiftRun {state.type == "user" ? "User's App" : "Driver's App"}.
             </p>
             <p className="text-xs mt-2">
               Having problems scanning?{" "}
               <button
                 onClick={() => {
                   setState(prev => ({ ...prev, show: false }))
-                  state.type == "customer"
-                    ? router.replace("/download-the-app/user")
-                    : router.replace("/download-the-app/driver");
+                  router.replace(`/download-the-app/${state.type}`)
+
                 }}
                 className="text-[#066AC0] underline cursor-pointer"
               >
@@ -204,8 +196,8 @@ export default function Navbar() {
 
           <div className="bg-[#066AC0] flex justify-between items-center w-full p-2 rounded-full space-x-3 text-sm">
             <button
-              onClick={() => setState(prev => ({ ...prev, type: "customer" }))}
-              className={`${state.type === "customer"
+              onClick={() => setState(prev => ({ ...prev, type: "user" }))}
+              className={`${state.type === "user"
                 ? "bg-cloudmist text-[#066AC0]"
                 : "text-cloudmist"
                 } px-8 py-2.5 rounded-full cursor-pointer`}

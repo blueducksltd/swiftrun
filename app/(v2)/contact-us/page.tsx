@@ -4,6 +4,7 @@ import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp'
 import ContactUsForm from '@/components/ContactUsForm'
 import DownloadTheAppBtn from '@/components/DownloadTheAppBtn'
 import FaqSection from '@/components/FaqSection'
+import PublicInformation from '@/components/PublicInformation'
 import SectionHeader from '@/components/SectionHeader'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import SupportInput from '@/components/SupportInput'
@@ -19,7 +20,7 @@ export default function SupportPage() {
             <SectionHeader title='Support/Contact' description="Talk to us. We're always ready to help" />
 
             <div className='py-10 px-10 md:px-40'>
-                <ContactUsForm/>
+                <ContactUsForm />
 
 
             </div>
@@ -58,36 +59,16 @@ export default function SupportPage() {
 
             </div>
 
-            <div className='bg-[#FEF6E9] py-20 px-10 md:px-40 grid gap-20'>
-                <AnimationSection amount={0.5} animation='slideUp'>
-                    <div className='grid gap-5'>
-                        <h1 className='text-3xl md:text-4xl font-bold'>Public Information</h1>
-                        <p className='font-medium mt-4 text-lg'>SwiftRun Logistics Limited</p>
-                        <p className=''>RC 123456789</p>
-                        <p>10 Ajali Crescent Independence Layout
-                            Enugu, Nigeria</p>
-                        <p>Monday - Friday (09:00AM-04:00AM)</p>
-                    </div>
-                </AnimationSection>
-
-                <AnimationSection amount={0.5} animation='slideUp'>
-                    <div className='grid gap-5'>
-                        <h1 className='text-3xl md:text-4xl font-bold'>Contact/Support</h1>
-                        <Link href={"tel:+2349167066539"}>+2349167066539</Link>
-                        <Link href={"mailto:info@swiftrun.com"}>info@swiftrun.com</Link>
-
-                    </div>
-                </AnimationSection>
-            </div>
+            <PublicInformation />
 
             <div className='py-20 px-10 md:px-40'>
-                <FaqSection customFaqs={questionsAboutSupport}/>
+                <FaqSection customFaqs={questionsAboutSupport} />
                 <div className='my-30'>
                     <AnimationSection animation='slideUp' amount={0.4}>
                         <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
 
                         <div className='flex justify-center mt-6 px-4 sm:px-0'>
-                            <DownloadTheAppBtn/>
+                            <DownloadTheAppBtn />
                         </div>
                     </AnimationSection>
                 </div>
