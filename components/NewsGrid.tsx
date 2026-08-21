@@ -41,6 +41,8 @@ const data: { title: string; description: string; category: Tabs[1] | Tabs[2]; i
 export default function NewsGrid() {
     const [selectedTab, setSelectedTab] = useState<Tabs[number]>("All");
     const COLUMNS = 2;
+    // const filteredData = data.filter(item => selectedTab === "All" ? false : item.category === selectedTab);
+    const filteredData = data.filter(item=> false)
 
     return (
         <div>
@@ -59,33 +61,42 @@ export default function NewsGrid() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20 overflow-hidden">
-
                 {
+                    filteredData.length === 0 ? (
+                        <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center py-20 text-center gap-3">
+                            <h1 className="text-xl font-bold text-gray-500">No results found</h1>
+                            <p className="text-sm text-gray-400">
+                                {selectedTab === "All"
+                                    ? "There's nothing here yet."
+                                    : `No items found in "${selectedTab}".`}
+                            </p>
+                        </div>
+                    ) : (
+                        filteredData.map((item, index) => {
+                            const row = Math.floor(index / COLUMNS);
+                            const col = index % COLUMNS;
+                            const isEven = (row + col) % 2 === 0;
 
-                    data.filter(item => selectedTab === "All" ? true : item.category === selectedTab).map((item, index) => {
-                        const row = Math.floor(index / COLUMNS);
-                        const col = index % COLUMNS;
-                        const isEven = (row + col) % 2 === 0;
-
-                        return (
-                            <AnimationSection key={index} animation={isEven ? "slideRight" : "slideLeft"}>
-                                <div key={index} className={`${isEven ? "bg-[#F9BACA33]" : "bg-[#8DD8EB33]"} rounded-4xl h-120 overflow-hidden`}>
-                                    <div className="h-[60%] relative">
-                                        <Image src={item.image} className="object-cover" alt="" fill />
-                                    </div>
-                                    <div className="p-5 grid gap-4">
-                                        <div className="flex items-center gap-3 text-base md:text-sm">
-                                            <p>{item.category}</p>
-                                            <div className="h-2 w-[0.5] bg-black"></div>
-                                            <p>{item.date}</p>
+                            return (
+                                <AnimationSection key={index} animation={isEven ? "slideRight" : "slideLeft"}>
+                                    <div className={`${isEven ? "bg-[#F9BACA33]" : "bg-[#8DD8EB33]"} rounded-4xl h-120 overflow-hidden`}>
+                                        <div className="h-[60%] relative">
+                                            <Image src={item.image} className="object-cover" alt="" fill />
                                         </div>
-                                        <h1 className={`font-extrabold text-xl ${isEven ? "text-[#DF6F9F]" : "text-[#33A2B5]"}`}>{item.title}</h1>
-                                        <p>{item.description.split(" ").length > 15 ? item.description.split(" ").slice(0, 15).join(" ") + "..." : item.description}</p>
+                                        <div className="p-5 grid gap-4">
+                                            <div className="flex items-center gap-3 text-base md:text-sm">
+                                                <p>{item.category}</p>
+                                                <div className="h-2 w-[0.5] bg-black"></div>
+                                                <p>{item.date}</p>
+                                            </div>
+                                            <h1 className={`font-extrabold text-xl ${isEven ? "text-[#DF6F9F]" : "text-[#33A2B5]"}`}>{item.title}</h1>
+                                            <p>{item.description.split(" ").length > 15 ? item.description.split(" ").slice(0, 15).join(" ") + "..." : item.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </AnimationSection>
-                        );
-                    })
+                                </AnimationSection>
+                            );
+                        })
+                    )
                 }
             </div>
         </div>

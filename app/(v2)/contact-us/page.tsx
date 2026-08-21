@@ -2,7 +2,9 @@ import { questionsAboutSupport } from '@/app/util/data'
 import AnimationSection from '@/components/AnimationSection'
 import BoldAndNormalTextComp from '@/components/BoldAndNormalTextComp'
 import ContactUsForm from '@/components/ContactUsForm'
+import DownloadTheAppBtn from '@/components/DownloadTheAppBtn'
 import FaqSection from '@/components/FaqSection'
+import PublicInformation from '@/components/PublicInformation'
 import SectionHeader from '@/components/SectionHeader'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import SupportInput from '@/components/SupportInput'
@@ -18,7 +20,7 @@ export default function SupportPage() {
             <SectionHeader title='Support/Contact' description="Talk to us. We're always ready to help" />
 
             <div className='py-10 px-10 md:px-40'>
-                <ContactUsForm/>
+                <ContactUsForm />
 
 
             </div>
@@ -33,7 +35,7 @@ export default function SupportPage() {
                     <div className={`bg-linear-to-tl from-[#46A0FF] to-[#56B1FF] text-white rounded-[50px] p-10 `}>
 
 
-                        <h1 className={`text-[80px] md:text-[120px] font-bold mb-2 mt-4 `}>
+                        <h1 className={`text-[60px] leading-tight md:text-[120px] font-bold mb-2 mt-4 `}>
                             Help Us
                         </h1>
                         <p className='text-lg'>
@@ -57,40 +59,16 @@ export default function SupportPage() {
 
             </div>
 
-            <div className='bg-[#FEF6E9] py-20 px-10 md:px-40 grid gap-20'>
-                <AnimationSection amount={0.5} animation='slideUp'>
-                    <div className='grid gap-5'>
-                        <h1 className='text-4xl font-bold'>Public Information</h1>
-                        <p className='font-medium mt-4 text-lg'>SwiftRun Logistics Limited</p>
-                        <p className=''>RC 123456789</p>
-                        <p>10 Ajali Crescent Independence Layout
-                            Enugu, Nigeria</p>
-                        <p>Monday - Friday (09:00AM-04:00AM)</p>
-                    </div>
-                </AnimationSection>
-
-                <AnimationSection amount={0.5} animation='slideUp'>
-                    <div className='grid gap-5'>
-                        <h1 className='text-4xl font-bold'>Contact/Support</h1>
-                        <Link href={"tel:+23470123456789"}>+23470123456789</Link>
-                        <Link href={"tel:+23470123456789"}>+23470123456789</Link>
-                        <Link href={"mailto:support@swiftrun.com"}>support@swiftrun.com</Link>
-                        <Link href={"mailto:info@swiftrun.com"}>info@swiftrun.com</Link>
-
-                    </div>
-                </AnimationSection>
-            </div>
+            <PublicInformation />
 
             <div className='py-20 px-10 md:px-40'>
-                <FaqSection customFaqs={questionsAboutSupport}/>
+                <FaqSection customFaqs={questionsAboutSupport} />
                 <div className='my-30'>
                     <AnimationSection animation='slideUp' amount={0.4}>
                         <SectionHeaderTexts paragraph={`Everything Delivered`} heading="Get Swiftrun Today" />
 
                         <div className='flex justify-center mt-6 px-4 sm:px-0'>
-                            <Link href="/stores" className="bg-[#FFB5CB] flex items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary font-medium">
-                                Download the App
-                            </Link>
+                            <DownloadTheAppBtn />
                         </div>
                     </AnimationSection>
                 </div>

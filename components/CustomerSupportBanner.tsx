@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function CustomerSupportBanner() {
     return (
-        <div className="relative px-10 md:px-30   grid grid-cols-1 md:grid-cols-2 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
+        <div className="relative py-20 px-4 md:px-30  flex flex-col justify-center md:grid md:grid-cols-2 items-center bg-linear-to-r from-[#ED5E5E] to-[#E8865C]">
             <div className=" ">
                 <AnimationSection animation="slideUp" amount={0.6}>
                     <Image src={"/customer_support.png"} alt="" width={300} height={300} />

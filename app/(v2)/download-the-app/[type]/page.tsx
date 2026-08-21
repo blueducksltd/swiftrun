@@ -1,18 +1,12 @@
-import User from "../User";
-import Driver from "../Driver";
+import DownloadTheAppComp from "../DownloadTheAppComp";
 import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Download App",
 };
-export default async function downloadTheApp({
-  params,
-}: {
-  params: Promise<{ type: string }>;
-}) {
-  const { type } = await params;
+export default async function downloadTheApp() {
   return (
-    <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 p-6 md:p-20  gap-14">
-      {type == "user" ? <User /> : <Driver />}
+    <div className="py-30 px-10 md:px-40 ">
+      <DownloadTheAppComp   />
     </div>
   );
 }

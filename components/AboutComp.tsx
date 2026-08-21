@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import BuiltAroundYou from './BuiltAroundYou';
 import CustomerSupportBanner from './CustomerSupportBanner';
 import SectionHeaderTexts from './SectionHeaderTexts';
@@ -9,6 +9,8 @@ import FaqSection from './FaqSection';
 import Link from 'next/link';
 import LearnMore from './LearnMore';
 import { questionsAboutUsers } from '@/app/util/data';
+import SectionHeader from './SectionHeader';
+import { useRef } from 'react';
 
 const features: { title: string; description: string; background: string; image: string; href: string;}[] = [
     { title: "Instant Delivery", description: "Send packages immediately with fast rider dispatch and reliable doorstep delivery across Enugu.", background: "to-[#46A0FF] from-[#56B1FF]", image: "/instant_delivery.png", href: "/delivery/instant" },
@@ -28,12 +30,13 @@ const swiftRunWorks: { title: string; description: string }[] = [
 
 export default function AboutComp() {
 
-
+    const ref = useRef<SwiperRef>(null)
 
 
     return (
         <div>
-            <header className='h-[70vh] flex items-center justify-center relative'>
+            <SectionHeader title='SwiftRun' description='Everything Delivered' video='/videos/customer_banner.mp4'/>
+            {/* <header className='h-[70vh] flex items-center justify-center relative'>
                 <div className='relative z-20 flex items-center justify-center flex-col'>
                     <h1 className='text-[60px] text-white font-bold'>SwiftRun</h1>
                     <p className='text-[#FFDEBC]'>Everything Delivered</p>
@@ -44,34 +47,41 @@ export default function AboutComp() {
 
                   
                 </div>
-            </header>
+            </header> */}
 
             <main>
                 <section className=''>
-                    <div className='flex text-center items-center py-10 px-10 md:px-20 justify-center flex-col gap-1 '>
+                    <div className='flex text-center items-center py-10 px-5 md:px-20 justify-center flex-col gap-1 '>
                         <SectionHeaderTexts heading='Get to know swiftRun' paragraph=' Life gets busy, so we make errands easy. Shop local, send packages, and enjoy reliable deliveries from one simple app built around your everyday needs.' />
                         <h1 className='text-[70px]  font-bold'></h1>
 
                     </div>
-                    <div className='relative my-14 pl-10 md:pl-20'>
+                    <div className='relative my-14 pl-0 md:pl-20'>
                         <Swiper
                             modules={[Autoplay]}
                             // spaceBetween={60}
-                            slidesPerView={1.5}
+                            slidesPerView={1.1}
                             loop={true}
                             autoHeight={true}          // <-- fixes height calculation
                             autoplay={{
-                                delay: 2000,
+                                delay: 5000,
                                 disableOnInteraction: false,
+                                // pauseOnMouseEnter: true
                             }}
+                            
                             breakpoints={{
                                 1024: { slidesPerView: 2.7 },
                             }}
+
                         // <-- padding for shadows
                         >
                             {
                                 [...features, ...features].map((feature, index) => <SwiperSlide key={index} className='px-2 md:px-10'>
-                                    <Link href={feature.href} className='group'>
+                                    <Link href={feature.href} className='group' onMouseOver={()=>{
+                                        ref.current?.swiper.autoplay.pause()
+                                    }} onMouseOut={()=>{
+                                         ref.current?.swiper.autoplay.resume()
+                                    }}>
                                         <div className={`h-100  pb-3  flex flex-col justify-between bg-linear-to-br ${feature.background} rounded-[40px] overflow-hidden`}>
                                             <div className='h-[60%] bg-[#D9D9D9] relative'>
                                                 <Image alt='' src={feature.image} fill className='object-cover' />

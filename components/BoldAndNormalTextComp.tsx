@@ -15,7 +15,7 @@ export default function BoldAndNormalTextComp({ bold, normal, href }: { bold: st
         }} onMouseOver={() => {
             setHovered(true)
         }} >
-            <h1 className="text-[20px]  text-center flex items-center justify-center gap-1 " >
+            <h1 className="text-[20px]  text-center flex flex-wrap items-center justify-center gap-1 " >
                 <b className="font-bold ">{bold}</b>
                 <span className="font-primary">{normal}</span>
             </h1>

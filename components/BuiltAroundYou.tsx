@@ -42,7 +42,7 @@ export default function BuiltAroundYou() {
                     return (
                         <div
                             key={index}
-                            className={`w-full min-w-0 ${isExpanded ? "md:w-[65%]" : "md:w-[30%]"} grid gap-6 rounded-3xl bg-[#066AC0] p-6 transition-all duration-100 sm:rounded-4xl sm:p-8`}
+                            className={`w-full min-w-0 ${isExpanded ? "md:w-[65%]" : "md:w-[30%]"} grid gap-6 rounded-[50px] bg-[#066AC0]  transition-all duration-100  md:min-h-[100px]  p-8`}
                             onMouseEnter={() => {
                                 // Only 0 and 3 are hoverable
                                 if (index === 0 || index === 4) {
