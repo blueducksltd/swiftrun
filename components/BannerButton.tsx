@@ -35,7 +35,7 @@ export default function BannerButton({
             return;
         }
         if (href === "customer") {
-            setState(prev => ({ ...prev, show: true, type: "customer" }));
+            setState(prev => ({ ...prev, show: true, type: "user" }));
             return;
         }
         if (href === "rider") {
