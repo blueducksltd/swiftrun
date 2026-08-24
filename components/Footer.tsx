@@ -1,3 +1,4 @@
+import { STORE_LINKS } from '@/app/util/data';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -71,13 +72,13 @@ export default function Footer() {
           </div>
           <div className='grid grid-cols-2 md:grid-cols-1'>
             <div>
-              <Link href={"/"} className='w-fit relative  inline-block'>
+              <Link href={STORE_LINKS.user.ios} className='w-fit relative  inline-block'>
                 <Image alt='' src={"/download_appstore.svg"} width={100} height={100} />
               </Link>
             </div>
 
             <div className=''>
-              <Link href={"/"} className='w-fit relative  inline-block'>
+              <Link href={STORE_LINKS.user.android} className='w-fit relative  inline-block'>
                 <Image alt='' src={"/download_googleplay.svg"} width={100} height={100} />
               </Link>
             </div>

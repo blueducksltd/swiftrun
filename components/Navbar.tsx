@@ -128,7 +128,7 @@ export default function Navbar() {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   className="group flex items-center gap-4 p-3 text-sm text-gray-800 bg-white rounded-full    transition-all duration-200 
-                shadow-[0_4px_60px_rgba(0,0,0,0.2)] cursor-pointer"
+                shadow-[0_4px_30px_rgba(0,0,0,0.04)] cursor-pointer"
                 >
                   <span>{link.label}</span>
                   <div className="relative w-4 h-4 overflow-hidden">
