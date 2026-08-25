@@ -49,7 +49,7 @@ const defaultFAQs = [
 export default function FaqSection({ heading, paragraph, customFaqs }: { heading?: string; paragraph?: string, customFaqs?: { title: string; description: string; }[] }) {
     const answerRef = useRef<HTMLDivElement>(null);
     const [faqs, setFaqs] = useState<
-        { title: string; description: string; selected: boolean }[]
+        { title: string; description: string; selected: boolean, html?: string }[]
     >([]);
 
     const selectFaq = (index: number) => {
@@ -91,11 +91,14 @@ export default function FaqSection({ heading, paragraph, customFaqs }: { heading
                     <h1 className='text-2xl font-bold mb-3'>
                         {faqs.find(item => item.selected)?.title}
                     </h1>
-
-                    <p className='text-lg'>
+                    {
+                        faqs.find(item => item.selected)?.html &&   <div className='grid gap-2' dangerouslySetInnerHTML={{ __html: faqs.find(item => item.selected)?.html! }} />
+                    }
+                    {faqs.find(item => item.selected)?.description && <p className='text-lg'>
                         {faqs.find(item => item.selected)?.description}
 
-                    </p>
+                    </p>}
+
                 </div>
             </div>
         </div>

@@ -37,7 +37,7 @@ export default function FaqFooter({
                             return;
                         }
                         router.push(buttonHref)
-                    }} className="group bg-[#FFB5CB] flex gap-3 text-sm items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary">
+                    }} className="group bg-[#FFB5CB] cursor-pointer flex gap-3 text-sm items-center justify-center w-full sm:w-fit py-4 px-8 sm:px-20 rounded-full transition duration-300 font-primary">
                         <LearnMore text={buttonText} />
                     </div>
                 </div>

@@ -31,7 +31,6 @@ export default function DownloadTheAppComp() {
 
     }
   }
-  console.log(isUser)
   return (
     <div className="flex flex-col items-center gap-4">
 
@@ -52,7 +51,7 @@ export default function DownloadTheAppComp() {
           </div>
 
           <div className="flex md:flex-col gap-4 md:items-end justify-center">
-            <Link href={links.ios}>
+            <Link target="_blank" href={links.ios}>
               <Image
                 width={140}
                 height={140}
@@ -61,7 +60,7 @@ export default function DownloadTheAppComp() {
               />
             </Link>
 
-            <Link href={links.android}>
+            <Link target="_blank" href={links.android}>
               <Image
                 width={140}
                 height={140}
