@@ -3,14 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Appstore from "@/public/appstore.png";
 import { useOSRedirect } from "@/hooks/useOSRedirect";
+import { STORE_LINKS } from "@/app/util/data";
 
-const STORE_LINKS = {
-  ios: "https://apps.apple.com/ng/app/swiftrun-driver/id6758965318",
-  android: "https://play.google.com/store/apps/details?id=com.swiftrun.driver",
-};
+
 
 export default function Driver() {
-  useOSRedirect(STORE_LINKS);
+  useOSRedirect(STORE_LINKS.driver);
 
   return (
     <>
@@ -25,7 +23,7 @@ export default function Driver() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-2">
-          <Link className="" href={STORE_LINKS.android}>
+          <Link className="" href={STORE_LINKS.driver.android} target="_blank">
             <Image
               width={400}
               height={400}
@@ -34,7 +32,7 @@ export default function Driver() {
             />
           </Link>
 
-          <Link className="" href={STORE_LINKS.ios}>
+          <Link className="" href={STORE_LINKS.driver.ios} target="_blank">
             <Image
               width={400}
               height={400}

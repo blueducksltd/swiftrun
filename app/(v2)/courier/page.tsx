@@ -137,7 +137,7 @@ export default function CourierPage() {
 
                         <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
                             <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
-                                <Image alt='' src={"/checks.svg"} width={14} height={14} />
+                                <Image alt='' src={"/checks.png"} width={14} height={14} />
                             </div>
 
                             <h1 className='font-bold text-base md:text-lg min-w-0'>Personal Details</h1>
@@ -145,7 +145,7 @@ export default function CourierPage() {
 
                         <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
                             <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
-                                <Image alt='' src={"/checks.svg"} width={14} height={14} />
+                                <Image alt='' src={"/checks.png"} width={14} height={14} />
                             </div>
 
                             <h1 className='font-bold text-base md:text-lg min-w-0'>National ID</h1>
@@ -153,7 +153,7 @@ export default function CourierPage() {
 
                         <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
                             <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
-                                <Image alt='' src={"/checks.svg"} width={14} height={14} />
+                                <Image alt='' src={"/checks.png"} width={14} height={14} />
                             </div>
 
                             <h1 className='font-bold text-base md:text-lg min-w-0'>Driver's License or permit Details</h1>
@@ -161,7 +161,7 @@ export default function CourierPage() {
 
                         <div className='bg-white p-5 md:p-7 rounded-full flex gap-4 md:gap-7 items-center'>
                             <div className='bg-[#066AC0] h-8 w-8 shrink-0 flex items-center justify-center rounded-full relative'>
-                                <Image alt='' src={"/checks.svg"} width={14} height={14} />
+                                <Image alt='' src={"/checks.png"} width={14} height={14} />
                             </div>
 
                             <h1 className='font-bold text-base md:text-lg min-w-0'>Guarantor Information</h1>

@@ -370,7 +370,7 @@ export const careers: {
         }
     ];
 
-export type FAQs = { title: string; description: string }[]
+export type FAQs = { title: string; description: string; html?: string; }[]
 export const questionsAboutUsers: FAQs = [
     { title: "Allergies?", description: "If you have an  allergy, please let us know when placing your order and check the product details carefully. If you’re unsure about an item, our support team is happy to help." },
     { title: "How do i know my package is safe during delivery?", description: "Every delivery is handled by trusted, verified riders and backed by real-time tracking, so you can follow every step and feel confident your package is in safe hands." },
@@ -393,8 +393,23 @@ export const questionsAboutUsers: FAQs = [
         description: "If the recipient can't be reached, the rider will attempt to contact them. If delivery still isn't possible, the order may be returned to the sender or rescheduled based on SwiftRun's delivery policy."
     },
     {
-        title: "How and when do i get paid?",
-        description: "As a business your earnings are yours to keep! Payment details and schedules will be shared with you during the rider onboarding process, so you’ll always know what to expect."
+        title: "Having trouble logging in? 🔐",
+        description: "",
+        html: `
+        <p>No worries, let’s get you back in.</p>
+
+        <ul class='list-disc pl-2 md:pl-6 space-y-2'>
+        <li>Check your email: Make sure you entered the correct email address.</li>
+        <li>Got a login link? Open it on the same device you’re using to access SwiftRun.</li>
+        <li>No email yet? Check your spam/junk folder or request a new login link.</li>
+        <li>Update SwiftRun: Make sure you’re using the latest version of the app.</li>
+        </ul>
+
+        <p>
+        Still stuck? We’ve got you. 💛 
+        </p>
+        <p>Email <a href="mailto:info@swiftrunapp.com">info@swiftrunapp.com</a> with a brief description of the issue, and our Support Team will help you sort it out.</p>
+        `
     },
     {
         title: "How do i contact customer support?",

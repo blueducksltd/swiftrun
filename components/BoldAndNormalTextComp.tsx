@@ -10,7 +10,7 @@ export default function BoldAndNormalTextComp({ bold, normal, href }: { bold: st
         <div onClick={() => {
             if (!href) return;
            router.push(href) 
-        }} className={`flex items-center justify-center gap-3 ${href ? "cursor-pointer" : ""}`} onMouseOut={() => {
+        }} className={`flex items-center justify-center gap-3 cursor-pointer ${href ? "" : ""}`} onMouseOut={() => {
             setHovered(false)
         }} onMouseOver={() => {
             setHovered(true)

@@ -72,13 +72,13 @@ export default function Footer() {
           </div>
           <div className='grid grid-cols-2 md:grid-cols-1'>
             <div>
-              <Link href={STORE_LINKS.user.ios} className='w-fit relative  inline-block'>
+              <Link target='_blank' href={STORE_LINKS.user.ios} className='w-fit relative  inline-block'>
                 <Image alt='' src={"/download_appstore.svg"} width={100} height={100} />
               </Link>
             </div>
 
             <div className=''>
-              <Link href={STORE_LINKS.user.android} className='w-fit relative  inline-block'>
+              <Link  target='_blank'href={STORE_LINKS.user.android} className='w-fit relative  inline-block'>
                 <Image alt='' src={"/download_googleplay.svg"} width={100} height={100} />
               </Link>
             </div>
@@ -91,7 +91,7 @@ export default function Footer() {
 
             <div className='text-white grid  gap-4'>
               {
-                link.links.map((item, itemIndex) => <Link key={itemIndex} href={item.href} className='font-primary '>{item.label}</Link>)
+                link.links.map((item, itemIndex) => <Link key={itemIndex} target={item.href.startsWith("https:") ? "_blank" : "_self"} href={item.href} className='font-primary '>{item.label}</Link>)
               }
             </div>
           </div>)
@@ -106,10 +106,10 @@ export default function Footer() {
             Nigeria
           </span>
 
-          <span className='text-[#F6DBCC] flex items-center gap-1'>
+          {/* <span className='text-[#F6DBCC] flex items-center gap-1'>
             <MdLightMode />
             Light
-          </span>
+          </span> */}
         </div>
 
         <div className='flex md:items-center gap-3 flex-col md:flex-row flex-wrap text-sm text-[#F6DBCC] w-full md:w-fit'>
@@ -119,7 +119,7 @@ export default function Footer() {
           <Link href={"/"} className='underline'>&copy; SwiftRun 2026</Link>
         </div>
 
-        <Link href={"https://blueducksltd.com/"}>
+        <Link target='_blank' href={"https://blueducksltd.com/"}>
           <Image
             src={"/bluducks_white.svg"}
             height={100}

@@ -26,9 +26,6 @@ export default function Navbar() {
   const links: { href: string; label: string }[] = [{
     href: '/about',
     label: 'Download app',
-  }, {
-    href: '/about',
-    label: 'About us',
   },
   {
     href: '/courier',
@@ -46,7 +43,10 @@ export default function Navbar() {
     href: '/news',
     label: 'News/blog',
   },
-
+  {
+    href: '/about',
+    label: 'About us',
+  },
   ];
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -104,6 +104,7 @@ export default function Navbar() {
               : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
               } `}
           >
+            {/* <ul className='list-disc'></ul> */}
             <div className="flex flex-col gap-2">
               {links.map((link, index) => (
                 <div
@@ -169,7 +170,7 @@ export default function Navbar() {
 
           <section className="flex flex-col justify-center items-center">
             <QrCodeComp imageSize={150} downloadType={state.type} />
-           
+
           </section>
 
           <div className="flex flex-col items-center">

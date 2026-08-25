@@ -26,8 +26,8 @@ export default function BannerButton({
         }
         if (!href) return;
 
-        if (href.startsWith("http")) {
-            window.location.href = href;
+        if (href.startsWith("https:")) {
+            window.open(href, "_blank", "noopener,noreferrer")
             return;
         }
         if (href.startsWith("/") || href.startsWith("#")) {
