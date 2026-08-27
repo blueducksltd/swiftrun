@@ -26,13 +26,13 @@ export default function BusinessRegisterModal({ showModal, openModal, closeModal
                 onClick={closeModal}
             >
                 <div
-                    className={`relative transition-all duration-300 ${showModal ? 'scale-60 md:scale-70 opacity-100' : 'scale-0 opacity-0'}`}
+                    className={`relative transition-all duration-300 ${showModal ? 'scale-80 md:scale-70 opacity-100' : 'scale-0 opacity-0'}`}
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button
                         onClick={closeModal}
                         aria-label="Close"
-                        className='absolute -top-14 right-4 md:-top-3 md:-right-10 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md z-10 cursor-pointer'
+                        className='absolute -top-3 right-2 md:-top-3 md:-right-10 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md z-10 cursor-pointer'
                     >
                         ✕
                     </button>

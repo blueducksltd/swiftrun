@@ -8,7 +8,7 @@ export default function ContactUsForm() {
         <div>
             <div className='bg-[#1E4E90]  rounded-[50px] p-7 md:p-14'>
                 <div className='w-full overflow-x-auto md:overflow-visible scroll-hide'>
-                    <div className='flex md:grid md:grid-cols-3 gap-4 md:gap-10  md:px-0 w-max md:w-full'>
+                    <div className='grid grid-cols-3 gap-4 md:gap-10  md:px-0 w-full md:w-full'>
                         <div className='bg-white rounded-4xl flex items-center gap-4 justify-center py-3 px-6 whitespace-nowrap  w-auto shrink-0 md:shrink'>
                             <Image alt='' src={"/support_email.svg"} width={15} height={15} />
                             <p className='hidden md:block'>Send Email</p>

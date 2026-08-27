@@ -7,7 +7,7 @@ export default function CourierComp() {
     const redirect = redirectDownloadTheAppHooks()
 
     return (
-        <FaqFooter customClick={() => {
+        <FaqFooter  customClick={() => {
             redirect("driver")
         }} customFaqs={questionsAboutRiders} paragraph='Earn with Peace of Mind' buttonText='Join Swifturn Now' />
     )

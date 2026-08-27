@@ -1,4 +1,4 @@
-import { questionsAboutRiders } from '@/app/util/data';
+import { builtAroundYouDriver, questionsAboutRiders } from '@/app/util/data';
 import AnimationSection from '@/components/AnimationSection';
 import Banner from '@/components/Banner'
 import BannerButton from '@/components/BannerButton';
@@ -114,7 +114,7 @@ export default function CourierPage() {
                 </div>
 
                 <div className='my-20'>
-                    <BuiltAroundYou />
+                    <BuiltAroundYou  arr={builtAroundYouDriver}/>
                 </div>
 
 

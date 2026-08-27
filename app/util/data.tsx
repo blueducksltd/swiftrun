@@ -436,3 +436,33 @@ export const STORE_LINKS = {
         android: "https://play.google.com/store/apps/details?id=com.swiftrun.driver",
     }
 };
+export interface IBuiltAroundYou { title: string; description: string; image: string; }
+export const builtAroundYouUser: IBuiltAroundYou[] = [
+    { title: "Safe, Affordable Delivery", description: "Enjoy safe, reliable deliveries at affordable rates, with trusted riders handling your orders carefully from pickup to doorstep. ", image: "/coin.png" },
+
+    { title: "Real-Time Tracking", description: "Track every delivery live from pickup to your doorstep with accurate, real-time location updates. ", image: "/map.png" },
+
+    { title: "One App for all", description: "From sending packages to ordering groceries, food, items, and more, SwiftRun brings everything you need together in one simple app. convenient app.", image: "/smartphone.png" },
+
+    { title: "Verified drivers,  Stores", description: "Shop and send with confidence, knowing our verified riders and trusted stores are committed to giving you a safe, reliable SwiftRun experience.", image: "/verified.png" }
+];
+
+export const builtAroundYouDriver: IBuiltAroundYou[] = [
+    { title: "Deliver More, Earn More", description: "Deliver more orders with SwiftRun and grow your earnings. Stay busy, reach more customers, and make every delivery count. ", image: "/coin.png" },
+
+    { title: "Fast and Secure Payments", description: "Get paid quickly and securely, so you can focus on growing your business while we keep your earnings moving.", image: "/map.png" },
+
+    { title: "Smart Delivery System", description: "Our smart delivery system connects orders with riders efficiently, helping businesses deliver faster, and more reliably every day.", image: "/smartphone.png" },
+
+    { title: "Join a Trusted Platform", description: "Join a reliable platform built to connect your business with more customers while making orders, deliveries, and growth easier.", image: "/verified.png" }
+];
+
+export const builtAroundYouBusiness: IBuiltAroundYou[] = [
+    { title: "Reach More Customers", description: "Reach more local customers, grow your visibility, and turn every new order into another opportunity to grow your business. ", image: "/coin.png" },
+
+    { title: "Order and Product Management", description: "Easily manage your products and orders in one place, keeping your business organized and ready for every customer.", image: "/map.png" },
+
+    { title: "Fast and Secure Payments", description: "Accept payments quickly and securely with smooth transactions that keep every order simple, safe, and stress free.", image: "/smartphone.png" },
+
+    { title: "Trusted Delivery Service", description: "Count on SwiftRun for reliable, secure, and timely deliveries, handled by trusted riders committed to getting every order across safely. ", image: "/verified.png" }
+];

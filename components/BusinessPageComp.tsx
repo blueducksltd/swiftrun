@@ -1,6 +1,6 @@
 "use client";
 import FaqFooter from './FaqFooter'
-import { questionsAboutBusiness } from '@/app/util/data'
+import { builtAroundYouBusiness, questionsAboutBusiness } from '@/app/util/data'
 import SectionHeaderTexts from './SectionHeaderTexts'
 import DeliveryTypes from './DeliveryTypes'
 import CustomerSupportBanner from './CustomerSupportBanner'
@@ -100,7 +100,7 @@ export default function BusinessPageComp() {
                 </div>
 
                 <div className='my-10'>
-                    <BuiltAroundYou />
+                    <BuiltAroundYou  arr={builtAroundYouBusiness}/>
                 </div>
             </div>
 
