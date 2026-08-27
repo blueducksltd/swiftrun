@@ -1,18 +1,11 @@
 "use client";
 import Image from 'next/image';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import SectionHeaderTexts from './SectionHeaderTexts';
-const builtAroundYou: { title: string; description: string; image: string; }[] = [
-    { title: "Safe, Affordable Delivery", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/coin.png" },
+import { builtAroundYouUser, IBuiltAroundYou } from '@/app/util/data';
 
-    { title: "Real-Time Tracking", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/map.png" },
 
-    { title: "One App for all", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/smartphone.png" },
-
-    { title: "Verified drivers,  Stores", description: "We’ve got you. We’re always here to help whenever you need us. We’ve got you. We’re always here to help whenever you need us. ", image: "/verified.png" }
-];
-
-export default function BuiltAroundYou() {
+export default function BuiltAroundYou({ arr = builtAroundYouUser }: { arr?: IBuiltAroundYou[] }) {
     const [builtAroundYouHoveredIndex, setBuiltAroundYouHoveredIndex] = useState<number | null>(null);
 
     return (
@@ -23,7 +16,7 @@ export default function BuiltAroundYou() {
 
 
             <div className='flex flex-col gap-5 text-left text-white md:flex-row md:flex-wrap'>
-                {builtAroundYou.map((item, index) => {
+                {arr.map((item, index) => {
                     // Default state: index 1 expanded (top row), index 2 expanded (bottom row)
                     let isExpanded = false;
                     if (builtAroundYouHoveredIndex === null) {
@@ -43,15 +36,15 @@ export default function BuiltAroundYou() {
                         <div
                             key={index}
                             className={`w-full min-w-0 ${isExpanded ? "md:w-[65%]" : "md:w-[30%]"} grid gap-6 rounded-[50px] bg-[#066AC0]  transition-all duration-100  md:min-h-[100px]  p-8`}
-                            onMouseEnter={() => {
-                                // Only 0 and 3 are hoverable
-                                if (index === 0 || index === 4) {
-                                    setBuiltAroundYouHoveredIndex(index);
-                                }
-                            }}
-                            onMouseLeave={() => {
-                                setBuiltAroundYouHoveredIndex(null);
-                            }}
+                            // onMouseEnter={() => {
+                            //     // Only 0 and 3 are hoverable
+                            //     if (index === 0 || index === 4) {
+                            //         setBuiltAroundYouHoveredIndex(index);
+                            //     }
+                            // }}
+                            // onMouseLeave={() => {
+                            //     setBuiltAroundYouHoveredIndex(null);
+                            // }}
                             onClick={() => setBuiltAroundYouHoveredIndex(
                                 builtAroundYouHoveredIndex === index ? null : index
                             )}

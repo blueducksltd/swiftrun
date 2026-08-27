@@ -84,7 +84,7 @@ export default function SupportInput() {
                     <button className='flex items-center justify-center bg-goldencream text-black w-full py-3 rounded-full'>Submit</button>
 
                     <div className='flex items-center justify-center my-4 text-sm font-light'>
-                        <p className='text-goldencream'><span className='opacity-50'>By clicking submit, you agree to our</span> <Link href={"/"} className='underline'>Privacy Policy</Link></p>
+                        <p className='text-goldencream'><span className='opacity-50'>By clicking submit, you agree to our</span> <Link href={"/privacy-policy"} className='underline'>Privacy Policy</Link></p>
                     </div>
                 </form>
 

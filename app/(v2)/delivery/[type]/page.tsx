@@ -1,4 +1,4 @@
-import { questionsAboutRiders } from "@/app/util/data"
+import { builtAroundYouUser, questionsAboutRiders } from "@/app/util/data"
 import AnimationSection from "@/components/AnimationSection"
 import BoldAndNormalTextComp from "@/components/BoldAndNormalTextComp"
 import BuiltAroundYou from "@/components/BuiltAroundYou"
@@ -9,6 +9,7 @@ import VideoBanner from "@/components/UserGuideVideo"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import CustomFaq from "./CustomFaq"
 
 const data: { title: string; description: string; image: string; }[] = [
     {
@@ -135,7 +136,7 @@ const pageType = {
     },
     errand: {
         title: "Errand Delivery",
-        description: "Courier takes only your package and deliver instantly",
+        description: "Shop all Your Daily Needs From Nearby Stores",
         icon: "",
         color: { background: "", shadow: "" },
         data: [
@@ -258,7 +259,7 @@ export default async function Page({
 
                 <BuiltAroundYou />
 
-                <FaqFooter customFaqs={questionsAboutRiders} />
+                <CustomFaq />
             </div>
 
 
