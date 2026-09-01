@@ -12,12 +12,12 @@ export async function generateMetadata({
     title: "Open store in SwiftRun",
     description: "View this store in the SwiftRun app.",
     alternates: {
-      canonical: `/app/store/${shopId}`,
+      canonical: `/app/product/${shopId}`,
     },
     openGraph: {
       title: "Open store in SwiftRun",
       description: "View this store in the SwiftRun app.",
-      url: `https://swiftrunapp.com/app/store/${shopId}`,
+      url: `https://swiftrunapp.com/app/product/${shopId}`,
       siteName: "SwiftRun",
       images: ["/open-graph.png"],
     },
@@ -36,5 +36,5 @@ export default async function Page({
   params: Promise<{ shopId: string }>;
 }) {
   const { shopId } = await params;
-  return <StoreLanding shopId={shopId} segment="store" />;
+  return <StoreLanding shopId={shopId} segment="product" />;
 }
