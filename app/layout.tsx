@@ -20,7 +20,7 @@ const fontHeading = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   title: {
-    default: "HI",
+    default: "SwiftRun – Fast & Reliable Package Delivery",
     template: "%s | SwiftRun",
   },
   description:
