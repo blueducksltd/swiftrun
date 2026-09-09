@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import ScrollScrubSlider from "@/components/ScrollScrubSlider";
-import { BsArrowRight } from "react-icons/bs";
 import HomePageHeader from "@/components/HomePageHeader";
-import HomepageSlider from "@/components/HomepageSlider";
 import { Metadata } from "next";
 import AnimationSection from "@/components/AnimationSection";
 import BoldAndNormalTextComp from "@/components/BoldAndNormalTextComp";
 import LearnMore from "@/components/LearnMore";
 import DownloadTheApp from "@/components/DownloadTheApp";
+import HomepageSlider from "@/components/HomepageSlider";
 
 export const metadata: Metadata = {
     title: "Home",
@@ -198,10 +197,10 @@ export default function HomePage() {
                         <Image alt="" src={"/order_from_stores_banner.jpg"} fill className="object-cover" />
                         <div className="relative z-10 w-full md:w-[50%] ">
                             <AnimationSection animation="slideUp" >
-                              <div className="grid gap-10">
-                                  <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
-                                <DownloadTheApp />
-                              </div>
+                                <div className="grid gap-10">
+                                    <h1 className="text-6xl  md:text-[70px] leading-16 font-bold text-white">Order from nearby stores</h1>
+                                    <DownloadTheApp />
+                                </div>
                             </AnimationSection>
                         </div>
                     </div>

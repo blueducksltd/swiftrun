@@ -23,7 +23,6 @@ function Dropdown({
     onChange,
     isOpen,
     onToggle,
-    icon,
 }: {
     label: string
     placeholder: string
@@ -131,25 +130,28 @@ function Dropdown({
 // ---- Main component ------------------------------------------------------
 
 export default function CareerGrid() {
+    const [databaseCareers, setDatabaseCareers] = useState<typeof careers>([])
     const [openDropdown, setOpenDropdown] = useState<'category' | 'location' | null>(null)
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null)
     const [search, setSearch] = useState('')
+    useEffect(() => { fetch('/api/careers').then(async (response) => { if (response.ok) setDatabaseCareers(await response.json()) }).catch(() => undefined) }, [])
+    const availableCareers = databaseCareers.length ? databaseCareers : careers
 
     const categoryOptions: DropdownOption[] = useMemo(() => {
-        const unique = Array.from(new Set(careers.map((c) => c.category)))
+        const unique = Array.from(new Set(availableCareers.map((c) => c.category)))
         return unique.map((c) => ({ label: c, value: c }))
-    }, [])
+    }, [availableCareers])
 
     const locationOptions: DropdownOption[] = useMemo(() => {
         const unique = Array.from(
-            new Set(careers.map((c) => c.requirements[0]).filter(Boolean))
+            new Set(availableCareers.map((c) => c.requirements[0]).filter(Boolean))
         )
         return unique.map((l) => ({ label: l, value: l }))
-    }, [])
+    }, [availableCareers])
 
     const filteredCareers = useMemo(() => {
-        return careers.filter((item) => {
+        return availableCareers.filter((item) => {
             const matchesCategory = selectedCategory ? item.category === selectedCategory : true
             const matchesLocation = selectedLocation ? item.requirements[0] === selectedLocation : true
             const matchesSearch = search.trim()
@@ -157,7 +159,7 @@ export default function CareerGrid() {
                 : true
             return matchesCategory && matchesLocation && matchesSearch
         })
-    }, [selectedCategory, selectedLocation, search])
+    }, [availableCareers, selectedCategory, selectedLocation, search])
 
     const toggleDropdown = (name: 'category' | 'location') => {
         setOpenDropdown((current) => (current === name ? null : name))
