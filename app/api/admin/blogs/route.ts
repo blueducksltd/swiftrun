@@ -67,20 +67,43 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
     if (!isAdminRequest(request)) return unauthorized();
     try {
-        const { id, status } = await request.json() as { id?: string; status?: "Published" | "Draft" };
-        if (!id || !ObjectId.isValid(id) || !status) {
-            return NextResponse.json({ error: "A valid blog id and status are required" }, { status: 400 });
+        const body = (await request.json()) as {
+            id?: string;
+            title?: string;
+            content?: string;
+            category?: string;
+            image?: string;
+            status?: "Published" | "Draft";
+        };
+        const { id } = body;
+        if (!id || !ObjectId.isValid(id)) {
+            return NextResponse.json({ error: "A valid blog id is required" }, { status: 400 });
+        }
+
+        const updateData: Record<string, unknown> = {};
+        if (body.title !== undefined) updateData.title = body.title.trim();
+        if (body.content !== undefined) updateData.content = body.content.trim();
+        if (body.category !== undefined) updateData.category = body.category.trim();
+        if (body.image !== undefined) updateData.image = body.image.trim();
+        if (body.status !== undefined) updateData.status = body.status === "Published" ? "Published" : "Draft";
+
+        if (Object.keys(updateData).length === 0) {
+            return NextResponse.json({ error: "No update fields provided" }, { status: 400 });
         }
 
         const client = await clientPromise;
         const result = await client.db("swiftrun").collection("blogs").findOneAndUpdate(
             { _id: new ObjectId(id) },
-            { $set: { status } },
+            { $set: updateData },
             { returnDocument: "after" },
         );
 
         if (!result) return NextResponse.json({ error: "Blog not found" }, { status: 404 });
-        return NextResponse.json({ id: result._id.toString(), ...result, date: new Date(result.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) });
+        return NextResponse.json({
+            id: result._id.toString(),
+            ...result,
+            date: new Date(result.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+        });
     } catch (error) {
         console.error("Failed to update blog:", error);
         return NextResponse.json({ error: "Failed to update blog" }, { status: 500 });
