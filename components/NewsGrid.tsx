@@ -1,104 +1,43 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import AnimationSection from "./AnimationSection";
 
-type Tabs = ["All", "How Tos", "News"]
-const tabs: Tabs = ["All", "How Tos", "News"];
-const data: { title: string; description: string; category: Tabs[1] | Tabs[2]; image: string; date: string; }[] = [
-    {
-        title: "Introducing SwiftRun",
-        description: "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider today",
-        category: "News",
-        image: "/car2.jpg",
-        date: "August 06, 2026",
-    },
-    {
-        title: "Introducing SwiftRun",
-        description: "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider today",
-        category: "How Tos",
-        image: "/car2.jpg",
-        date: "August 06, 2026",
-    },
-    {
-        title: "Introducing SwiftRun",
-        description: "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider today",
-        category: "News",
-        image: "/car2.jpg",
-        date: "August 06, 2026",
-    },
-    {
-        title: "Introducing SwiftRun",
-        description: "Tell us what you're sending, the quantity, recipient information, and upload a photo to help your rider today",
-        category: "How Tos",
-        image: "/car2.jpg",
-        date: "August 06, 2026",
-    }
+type Tab = "All" | "How Tos" | "News";
+type Blog = { id: string; title: string; content: string; category: string; image: string; date: string };
+const tabs: Tab[] = ["All", "How Tos", "News"];
 
-]
+function getExcerpt(content: string) {
+    const text = content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return text.length > 150 ? `${text.slice(0, 150)}...` : text;
+}
 
 export default function NewsGrid() {
-    const [selectedTab, setSelectedTab] = useState<Tabs[number]>("All");
-    const COLUMNS = 2;
-    // const filteredData = data.filter(item => selectedTab === "All" ? false : item.category === selectedTab);
-    const filteredData = data.filter(item=> false)
+    const [selectedTab, setSelectedTab] = useState<Tab>("All");
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    return (
-        <div>
-            <div className="w-full overflow-x-auto md:overflow-visible">
-                <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-20 px-4 md:px-20 w-max md:w-full">
-                    {tabs.map((item, index) => (
-                        <div
-                            key={index}
-                            onClick={() => setSelectedTab(item)}
-                            className={`flex items-center justify-center p-3 whitespace-nowrap cursor-pointer rounded-full border-2 w-[calc(33.333vw-2rem)] md:w-auto shrink-0 md:shrink ${selectedTab === item ? 'bg-[#1893A6] text-white border-none' : 'bg-[#0000000D] border-[#00000008]'}`}
-                        >
-                            <p>{item}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
+    useEffect(() => {
+        fetch("/api/blogs").then(async (response) => {
+            if (!response.ok) throw new Error("Failed to load blogs");
+            setBlogs(await response.json() as Blog[]);
+        }).catch(() => setBlogs([])).finally(() => setLoading(false));
+    }, []);
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10 md:my-20 overflow-hidden">
-                {
-                    filteredData.length === 0 ? (
-                        <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center py-20 text-center gap-3">
-                            <h1 className="text-xl font-bold text-gray-500">No results found</h1>
-                            <p className="text-sm text-gray-400">
-                                {selectedTab === "All"
-                                    ? "There's nothing here yet."
-                                    : `No items found in "${selectedTab}".`}
-                            </p>
-                        </div>
-                    ) : (
-                        filteredData.map((item, index) => {
-                            const row = Math.floor(index / COLUMNS);
-                            const col = index % COLUMNS;
-                            const isEven = (row + col) % 2 === 0;
+    const filteredBlogs = blogs.filter((blog) => selectedTab === "All" || blog.category === selectedTab);
 
-                            return (
-                                <AnimationSection key={index} animation={isEven ? "slideRight" : "slideLeft"}>
-                                    <div className={`${isEven ? "bg-[#F9BACA33]" : "bg-[#8DD8EB33]"} rounded-4xl h-120 overflow-hidden`}>
-                                        <div className="h-[60%] relative">
-                                            <Image src={item.image} className="object-cover" alt="" fill />
-                                        </div>
-                                        <div className="p-5 grid gap-4">
-                                            <div className="flex items-center gap-3 text-base md:text-sm">
-                                                <p>{item.category}</p>
-                                                <div className="h-2 w-[0.5] bg-black"></div>
-                                                <p>{item.date}</p>
-                                            </div>
-                                            <h1 className={`font-extrabold text-xl ${isEven ? "text-[#DF6F9F]" : "text-[#33A2B5]"}`}>{item.title}</h1>
-                                            <p>{item.description.split(" ").length > 15 ? item.description.split(" ").slice(0, 15).join(" ") + "..." : item.description}</p>
-                                        </div>
-                                    </div>
-                                </AnimationSection>
-                            );
-                        })
-                    )
-                }
-            </div>
+    return <div>
+        <div className="w-full overflow-x-auto md:overflow-visible"><div className="flex w-max gap-4 px-4 md:grid md:w-full md:grid-cols-3 md:gap-20 md:px-20">
+            {tabs.map((tab) => <button key={tab} type="button" onClick={() => setSelectedTab(tab)} className={`flex w-[calc(33.333vw-2rem)] shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-full border-2 p-3 md:w-auto md:shrink ${selectedTab === tab ? "border-none bg-[#1893A6] text-white" : "border-[#00000008] bg-[#0000000D]"}`}>{tab}</button>)}
+        </div></div>
+
+        <div className="my-10 grid grid-cols-1 gap-10 overflow-hidden md:my-20 md:grid-cols-2">
+            {loading ? <div className="col-span-1 flex justify-center py-20 text-sm text-gray-400 md:col-span-2">Loading stories...</div> : filteredBlogs.length === 0 ? <div className="col-span-1 flex flex-col items-center justify-center gap-3 py-20 text-center md:col-span-2"><h2 className="text-xl font-bold text-gray-500">No stories found</h2><p className="text-sm text-gray-400">{selectedTab === "All" ? "There are no published stories yet." : `No published stories in ${selectedTab}.`}</p></div> : filteredBlogs.map((blog, index) => {
+                const isEven = index % 2 === 0;
+                const image = blog.image.startsWith("http") ? `/api/blogs/blob?url=${encodeURIComponent(blog.image)}` : blog.image;
+                return <AnimationSection key={blog.id} animation={isEven ? "slideRight" : "slideLeft"}><Link href={`/news/${blog.id}`} className={`${isEven ? "bg-[#F9BACA33]" : "bg-[#8DD8EB33]"} block overflow-hidden rounded-4xl transition hover:-translate-y-1 hover:shadow-lg`}><article><div className="relative h-72 w-full bg-cover bg-center" style={{ backgroundImage: `url(${image || "/car2.jpg"})` }} role="img" aria-label={blog.title} /><div className="grid gap-4 p-5"><div className="flex items-center gap-3 text-base md:text-sm"><span>{blog.category}</span><span className="h-2 w-px bg-black" /><span>{blog.date}</span></div><h2 className={`text-xl font-extrabold ${isEven ? "text-[#DF6F9F]" : "text-[#33A2B5]"}`}>{blog.title}</h2><p>{getExcerpt(blog.content)}</p></div></article></Link></AnimationSection>;
+            })}
         </div>
-    )
+    </div>;
 }

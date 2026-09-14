@@ -5,8 +5,6 @@ import NewsGrid from '@/components/NewsGrid'
 import SectionHeader from '@/components/SectionHeader'
 import SectionHeaderTexts from '@/components/SectionHeaderTexts'
 import { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
 export const metadata: Metadata = { title: "News" }
 export default function NewsPage() {
     return (

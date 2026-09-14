@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Sora } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import "swiper/css";
 import "swiper/css/pagination";
-import Footer from "@/components/Footer";
 import DownloadAppProvider from "@/stores/DownloadAppProvider";
 import Script from "next/script";
 
+import SiteChrome from "@/components/SiteChrome";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -23,7 +22,7 @@ const fontHeading = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   title: {
-    default: "HI",
+    default: "SwiftRun – Fast & Reliable Package Delivery",
     template: "%s | SwiftRun",
   },
   description:
@@ -173,9 +172,7 @@ export default function RootLayout({
         </noscript>
         <DownloadAppProvider>
           <div className="min-h-screen bg-white ">
-            <Navbar />
-            {children}
-            <Footer />
+            <SiteChrome>{children}</SiteChrome>
           </div>
         </DownloadAppProvider>
 
