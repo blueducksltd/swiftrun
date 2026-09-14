@@ -7,6 +7,7 @@ import {
     FiBookOpen,
     FiChevronDown,
     FiChevronRight,
+    FiEdit3,
     FiGrid,
     FiImage,
     FiLogOut,
@@ -95,11 +96,14 @@ export default function Admin() {
     const [error, setError] = useState('')
     const [saving, setSaving] = useState(false)
     const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null)
+    const [editingBlog, setEditingBlog] = useState<Blog | null>(null)
     const [selectedPartner, setSelectedPartner] = useState<Partner | null>(
         null,
     )
+    const [editingPartner, setEditingPartner] = useState<Partner | null>(null)
     const [careers, setCareers] = useState<Career[]>([])
     const [selectedCareer, setSelectedCareer] = useState<Career | null>(null)
+    const [editingCareer, setEditingCareer] = useState<Career | null>(null)
     const [applications, setApplications] = useState<Application[]>([])
     const [authState, setAuthState] = useState<
         'checking' | 'unauthenticated' | 'authenticated'
@@ -155,10 +159,12 @@ export default function Admin() {
         setSaving(true)
 
         const form = new FormData(event.currentTarget)
+        const id = form.get('id') as string | null
+        const isEditing = Boolean(id)
 
         try {
             const imageFile = form.get('imageFile')
-            let image = ''
+            let image = (form.get('existingImage') as string) || ''
 
             if (imageFile instanceof File && imageFile.size > 0) {
                 const uploadData = new FormData()
@@ -181,27 +187,40 @@ export default function Admin() {
             }
 
             const response = await fetch('/api/admin/blogs', {
-                method: 'POST',
+                method: isEditing ? 'PATCH' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    ...(isEditing ? { id } : {}),
                     title: form.get('title'),
                     content: form.get('content'),
                     category: form.get('category'),
                     image,
-                    status: 'Draft',
+                    status:
+                        form.get('status') === 'Published'
+                            ? 'Published'
+                            : 'Draft',
                 }),
             })
 
             if (!response.ok) {
-                throw new Error('The blog could not be saved.')
+                throw new Error(
+                    (await response.json()).error || 'The blog could not be saved.',
+                )
             }
 
             const blog = (await response.json()) as Blog
 
-            setBlogs((current) => [blog, ...current])
+            if (isEditing) {
+                setBlogs((current) =>
+                    current.map((item) => (item.id === blog.id ? blog : item)),
+                )
+            } else {
+                setBlogs((current) => [blog, ...current])
+            }
             setComposer(null)
+            setEditingBlog(null)
             setActiveView('blogs')
         } catch (saveError) {
             setError(
@@ -270,13 +289,15 @@ export default function Admin() {
         setSaving(true)
 
         const form = new FormData(event.currentTarget)
+        const id = form.get('id') as string | null
+        const isEditing = Boolean(id)
 
         try {
-            const upload = async (field: string) => {
+            const upload = async (field: string, existingField: string) => {
                 const file = form.get(field)
 
                 if (!(file instanceof File) || file.size === 0) {
-                    return ''
+                    return (form.get(existingField) as string) || ''
                 }
 
                 const uploadData = new FormData()
@@ -299,16 +320,17 @@ export default function Admin() {
             }
 
             const [image, logo] = await Promise.all([
-                upload('imageFile'),
-                upload('logoFile'),
+                upload('imageFile', 'existingImage'),
+                upload('logoFile', 'existingLogo'),
             ])
 
             const response = await fetch('/api/admin/partners', {
-                method: 'POST',
+                method: isEditing ? 'PATCH' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    ...(isEditing ? { id } : {}),
                     name: form.get('name'),
                     category: form.get('category'),
                     location: form.get('location'),
@@ -327,8 +349,17 @@ export default function Admin() {
 
             const partner = (await response.json()) as Partner
 
-            setPartners((current) => [partner, ...current])
+            if (isEditing) {
+                setPartners((current) =>
+                    current.map((item) =>
+                        item.id === partner.id ? partner : item,
+                    ),
+                )
+            } else {
+                setPartners((current) => [partner, ...current])
+            }
             setComposer(null)
+            setEditingPartner(null)
             setActiveView('partners')
         } catch (saveError) {
             setError(
@@ -397,14 +428,17 @@ export default function Admin() {
         setSaving(true)
 
         const form = new FormData(event.currentTarget)
+        const id = form.get('id') as string | null
+        const isEditing = Boolean(id)
 
         try {
             const response = await fetch('/api/admin/careers', {
-                method: 'POST',
+                method: isEditing ? 'PATCH' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    ...(isEditing ? { id } : {}),
                     title: form.get('title'),
                     category: form.get('category'),
                     location: form.get('location'),
@@ -415,6 +449,7 @@ export default function Admin() {
                         .split('\n')
                         .map((item) => item.trim())
                         .filter(Boolean),
+                    status: form.get('status') || 'Draft',
                 }),
             })
 
@@ -427,8 +462,17 @@ export default function Admin() {
 
             const career = (await response.json()) as Career
 
-            setCareers((current) => [career, ...current])
+            if (isEditing) {
+                setCareers((current) =>
+                    current.map((item) =>
+                        item.id === career.id ? career : item,
+                    ),
+                )
+            } else {
+                setCareers((current) => [career, ...current])
+            }
             setComposer(null)
+            setEditingCareer(null)
             setActiveView('careers')
         } catch (saveError) {
             setError(
@@ -758,7 +802,13 @@ export default function Admin() {
                 <AdminComposer
                     type="blog"
                     isSubmitting={saving}
-                    onClose={() => !saving && setComposer(null)}
+                    initialBlog={editingBlog}
+                    onClose={() => {
+                        if (!saving) {
+                            setComposer(null)
+                            setEditingBlog(null)
+                        }
+                    }}
                     onBlogSubmit={addBlog}
                     onPartnerSubmit={addPartner}
                 />
@@ -768,7 +818,13 @@ export default function Admin() {
                 <AdminComposer
                     type="partner"
                     isSubmitting={saving}
-                    onClose={() => !saving && setComposer(null)}
+                    initialPartner={editingPartner}
+                    onClose={() => {
+                        if (!saving) {
+                            setComposer(null)
+                            setEditingPartner(null)
+                        }
+                    }}
                     onBlogSubmit={addBlog}
                     onPartnerSubmit={addPartner}
                 />
@@ -777,7 +833,13 @@ export default function Admin() {
             {composer === 'career' && (
                 <AdminCareerComposer
                     submitting={saving}
-                    onClose={() => !saving && setComposer(null)}
+                    initialCareer={editingCareer}
+                    onClose={() => {
+                        if (!saving) {
+                            setComposer(null)
+                            setEditingCareer(null)
+                        }
+                    }}
                     onSubmit={addCareer}
                 />
             )}
@@ -786,6 +848,12 @@ export default function Admin() {
                 <BlogActions
                     blog={selectedBlog}
                     onClose={() => setSelectedBlog(null)}
+                    onEdit={() => {
+                        const blogToEdit = selectedBlog
+                        setSelectedBlog(null)
+                        setEditingBlog(blogToEdit)
+                        setComposer('blog')
+                    }}
                     onPublish={() =>
                         updateBlogStatus(selectedBlog, 'Published')
                     }
@@ -800,6 +868,12 @@ export default function Admin() {
                 <PartnerActions
                     partner={selectedPartner}
                     onClose={() => setSelectedPartner(null)}
+                    onEdit={() => {
+                        const partnerToEdit = selectedPartner
+                        setSelectedPartner(null)
+                        setEditingPartner(partnerToEdit)
+                        setComposer('partner')
+                    }}
                     onPublish={() =>
                         updatePartnerStatus(selectedPartner, 'Published')
                     }
@@ -814,6 +888,12 @@ export default function Admin() {
                 <CareerActions
                     career={selectedCareer}
                     onClose={() => setSelectedCareer(null)}
+                    onEdit={() => {
+                        const careerToEdit = selectedCareer
+                        setSelectedCareer(null)
+                        setEditingCareer(careerToEdit)
+                        setComposer('career')
+                    }}
                     onPublish={() =>
                         updateCareerStatus(selectedCareer, 'Published')
                     }
@@ -1507,12 +1587,14 @@ function Status({
 function BlogActions({
     blog,
     onClose,
+    onEdit,
     onPublish,
     onSaveDraft,
     onDelete,
 }: {
     blog: Blog
     onClose: () => void
+    onEdit: () => void
     onPublish: () => Promise<void>
     onSaveDraft: () => Promise<void>
     onDelete: () => Promise<void>
@@ -1604,6 +1686,23 @@ function BlogActions({
                     <>
                         <div className="mt-7 space-y-3">
                             <button
+                                onClick={onEdit}
+                                className="flex w-full items-center justify-between rounded-xl border border-[#d9e5e1] px-4 py-3 text-left text-sm font-bold transition hover:border-[#066ac0] hover:bg-[#e9f2fb]"
+                            >
+                                <span>
+                                    <span className="block">
+                                        Edit blog post
+                                    </span>
+
+                                    <span className="mt-1 block text-xs font-normal text-[#819096]">
+                                        Update content, images, and formatting.
+                                    </span>
+                                </span>
+
+                                <FiEdit3 className="text-[#066ac0]" />
+                            </button>
+
+                            <button
                                 onClick={() => setConfirmation('publish')}
                                 disabled={blog.status === 'Published'}
                                 className="flex w-full items-center justify-between rounded-xl border border-[#d9e5e1] px-4 py-3 text-left text-sm font-bold transition hover:border-[#267d73] hover:bg-[#e6f4f1] disabled:cursor-not-allowed disabled:opacity-45"
@@ -1673,12 +1772,14 @@ function BlogActions({
 function PartnerActions({
     partner,
     onClose,
+    onEdit,
     onPublish,
     onSaveDraft,
     onDelete,
 }: {
     partner: Partner
     onClose: () => void
+    onEdit: () => void
     onPublish: () => Promise<void>
     onSaveDraft: () => Promise<void>
     onDelete: () => Promise<void>
@@ -1774,6 +1875,23 @@ function PartnerActions({
                     <>
                         <div className="mt-7 space-y-3">
                             <button
+                                onClick={onEdit}
+                                className="flex w-full items-center justify-between rounded-xl border border-[#d9e5e1] px-4 py-3 text-left text-sm font-bold transition hover:border-[#066ac0] hover:bg-[#e9f2fb]"
+                            >
+                                <span>
+                                    <span className="block">
+                                        Edit partner
+                                    </span>
+
+                                    <span className="mt-1 block text-xs font-normal text-[#819096]">
+                                        Update business name, image, logo, and details.
+                                    </span>
+                                </span>
+
+                                <FiEdit3 className="text-[#066ac0]" />
+                            </button>
+
+                            <button
                                 onClick={() => setConfirmation('publish')}
                                 disabled={partner.status === 'Published'}
                                 className="flex w-full items-center justify-between rounded-xl border border-[#d9e5e1] px-4 py-3 text-left text-sm font-bold hover:bg-[#e6f4f1] disabled:cursor-not-allowed disabled:opacity-45"
@@ -1843,12 +1961,14 @@ function PartnerActions({
 function CareerActions({
     career,
     onClose,
+    onEdit,
     onPublish,
     onSaveDraft,
     onDelete,
 }: {
     career: Career
     onClose: () => void
+    onEdit: () => void
     onPublish: () => Promise<void>
     onSaveDraft: () => Promise<void>
     onDelete: () => Promise<void>
@@ -1935,6 +2055,19 @@ function CareerActions({
                     </div>
                 ) : (
                     <div className="mt-7 space-y-3">
+                        <button
+                            onClick={onEdit}
+                            className="flex w-full items-center justify-between rounded-xl border border-[#d9e5e1] p-4 text-left text-sm font-bold transition hover:border-[#066ac0] hover:bg-[#e9f2fb]"
+                        >
+                            <span>
+                                <span className="block">Edit job opening</span>
+                                <span className="mt-1 block text-xs font-normal text-[#819096]">
+                                    Update requirements, role description, and details.
+                                </span>
+                            </span>
+                            <FiEdit3 className="text-[#066ac0]" />
+                        </button>
+
                         <button
                             onClick={() => setConfirmation('publish')}
                             disabled={career.status === 'Published'}

@@ -67,11 +67,45 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
     if (!isAdminRequest(request)) return unauthorized();
     try {
-        const { id, status } = await request.json() as { id?: string; status?: "Published" | "Draft" };
-        if (!id || !ObjectId.isValid(id) || !status) return NextResponse.json({ error: "A valid partner id and status are required" }, { status: 400 });
+        const body = (await request.json()) as {
+            id?: string;
+            name?: string;
+            category?: string;
+            location?: string;
+            url?: string;
+            image?: string;
+            logo?: string;
+            status?: "Published" | "Draft" | "Active" | "Pending";
+        };
+        const { id } = body;
+        if (!id || !ObjectId.isValid(id)) {
+            return NextResponse.json({ error: "A valid partner id is required" }, { status: 400 });
+        }
+
+        const updateData: Record<string, unknown> = {};
+        if (body.name !== undefined) updateData.name = body.name.trim();
+        if (body.category !== undefined) updateData.category = body.category.trim();
+        if (body.location !== undefined) updateData.location = body.location.trim();
+        if (body.url !== undefined) {
+            const trimmedUrl = body.url.trim();
+            try { new URL(trimmedUrl); } catch { return NextResponse.json({ error: "Enter a valid partner URL" }, { status: 400 }); }
+            updateData.url = trimmedUrl;
+        }
+        if (body.image !== undefined) updateData.image = body.image.trim();
+        if (body.logo !== undefined) updateData.logo = body.logo.trim();
+        if (body.status !== undefined) updateData.status = body.status;
+
+        if (Object.keys(updateData).length === 0) {
+            return NextResponse.json({ error: "No update fields provided" }, { status: 400 });
+        }
 
         const client = await clientPromise;
-        const result = await client.db("swiftrun").collection("partners").findOneAndUpdate({ _id: new ObjectId(id) }, { $set: { status } }, { returnDocument: "after" });
+        const result = await client.db("swiftrun").collection("partners").findOneAndUpdate(
+            { _id: new ObjectId(id) },
+            { $set: updateData },
+            { returnDocument: "after" },
+        );
+
         if (!result) return NextResponse.json({ error: "Partner not found" }, { status: 404 });
         return NextResponse.json({ id: result._id.toString(), ...result });
     } catch (error) {

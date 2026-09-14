@@ -26,11 +26,57 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
     if (!isAdminRequest(request)) return unauthorized();
-    const { id, status } = await request.json() as { id?: string; status?: "Published" | "Draft" };
-    if (!id || !ObjectId.isValid(id) || !status) return NextResponse.json({ error: "Valid id and status are required" }, { status: 400 });
-    const result = await (await clientPromise).db("swiftrun").collection("careers").findOneAndUpdate({ _id: new ObjectId(id) }, { $set: { status } }, { returnDocument: "after" });
-    if (!result) return NextResponse.json({ error: "Career not found" }, { status: 404 });
-    return NextResponse.json({ id: result._id.toString(), ...result });
+    try {
+        const body = (await request.json()) as {
+            id?: string;
+            title?: string;
+            category?: string;
+            location?: string;
+            employmentType?: string;
+            gender?: string;
+            requirements?: string[];
+            description?: string;
+            shouldHave?: string[];
+            status?: "Published" | "Draft";
+        };
+        const { id } = body;
+        if (!id || !ObjectId.isValid(id)) {
+            return NextResponse.json({ error: "Valid id is required" }, { status: 400 });
+        }
+
+        const updateData: Record<string, unknown> = {};
+        if (body.title !== undefined) updateData.title = body.title.trim();
+        if (body.category !== undefined) updateData.category = body.category.trim();
+        if (body.description !== undefined) updateData.description = body.description.trim();
+        if (body.shouldHave !== undefined) updateData.shouldHave = body.shouldHave.filter(Boolean);
+        if (body.status !== undefined) updateData.status = body.status === "Published" ? "Published" : "Draft";
+
+        if (body.requirements !== undefined) {
+            updateData.requirements = body.requirements;
+        } else if (body.location !== undefined || body.employmentType !== undefined || body.gender !== undefined) {
+            updateData.requirements = [
+                body.location?.trim() || "Enugu, Nigeria",
+                body.employmentType?.trim() || "Fulltime",
+                body.gender?.trim() || "Female/Male",
+            ];
+        }
+
+        if (Object.keys(updateData).length === 0) {
+            return NextResponse.json({ error: "No update fields provided" }, { status: 400 });
+        }
+
+        const result = await (await clientPromise).db("swiftrun").collection("careers").findOneAndUpdate(
+            { _id: new ObjectId(id) },
+            { $set: updateData },
+            { returnDocument: "after" },
+        );
+
+        if (!result) return NextResponse.json({ error: "Career not found" }, { status: 404 });
+        return NextResponse.json({ id: result._id.toString(), ...result });
+    } catch (error) {
+        console.error("Failed to update career:", error);
+        return NextResponse.json({ error: "Failed to update career" }, { status: 500 });
+    }
 }
 
 export async function DELETE(request: NextRequest) {
