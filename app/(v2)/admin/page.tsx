@@ -8,6 +8,7 @@ import {
     FiChevronDown,
     FiChevronRight,
     FiEdit3,
+    FiFileText,
     FiGrid,
     FiImage,
     FiLogOut,
@@ -1500,6 +1501,120 @@ function CareerTable({
     )
 }
 
+function ApplicationItem({
+    application,
+}: {
+    application: Application
+}) {
+    const [isExpanded, setIsExpanded] = useState(false)
+    const coverLetterText = application.coverLetter?.trim() || ''
+    const hasCoverLetter = coverLetterText.length > 0
+    const isLong = coverLetterText.length > 280
+
+    const formattedDate = application.createdAt
+        ? new Date(application.createdAt).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+          })
+        : null
+
+    return (
+        <div className="p-6 transition hover:bg-[#fafcfb]">
+            <div className="grid gap-3 sm:grid-cols-[1.2fr_1fr_120px_100px] sm:items-center">
+                <div>
+                    <div className="flex items-center gap-2">
+                        <p className="text-sm font-bold text-[#152329]">
+                            {application.name}
+                        </p>
+                        {formattedDate && (
+                            <span className="text-[11px] text-[#9aa9ac]">
+                                · {formattedDate}
+                            </span>
+                        )}
+                    </div>
+
+                    <p className="mt-1 text-xs text-[#8b999d]">
+                        <a
+                            href={`mailto:${application.email}`}
+                            className="hover:text-[#066ac0] hover:underline"
+                        >
+                            {application.email}
+                        </a>
+                        {' · '}
+                        <a
+                            href={`tel:${application.phone}`}
+                            className="hover:text-[#066ac0] hover:underline"
+                        >
+                            {application.phone}
+                        </a>
+                    </p>
+                </div>
+
+                <p className="text-sm font-medium text-[#52656b]">
+                    {application.careerTitle}
+                </p>
+
+                <div>
+                    {application.cvUrl ? (
+                        <a
+                            href={`/api/admin/applications/blob?url=${encodeURIComponent(
+                                application.cvUrl,
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 text-sm font-semibold text-[#066ac0] hover:underline"
+                        >
+                            View CV
+                            <FiArrowUpRight className="text-xs" />
+                        </a>
+                    ) : (
+                        <span className="text-xs text-[#9aa9ac]">No CV</span>
+                    )}
+                </div>
+
+                <div>
+                    <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#e6f4f1] px-2.5 py-1 text-[11px] font-bold text-[#267d73]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#267d73]" />
+                        {application.status || 'New'}
+                    </span>
+                </div>
+            </div>
+
+            {/* Under the application: Cover Letter */}
+            <div className="mt-4 rounded-xl border border-[#e2ece8] bg-[#f8faf9] p-4">
+                <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#066ac0]">
+                        <FiFileText className="text-sm" />
+                        Cover letter
+                    </span>
+                    {isLong && (
+                        <button
+                            type="button"
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className="text-xs font-semibold text-[#066ac0] hover:underline"
+                        >
+                            {isExpanded ? 'Show less' : 'Read full cover letter'}
+                        </button>
+                    )}
+                </div>
+
+                {hasCoverLetter ? (
+                    <p className="mt-2.5 whitespace-pre-wrap text-sm leading-relaxed text-[#415156]">
+                        {isLong && !isExpanded
+                            ? `${coverLetterText.slice(0, 280)}...`
+                            : coverLetterText}
+                    </p>
+                ) : (
+                    <p className="mt-2 text-xs italic text-[#95a5aa]">
+                        No cover letter provided.
+                    </p>
+                )}
+            </div>
+        </div>
+    )
+}
+
 function ApplicationTable({
     applications,
 }: {
@@ -1517,41 +1632,18 @@ function ApplicationTable({
             </div>
 
             <div className="divide-y divide-[#edf1ef]">
-                {applications.map((application) => (
-                    <div
-                        key={application.id}
-                        className="grid gap-2 px-6 py-5 sm:grid-cols-[1fr_1fr_150px_100px] sm:items-center"
-                    >
-                        <div>
-                            <p className="text-sm font-bold">
-                                {application.name}
-                            </p>
-
-                            <p className="mt-1 text-xs text-[#8b999d]">
-                                {application.email} · {application.phone}
-                            </p>
-                        </div>
-
-                        <p className="text-sm text-[#52656b]">
-                            {application.careerTitle}
-                        </p>
-
-                        <a
-                            href={`/api/admin/applications/blob?url=${encodeURIComponent(
-                                application.cvUrl,
-                            )}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm font-semibold text-[#066ac0] hover:underline"
-                        >
-                            View CV
-                        </a>
-
-                        <p className="text-xs text-[#819096]">
-                            {application.status}
-                        </p>
+                {applications.length === 0 ? (
+                    <div className="px-6 py-12 text-center text-sm text-[#819096]">
+                        No candidate applications received yet.
                     </div>
-                ))}
+                ) : (
+                    applications.map((application) => (
+                        <ApplicationItem
+                            key={application.id}
+                            application={application}
+                        />
+                    ))
+                )}
             </div>
         </div>
     )
