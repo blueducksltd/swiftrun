@@ -20,6 +20,8 @@ export type SharedCheckout = {
   currency: string;
   currency_exponent: number;
   subtotal_minor: number;
+  gross_delivery_fee_minor?: number;
+  delivery_discount_minor?: number;
   delivery_fee_minor: number;
   service_charge_minor: number;
   payment_processing_fee_minor: number;
@@ -30,6 +32,11 @@ export type SharedCheckout = {
   available_providers: ("PAYSTACK" | "STRIPE")[];
   selected_provider?: string;
   can_pay?: boolean;
+  promotion?: {
+    name?: string;
+    percent?: string;
+    is_capped?: boolean;
+  } | null;
   items?: CheckoutItem[];
 };
 
@@ -89,6 +96,8 @@ export default function CheckoutClient({
   const canPay = checkout.can_pay ?? (
     checkout.status === "active" || checkout.status === "payment_started"
   );
+  const deliveryDiscount = checkout.delivery_discount_minor ?? 0;
+  const grossDelivery = checkout.gross_delivery_fee_minor ?? checkout.delivery_fee_minor;
   const lockedProvider = checkout.status === "payment_started" ? checkout.selected_provider : "";
   const appUrl = useMemo(
     () => `swiftrun://open/app/pay/${encodeURIComponent(token)}`,
@@ -209,9 +218,38 @@ export default function CheckoutClient({
         )}
 
         <dl className="mt-7 space-y-3 text-sm">
+          {[ ["Items", checkout.subtotal_minor] ].map(([label, value]) => (
+            <div key={String(label)} className="flex justify-between gap-4 text-slate-600">
+              <dt>{label}</dt><dd className="font-medium text-slate-900">{money(Number(value), checkout)}</dd>
+            </div>
+          ))}
+          {grossDelivery > 0 || checkout.delivery_fee_minor > 0 ? (
+            <div className="flex justify-between gap-4 text-slate-600">
+              <dt className="flex flex-wrap items-center gap-2">
+                <span>Delivery</span>
+                {deliveryDiscount > 0 ? (
+                  <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
+                    {checkout.promotion?.percent
+                      ? `${checkout.promotion.percent}% off`
+                      : "Offer applied"}
+                  </span>
+                ) : null}
+              </dt>
+              <dd className="flex items-center gap-2 font-semibold">
+                {deliveryDiscount > 0 ? (
+                  <span className="text-xs font-medium text-slate-400 line-through">
+                    {money(grossDelivery, checkout)}
+                  </span>
+                ) : null}
+                <span className={deliveryDiscount > 0 ? "text-emerald-700" : "text-slate-900"}>
+                  {deliveryDiscount > 0 && checkout.delivery_fee_minor === 0
+                    ? "Free"
+                    : money(checkout.delivery_fee_minor, checkout)}
+                </span>
+              </dd>
+            </div>
+          ) : null}
           {[
-            ["Items", checkout.subtotal_minor],
-            ["Delivery", checkout.delivery_fee_minor],
             ["Service fee", checkout.service_charge_minor],
             ["Processing fee", checkout.payment_processing_fee_minor],
             ["Tax", checkout.tax_minor],
