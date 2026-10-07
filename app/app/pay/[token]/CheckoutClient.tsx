@@ -6,6 +6,7 @@ type CheckoutItem = {
   name: string;
   quantity: number;
   line_total_minor: number;
+  product_discount_minor?: number;
   image_url?: string;
   selected_options?: { name: string; quantity: number }[];
 };
@@ -205,6 +206,7 @@ export default function CheckoutClient({
                     ) : null}
                   </div>
                   <span className="shrink-0 text-sm font-semibold text-slate-800">
+                    {(item.product_discount_minor ?? 0) > 0 && <s className="mr-2 font-normal text-slate-400">{money(item.line_total_minor + item.product_discount_minor!, checkout)}</s>}
                     {money(item.line_total_minor, checkout)}
                   </span>
                 </div>
