@@ -5,7 +5,7 @@ import { isAdminRequest, unauthorized } from "@/lib/admin-auth";
 
 export const runtime = "nodejs";
 
-type CareerInput = { title?: string; category?: string; location?: string; employmentType?: string; gender?: string; description?: string; requirements?: string[]; shouldHave?: string[]; status?: "Published" | "Draft" };
+type CareerInput = { title?: string; category?: string; location?: string; employmentType?: string; gender?: string; description?: string; requirements?: string[]; shouldHave?: string[]; status?: "Published" | "Draft"; image?: string };
 
 export async function GET(request: NextRequest) {
     if (!isAdminRequest(request)) return unauthorized();
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json() as CareerInput;
     const title = body.title?.trim();
     if (!title || !body.description?.trim()) return NextResponse.json({ error: "Title and description are required" }, { status: 400 });
-    const career = { title, category: body.category?.trim() || "Operations", requirements: [body.location?.trim() || "Enugu, Nigeria", body.employmentType?.trim() || "Fulltime", body.gender?.trim() || "Female/Male"], description: body.description.trim(), shouldHave: body.shouldHave?.filter(Boolean) || [], status: body.status === "Published" ? "Published" : "Draft", createdAt: new Date() };
+    const career = { title, category: body.category?.trim() || "Operations", requirements: [body.location?.trim() || "Enugu, Nigeria", body.employmentType?.trim() || "Fulltime", body.gender?.trim() || "Female/Male"], description: body.description.trim(), shouldHave: body.shouldHave?.filter(Boolean) || [], status: body.status === "Published" ? "Published" : "Draft", image: body.image?.trim() || "", createdAt: new Date() };
     const result = await (await clientPromise).db("swiftrun").collection("careers").insertOne(career);
     return NextResponse.json({ id: result.insertedId.toString(), ...career }, { status: 201 });
 }
@@ -38,6 +38,7 @@ export async function PATCH(request: NextRequest) {
             description?: string;
             shouldHave?: string[];
             status?: "Published" | "Draft";
+            image?: string;
         };
         const { id } = body;
         if (!id || !ObjectId.isValid(id)) {
@@ -50,6 +51,7 @@ export async function PATCH(request: NextRequest) {
         if (body.description !== undefined) updateData.description = body.description.trim();
         if (body.shouldHave !== undefined) updateData.shouldHave = body.shouldHave.filter(Boolean);
         if (body.status !== undefined) updateData.status = body.status === "Published" ? "Published" : "Draft";
+        if (body.image !== undefined) updateData.image = body.image.trim();
 
         if (body.requirements !== undefined) {
             updateData.requirements = body.requirements;

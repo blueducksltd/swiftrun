@@ -20,11 +20,13 @@ import {
     FiTrash2,
     FiUsers,
     FiX,
+    FiBriefcase,
 } from 'react-icons/fi'
 
 import AdminComposer from '@/components/AdminComposer'
 import AdminCareerComposer from '@/components/AdminCareerComposer'
 import AdminLogin from '@/components/AdminLogin'
+import { getSafeImageUrl } from '@/lib/image-url'
 
 type View = 'overview' | 'blogs' | 'partners' | 'careers' | 'applications'
 
@@ -59,6 +61,7 @@ type Career = {
     description: string
     shouldHave: string[]
     status: 'Published' | 'Draft'
+    image?: string
 }
 
 type Application = {
@@ -433,6 +436,40 @@ export default function Admin() {
         const isEditing = Boolean(id)
 
         try {
+            const upload = async (
+                fileField: string,
+                existingField: string,
+            ) => {
+                const file = form.get(fileField)
+                if (!(file instanceof File) || file.size === 0) {
+                    return (form.get(existingField) as string) || ''
+                }
+
+                const uploadData = new FormData()
+                uploadData.append('file', file)
+
+                const uploadResponse = await fetch('/api/admin/upload', {
+                    method: 'POST',
+                    body: uploadData,
+                })
+
+                const uploadResult = await uploadResponse.json()
+
+                if (!uploadResponse.ok) {
+                    throw new Error(
+                        uploadResult.error || 'An image could not be uploaded.',
+                    )
+                }
+
+                return uploadResult.url as string
+            }
+
+            let image = await upload('imageFile', 'existingImage')
+            const directUrl = (form.get('imageUrl') as string)?.trim()
+            if (!image && directUrl) {
+                image = directUrl
+            }
+
             const response = await fetch('/api/admin/careers', {
                 method: isEditing ? 'PATCH' : 'POST',
                 headers: {
@@ -451,6 +488,7 @@ export default function Admin() {
                         .map((item) => item.trim())
                         .filter(Boolean),
                     status: form.get('status') || 'Draft',
+                    image,
                 }),
             })
 
@@ -1472,13 +1510,29 @@ function CareerTable({
                         key={career.id}
                         className="grid gap-3 px-6 py-5 sm:grid-cols-[1fr_150px_130px_30px] sm:items-center"
                     >
-                        <div>
-                            <p className="text-sm font-bold">{career.title}</p>
+                        <div className="flex items-center gap-3">
+                            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#dfe8e5] bg-[#eef5fa] text-[#066ac0]">
+                                {career.image ? (
+                                    <div
+                                        role="img"
+                                        aria-label={`${career.title} image`}
+                                        className="h-full w-full bg-cover bg-center"
+                                        style={{
+                                            backgroundImage: `url(${getSafeImageUrl(career.image)})`,
+                                        }}
+                                    />
+                                ) : (
+                                    <FiBriefcase className="h-5 w-5 text-[#066ac0]" />
+                                )}
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold">{career.title}</p>
 
-                            <p className="mt-1 text-xs text-[#8b999d]">
-                                {career.category} ·{' '}
-                                {career.requirements.join(' · ')}
-                            </p>
+                                <p className="mt-1 text-xs text-[#8b999d]">
+                                    {career.category} ·{' '}
+                                    {career.requirements.join(' · ')}
+                                </p>
+                            </div>
                         </div>
 
                         <p className="text-xs text-[#819096]">
@@ -2121,6 +2175,19 @@ function CareerActions({
                         <FiX />
                     </button>
                 </div>
+
+                {career.image && !confirmation && (
+                    <div className="relative mt-4 h-32 w-full overflow-hidden rounded-xl border border-[#dfe8e5] bg-[#f8fbfa]">
+                        <div
+                            role="img"
+                            aria-label={career.title}
+                            className="h-full w-full bg-cover bg-center"
+                            style={{
+                                backgroundImage: `url(${getSafeImageUrl(career.image)})`,
+                            }}
+                        />
+                    </div>
+                )}
 
                 {confirmation ? (
                     <div className="mt-7 flex gap-3">

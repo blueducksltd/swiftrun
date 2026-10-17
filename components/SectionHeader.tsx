@@ -17,7 +17,7 @@ export default function SectionHeader({ title, description, image = "/newsBanner
                             className='absolute inset-0 w-full h-full object-cover'
                         />
                     ) : (
-                        <Image alt={title} src={image} fill className='object-cover' />
+                        <Image alt={title} src={image} fill unoptimized className='object-cover' />
                     )
                 }
                 <div className={`absolute inset-0 w-full h-full ${title.toLowerCase().startsWith("swiftrun") ? "bg-black/80" : "bg-black/60 "}`} />
